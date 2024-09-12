@@ -1,11 +1,13 @@
 import streamlit as st
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
 import numpy as np
-import matplotlib
 
-# 한글 폰트 설정
-matplotlib.rcParams['font.family'] = 'Nanum Gothic'  # 또는 'Malgun Gothic' 등 설치된 폰트 사용
-matplotlib.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
+# 폰트 파일 경로 설정
+font_path = 'NanumGothic-Bold.ttf'  # 폰트 파일 경로
+prop = fm.FontProperties(fname=font_path)
+plt.rcParams['font.family'] = prop.get_name()
+plt.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
 
 # 파일에서 방사성 동위원소 데이터 읽기
 def load_isotope_data(file_path):
