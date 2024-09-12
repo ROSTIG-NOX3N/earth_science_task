@@ -30,7 +30,7 @@ nearest_isotope = isotope_names[nearest_idx]
 farthest_isotope = isotope_names[farthest_idx]
 
 # 산포도 그리기
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.subplots(figsize=(15, 6))
 ax.scatter(range(len(half_lives)), half_lives, color='blue', label='Half-life')
 
 # 1에 가장 가까운 동위원소에 화살표 추가
