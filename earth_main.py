@@ -33,7 +33,7 @@ def get_labels(language):
             'scatter_plot_title': '동위원소 반감기의 산포도 및 주석',
             'half_life': '반감기 (년)',
             'isotope_index': '동위원소 인덱스',
-            'closest': '입력된 연대에 가장 가까운',
+            'closest': '입력된 연대에 가장 가까운 동위원소',
             'selected': '선택된 동위원소:',
             'input_age_label': '입력된 연대:',
             'annotate_closest': '입력된 연대에 가장 가까운 원',
