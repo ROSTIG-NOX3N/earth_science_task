@@ -32,7 +32,7 @@ def get_labels(language):
             'input_age_label': 'Input Age:',
             'annotate_closest': 'Closest to',
             'annotate_selected': 'Selected Isotope:',
-            'Half-life-of-selected-isotope' : 'Half-life of selected isotope'
+            'half_life_of_selected_isotope': 'Half-life of selected isotope'
         }
     else:  # 한국어
         return {
@@ -46,7 +46,7 @@ def get_labels(language):
             'input_age_label': '입력된 연대:',
             'annotate_closest': '입력된 연대에 가장 가까운 동위원소',
             'annotate_selected': '선택된 동위원소:',
-            'Half-life-of-selected-isotope' : '선택된 동위원소의 반감기'
+            'half_life_of_selected_isotope': '선택된 동위원소의 반감기'
         }
 
 # 방사성 동위원소 데이터 불러오기
@@ -103,4 +103,4 @@ st.pyplot(fig)
 # 결과 표시
 st.write(f"{labels['closest']} : **{nearest_isotope}**")
 st.write(f"{labels['selected']} **{selected_isotope}**")
-st.write(f"**{Half-life-of-selected-isotope}" : {selected_half_life}**")
+st.write(f"**{labels['half_life_of_selected_isotope']}: {selected_half_life}**")
