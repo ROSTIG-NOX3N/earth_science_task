@@ -1,5 +1,5 @@
 import streamlit as st
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import numpy as np
 
 # 파일에서 방사성 동위원소 데이터 읽기
