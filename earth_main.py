@@ -2,6 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 import numpy as np
+from languages import get_labels
 
 # 폰트 파일 경로 설정
 font_path = 'NanumGothic-Bold.ttf'  # 폰트 파일 경로
@@ -18,36 +19,6 @@ def load_isotope_data(file_path):
             data.append((name, float(half_life)))
     return data
 
-# 언어에 따른 레이블
-def get_labels(language):
-    if language == 'English':
-        return {
-            'input_age': 'Enter a comparison age:',
-            'select_isotope': 'Select an isotope:',
-            'scatter_plot_title': 'Scatter plot of Isotope Half-lives with Annotations',
-            'half_life': 'Half-life (years)',
-            'isotope_index': 'Isotope Index',
-            'closest': 'Closest to',
-            'selected': 'Selected Isotope:',
-            'input_age_label': 'Input Age:',
-            'annotate_closest': 'Closest to',
-            'annotate_selected': 'Selected Isotope:',
-            'half_life_of_selected_isotope': 'Half-life of selected isotope'
-        }
-    else:  # 한국어
-        return {
-            'input_age': '비교할 연대 입력:',
-            'select_isotope': '동위원소 선택:',
-            'scatter_plot_title': '동위원소 반감기의 산포도 및 주석',
-            'half_life': '반감기 (년)',
-            'isotope_index': '동위원소 인덱스',
-            'closest': '입력된 연대에 가장 가까운',
-            'selected': '선택된 동위원소:',
-            'input_age_label': '입력된 연대:',
-            'annotate_closest': '입력된 연대에 가장 가까운 동위원소',
-            'annotate_selected': '선택된 동위원소:',
-            'half_life_of_selected_isotope': '선택된 동위원소의 반감기'
-        }
 
 # 방사성 동위원소 데이터 불러오기
 isotope_data = load_isotope_data('radio_data.txt')
