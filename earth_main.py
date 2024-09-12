@@ -43,7 +43,7 @@ def get_labels(language):
             'closest': '입력된 연대에 가장 가까운',
             'selected': '선택된 동위원소:',
             'input_age_label': '입력된 연대:',
-            'annotate_closest': '입력된 연대에 가장 가까운',
+            'annotate_closest': '입력된 연대에 가장 가까운 동위원소',
             'annotate_selected': '선택된 동위원소:'
         }
 
@@ -76,7 +76,7 @@ fig, ax = plt.subplots(figsize=(15, 6))
 ax.scatter(range(len(half_lives)), half_lives, color='blue', label='Half-life')
 
 # 1에 가장 가까운 동위원소에 화살표 추가
-ax.annotate(f'{labels["annotate_closest"]} {input_age}: {nearest_isotope}', xy=(nearest_idx, half_lives[nearest_idx]),
+ax.annotate(f'{labels["annotate_closest"]} : {nearest_isotope}', xy=(nearest_idx, half_lives[nearest_idx]),
             xytext=(nearest_idx, half_lives[nearest_idx] * 1.5),
             arrowprops=dict(facecolor='green', shrink=0.05))
 
@@ -99,6 +99,6 @@ ax.legend()
 st.pyplot(fig)
 
 # 결과 표시
-st.write(f"{labels['closest']} {input_age}: **{nearest_isotope}**")
+st.write(f"{labels['closest']} : **{nearest_isotope}**")
 st.write(f"{labels['selected']} **{selected_isotope}**")
 st.write(f"Half-life of selected isotope: **{selected_half_life}**")
