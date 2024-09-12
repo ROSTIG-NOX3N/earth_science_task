@@ -92,6 +92,6 @@ ax.legend()
 st.pyplot(fig)
 
 # 결과 표시
-st.write(f"{labels['closest']} {input_age}: **{nearest_isotope}**")
+st.write(f"{labels['closest']} : **{nearest_isotope}**")
 st.write(f"{labels['selected']} **{selected_isotope}**")
 st.write(f"선택된 동위원소의 반감기: **{selected_half_life}**")
