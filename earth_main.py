@@ -1,6 +1,11 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib
+
+# 한글 폰트 설정
+matplotlib.rcParams['font.family'] = 'Nanum Gothic'  # 또는 'Malgun Gothic' 등 설치된 폰트 사용
+matplotlib.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
 
 # 파일에서 방사성 동위원소 데이터 읽기
 def load_isotope_data(file_path):
@@ -33,10 +38,10 @@ def get_labels(language):
             'scatter_plot_title': '동위원소 반감기의 산포도 및 주석',
             'half_life': '반감기 (년)',
             'isotope_index': '동위원소 인덱스',
-            'closest': '입력된 연대에 가장 가까운 동위원소',
+            'closest': '입력된 연대에 가장 가까운',
             'selected': '선택된 동위원소:',
             'input_age_label': '입력된 연대:',
-            'annotate_closest': '입력된 연대에 가장 가까운 원',
+            'annotate_closest': '입력된 연대에 가장 가까운',
             'annotate_selected': '선택된 동위원소:'
         }
 
@@ -92,6 +97,6 @@ ax.legend()
 st.pyplot(fig)
 
 # 결과 표시
-st.write(f"{labels['closest']} : **{nearest_isotope}**")
+st.write(f"{labels['closest']} {input_age}: **{nearest_isotope}**")
 st.write(f"{labels['selected']} **{selected_isotope}**")
-st.write(f"선택된 동위원소의 반감기: **{selected_half_life}**")
+st.write(f"Half-life of selected isotope: **{selected_half_life}**")
