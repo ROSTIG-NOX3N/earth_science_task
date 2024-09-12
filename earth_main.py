@@ -2,7 +2,17 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 
-# 방사성 동위원소 데이터 (이름, 반감기)
+# 파일에서 방사성 동위원소 데이터 읽기
+def load_isotope_data(file_path):
+    data = []
+    with open(file_path, 'r') as file:
+        for line in file:
+            name, half_life = line.strip().split(',')
+            data.append((name, float(half_life)))
+    return data
+
+# 방사성 동위원소 데이터 불러오기
+isotope_data = load_isotope_data('radio_data.txt')
 
 # 입력 연대 (1에 가까운 값과 비교할 연대)
 input_age = st.number_input('Enter a comparison age:', min_value=1, value=1)
