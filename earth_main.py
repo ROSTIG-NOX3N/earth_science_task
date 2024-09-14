@@ -81,13 +81,9 @@ nearest_idx = np.argmin(diffs)  # 입력된 연대에 가장 가까운 동위원
 nearest_isotope = isotope_data[nearest_idx][0]
 nearest_half_life = isotope_data[nearest_idx][1]
 
-# 반감기 데이터를 오름차순으로 정렬
-sorted_indices = np.argsort(half_lives)[:100]
-sorted_half_lives = sorted([half_lives[i] for i in sorted_indices])
-
-# 1. 산포도 그리기
+# 1. 모든 동위원소 산포도 그리기 (점 크기 줄이기)
 fig, ax = plt.subplots(figsize=(15, 6))
-ax.scatter(range(len(sorted_half_lives)), sorted_half_lives, color='blue', label='Half-life')
+ax.scatter(range(len(half_lives)), half_lives, color='blue', label='Half-life', s=10)  # 점 크기 줄임 (s=10)
 
 # 입력된 연대에 가장 가까운 동위원소 강조 및 화살표 추가
 ax.annotate(f'Closest to input age: {nearest_isotope}', xy=(nearest_idx, nearest_half_life),
@@ -95,7 +91,7 @@ ax.annotate(f'Closest to input age: {nearest_isotope}', xy=(nearest_idx, nearest
             arrowprops=dict(facecolor='green', shrink=0.05))
 
 # 선택된 동위원소 강조
-ax.scatter(selected_idx, selected_half_life, color='orange', label=f'Selected Isotope: {selected_isotope}')
+ax.scatter(selected_idx, selected_half_life, color='orange', label=f'Selected Isotope: {selected_isotope}', s=50)  # 선택된 동위원소는 큰 크기로 표시
 ax.axhline(y=input_age, color='gray', linestyle='--', label=f'Input Age: {input_age}')
 
 # 라벨 및 제목 설정
