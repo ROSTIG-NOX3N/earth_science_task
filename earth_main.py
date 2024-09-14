@@ -52,7 +52,7 @@ language = st.selectbox('Select language:', ['English', '한국어'])
 labels = get_labels(language)
 
 # 입력 연대 (1~9999 범위 강제)
-input_age = st.number_input(labels['input_age'], min_value=1, max_value=999, value=1, help="Please enter a geological age between 1 and 999 years.")
+input_age = st.number_input(labels['input_age'], min_value=1, max_value=9999, value=1, help="Please enter a geological age between 1 and 9999 years.")
 
 # 동위원소 이름과 넘버 분리
 isotope_names = [item.split('-')[0] for item in [entry[0] for entry in isotope_data]]
@@ -103,6 +103,28 @@ ax.legend()
 
 # 그래프 출력
 st.pyplot(fig)
+
+# 3. 선택된 이름과 동일한 동위원소들을 산포도로 그리는 버튼
+if st.button('Plot Isotopes with the same name'):
+    # 선택된 이름에 해당하는 모든 동위원소 필터링
+    filtered_isotopes = [(name, number, half_life) for name, number, half_life in zip(isotope_names, isotope_numbers, half_lives) if name == selected_isotope_name]
+    
+    fig, ax = plt.subplots(figsize=(15, 6))
+    
+    # 필터링된 동위원소들의 산포도 그리기
+    for i, (name, number, half_life) in enumerate(filtered_isotopes):
+        ax.scatter(i, half_life, color='blue', label=f'{name}-{number}' if i == 0 else "", s=50)
+    
+    # 선택된 동위원소 강조
+    ax.scatter(filtered_isotope_numbers.index(selected_isotope_number), selected_half_life, color='orange', label=f'Selected Isotope: {selected_isotope}', s=100)
+    
+    ax.set_xlabel(labels['isotope_index'])
+    ax.set_ylabel(labels['half_life'])
+    ax.set_title(f'Scatter plot of all isotopes with the name {selected_isotope_name}')
+    ax.set_yscale('log')  # 로그 스케일 설정
+    ax.legend()
+    
+    st.pyplot(fig)
 
 # 결과 표시 (영어로 고정)
 st.write(f"Selected Isotope: **{selected_isotope}**")
