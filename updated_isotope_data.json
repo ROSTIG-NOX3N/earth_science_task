@@ -1,0 +1,4430 @@
+[
+    {
+        "Isotope": "oxygen-11",
+        "Half Life": 198.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 1.9799999999999998e-22
+    },
+    {
+        "Isotope": "nitrogen-11m",
+        "Half Life": 690.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 6.899999999999999e-22
+    },
+    {
+        "Isotope": "nitrogen-11",
+        "Half Life": 585.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 5.85e-22
+    },
+    {
+        "Isotope": "nitrogen-10",
+        "Half Life": 143.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 1.43e-22
+    },
+    {
+        "Isotope": "neon-15",
+        "Half Life": 770.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 7.699999999999999e-22
+    },
+    {
+        "Isotope": "lithium-5",
+        "Half Life": 370.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 3.6999999999999995e-22
+    },
+    {
+        "Isotope": "lithium-4",
+        "Half Life": 91.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 9.099999999999999e-23
+    },
+    {
+        "Isotope": "hydrogen-7",
+        "Half Life": 652.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 6.52e-22
+    },
+    {
+        "Isotope": "hydrogen-6",
+        "Half Life": 294.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 2.94e-22
+    },
+    {
+        "Isotope": "hydrogen-5",
+        "Half Life": 86.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 8.599999999999999e-23
+    },
+    {
+        "Isotope": "hydrogen-4",
+        "Half Life": 139.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 1.3899999999999998e-22
+    },
+    {
+        "Isotope": "helium-10",
+        "Half Life": 260.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 2.6e-22
+    },
+    {
+        "Isotope": "helium-5",
+        "Half Life": 602.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 6.019999999999999e-22
+    },
+    {
+        "Isotope": "fluorine-14",
+        "Half Life": 500.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 5e-22
+    },
+    {
+        "Isotope": "boron-21",
+        "Half Life": 760.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 7.5999999999999995e-22
+    },
+    {
+        "Isotope": "boron-20",
+        "Half Life": 912.4,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 9.123999999999998e-22
+    },
+    {
+        "Isotope": "boron-7",
+        "Half Life": 570.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 5.7e-22
+    },
+    {
+        "Isotope": "beryllium-16",
+        "Half Life": 650.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 6.4999999999999995e-22
+    },
+    {
+        "Isotope": "beryllium-15",
+        "Half Life": 790.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 7.9e-22
+    },
+    {
+        "Isotope": "beryllium-11m",
+        "Half Life": 930.0,
+        "Unit": "10^-24 seconds",
+        "Computed Half Life": 9.3e-22
+    },
+    {
+        "Isotope": "fluorine-15",
+        "Half Life": 1.11,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 1.11e-21
+    },
+    {
+        "Isotope": "oxygen-12",
+        "Half Life": 1.14,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 1.1399999999999997e-21
+    },
+    {
+        "Isotope": "sodium-18",
+        "Half Life": 1.34,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 1.34e-21
+    },
+    {
+        "Isotope": "lithium-10m2",
+        "Half Life": 1.35,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 1.35e-21
+    },
+    {
+        "Isotope": "helium-10",
+        "Half Life": 1.52,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 1.5199999999999999e-21
+    },
+    {
+        "Isotope": "lithium-10",
+        "Half Life": 2.0,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 2e-21
+    },
+    {
+        "Isotope": "carbon-8",
+        "Half Life": 2.0,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 2e-21
+    },
+    {
+        "Isotope": "beryllium-13",
+        "Half Life": 2.7,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 2.7e-21
+    },
+    {
+        "Isotope": "helium-7",
+        "Half Life": 2.51,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 2.5099999999999994e-21
+    },
+    {
+        "Isotope": "lithium-13",
+        "Half Life": 3.3,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 3.2999999999999993e-21
+    },
+    {
+        "Isotope": "lithium-10m1",
+        "Half Life": 3.7,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 3.7e-21
+    },
+    {
+        "Isotope": "neon-16",
+        "Half Life": 3.74,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 3.74e-21
+    },
+    {
+        "Isotope": "beryllium-6",
+        "Half Life": 5.0,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 5e-21
+    },
+    {
+        "Isotope": "helium-9",
+        "Half Life": 7.0,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 6.999999999999999e-21
+    },
+    {
+        "Isotope": "fluorine-16",
+        "Half Life": 11.0,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 1.1e-20
+    },
+    {
+        "Isotope": "boron-9",
+        "Half Life": 845.0,
+        "Unit": "10^-21 seconds",
+        "Computed Half Life": 8.449999999999999e-19
+    },
+    {
+        "Isotope": "beryllium-9m",
+        "Half Life": 1.25,
+        "Unit": "10^-18 seconds",
+        "Computed Half Life": 1.25e-18
+    },
+    {
+        "Isotope": "beryllium-8",
+        "Half Life": 81.9,
+        "Unit": "10^-18 seconds",
+        "Computed Half Life": 8.190000000000001e-17
+    },
+    {
+        "Isotope": "magnesium-19",
+        "Half Life": 5.0,
+        "Unit": "10^-12 seconds",
+        "Computed Half Life": 5e-12
+    },
+    {
+        "Isotope": "boron-16",
+        "Half Life": 190.0,
+        "Unit": "10^-12 seconds",
+        "Computed Half Life": 1.9e-10
+    },
+    {
+        "Isotope": "lithium-12",
+        "Half Life": null,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": null
+    },
+    {
+        "Isotope": "boron-18",
+        "Half Life": 26.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.6e-08
+    },
+    {
+        "Isotope": "carbon-21",
+        "Half Life": 30.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 3.0000000000000004e-08
+    },
+    {
+        "Isotope": "fluorine-28",
+        "Half Life": 40.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 4e-08
+    },
+    {
+        "Isotope": "oxygen-26",
+        "Half Life": 40.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 4e-08
+    },
+    {
+        "Isotope": "sodium-19",
+        "Half Life": 40.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 4e-08
+    },
+    {
+        "Isotope": "oxygen-25",
+        "Half Life": 50.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 5.0000000000000004e-08
+    },
+    {
+        "Isotope": "nitrogen-24",
+        "Half Life": 52.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 5.2e-08
+    },
+    {
+        "Isotope": "protactinium-219",
+        "Half Life": 53.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 5.3000000000000005e-08
+    },
+    {
+        "Isotope": "neon-34",
+        "Half Life": 60.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 6.000000000000001e-08
+    },
+    {
+        "Isotope": "sodium-37",
+        "Half Life": 60.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 6.000000000000001e-08
+    },
+    {
+        "Isotope": "protactinium-220m2",
+        "Half Life": 69.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 6.900000000000001e-08
+    },
+    {
+        "Isotope": "actinium-217",
+        "Half Life": 69.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 6.900000000000001e-08
+    },
+    {
+        "Isotope": "francium-215",
+        "Half Life": 86.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 8.6e-08
+    },
+    {
+        "Isotope": "lead-196m1",
+        "Half Life": null,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": null
+    },
+    {
+        "Isotope": "uranium-236m1",
+        "Half Life": 100.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.0000000000000001e-07
+    },
+    {
+        "Isotope": "bismuth-199m2",
+        "Half Life": 100.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.0000000000000001e-07
+    },
+    {
+        "Isotope": "oxygen-28",
+        "Half Life": 100.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.0000000000000001e-07
+    },
+    {
+        "Isotope": "curium-247m2",
+        "Half Life": 100.6,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.006e-07
+    },
+    {
+        "Isotope": "actinium-218m",
+        "Half Life": 103.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.0300000000000001e-07
+    },
+    {
+        "Isotope": "francium-214m2",
+        "Half Life": 103.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.0300000000000001e-07
+    },
+    {
+        "Isotope": "bismuth-201m3",
+        "Half Life": 105.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.05e-07
+    },
+    {
+        "Isotope": "lead-202m3",
+        "Half Life": 107.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.07e-07
+    },
+    {
+        "Isotope": "francium-214m3",
+        "Half Life": 108.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.08e-07
+    },
+    {
+        "Isotope": "thorium-218",
+        "Half Life": 109.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.0900000000000001e-07
+    },
+    {
+        "Isotope": "lead-202m2",
+        "Half Life": 110.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.1e-07
+    },
+    {
+        "Isotope": "neptunium-238m",
+        "Half Life": 112.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.1200000000000001e-07
+    },
+    {
+        "Isotope": "polonium-205m4",
+        "Half Life": 115.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.1500000000000001e-07
+    },
+    {
+        "Isotope": "bismuth-201m2",
+        "Half Life": 118.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.1800000000000001e-07
+    },
+    {
+        "Isotope": "uranium-236m2",
+        "Half Life": 120.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.2000000000000002e-07
+    },
+    {
+        "Isotope": "lead-203m3",
+        "Half Life": 122.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.22e-07
+    },
+    {
+        "Isotope": "bismuth-201m4",
+        "Half Life": 124.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.24e-07
+    },
+    {
+        "Isotope": "astatine-213",
+        "Half Life": 125.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.2500000000000002e-07
+    },
+    {
+        "Isotope": "lead-193m2",
+        "Half Life": 135.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.35e-07
+    },
+    {
+        "Isotope": "lead-198m2",
+        "Half Life": 137.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.37e-07
+    },
+    {
+        "Isotope": "lead-196m3",
+        "Half Life": 140.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.4e-07
+    },
+    {
+        "Isotope": "lead-190m1",
+        "Half Life": 150.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.5000000000000002e-07
+    },
+    {
+        "Isotope": "thallium-198m2",
+        "Half Life": 150.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.5000000000000002e-07
+    },
+    {
+        "Isotope": "americium-239m",
+        "Half Life": 163.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.6300000000000002e-07
+    },
+    {
+        "Isotope": "lead-192m1",
+        "Half Life": 164.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.64e-07
+    },
+    {
+        "Isotope": "bismuth-199m3",
+        "Half Life": 168.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.6800000000000002e-07
+    },
+    {
+        "Isotope": "neon-33",
+        "Half Life": 180.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.8000000000000002e-07
+    },
+    {
+        "Isotope": "sodium-36",
+        "Half Life": 180.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.8000000000000002e-07
+    },
+    {
+        "Isotope": "curium-242m",
+        "Half Life": 180.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.8000000000000002e-07
+    },
+    {
+        "Isotope": "radium-216",
+        "Half Life": 182.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.8200000000000002e-07
+    },
+    {
+        "Isotope": "plutonium-239m1",
+        "Half Life": 193.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.9300000000000002e-07
+    },
+    {
+        "Isotope": "bismuth-203m2",
+        "Half Life": 194.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 1.9400000000000002e-07
+    },
+    {
+        "Isotope": "polonium-198m1",
+        "Half Life": 200.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.0000000000000002e-07
+    },
+    {
+        "Isotope": "polonium-202m",
+        "Half Life": 200.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.0000000000000002e-07
+    },
+    {
+        "Isotope": "neodymium-126",
+        "Half Life": 200.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.0000000000000002e-07
+    },
+    {
+        "Isotope": "polonium-203m2",
+        "Half Life": 200.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.0000000000000002e-07
+    },
+    {
+        "Isotope": "lead-210m",
+        "Half Life": 201.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.01e-07
+    },
+    {
+        "Isotope": "lead-206m2",
+        "Half Life": 202.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.02e-07
+    },
+    {
+        "Isotope": "bismuth-197m2",
+        "Half Life": 204.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.04e-07
+    },
+    {
+        "Isotope": "polonium-207m1",
+        "Half Life": 205.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.0500000000000002e-07
+    },
+    {
+        "Isotope": "bismuth-197m5",
+        "Half Life": 209.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.09e-07
+    },
+    {
+        "Isotope": "lead-198m3",
+        "Half Life": 212.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.1200000000000002e-07
+    },
+    {
+        "Isotope": "lead-205m3",
+        "Half Life": 217.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.1700000000000002e-07
+    },
+    {
+        "Isotope": "polonium-206m1",
+        "Half Life": 222.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.22e-07
+    },
+    {
+        "Isotope": "beryllium-12m",
+        "Half Life": 233.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.33e-07
+    },
+    {
+        "Isotope": "thallium-205m2",
+        "Half Life": 235.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.3500000000000003e-07
+    },
+    {
+        "Isotope": "polonium-211m2",
+        "Half Life": 243.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.43e-07
+    },
+    {
+        "Isotope": "radon-214m",
+        "Half Life": 245.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.4500000000000004e-07
+    },
+    {
+        "Isotope": "fluorine-31",
+        "Half Life": 250.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.5000000000000004e-07
+    },
+    {
+        "Isotope": "uranium-239m1",
+        "Half Life": 250.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.5000000000000004e-07
+    },
+    {
+        "Isotope": "bismuth-197m4",
+        "Half Life": 253.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.53e-07
+    },
+    {
+        "Isotope": "fluorine-30",
+        "Half Life": 260.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.6e-07
+    },
+    {
+        "Isotope": "nitrogen-25",
+        "Half Life": 260.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.6e-07
+    },
+    {
+        "Isotope": "polonium-210m",
+        "Half Life": 263.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.63e-07
+    },
+    {
+        "Isotope": "bismuth-197m3",
+        "Half Life": 263.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.63e-07
+    },
+    {
+        "Isotope": "lead-204m1",
+        "Half Life": 265.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.65e-07
+    },
+    {
+        "Isotope": "astatine-214m1",
+        "Half Life": 265.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.65e-07
+    },
+    {
+        "Isotope": "radium-208m",
+        "Half Life": 270.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.7e-07
+    },
+    {
+        "Isotope": "lead-196m4",
+        "Half Life": 270.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.7e-07
+    },
+    {
+        "Isotope": "radon-214",
+        "Half Life": 270.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.7e-07
+    },
+    {
+        "Isotope": "uranium-238m",
+        "Half Life": 280.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.8e-07
+    },
+    {
+        "Isotope": "curium-245m",
+        "Half Life": 290.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.9000000000000003e-07
+    },
+    {
+        "Isotope": "thallium-192m2",
+        "Half Life": 296.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.96e-07
+    },
+    {
+        "Isotope": "polonium-212",
+        "Half Life": 299.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 2.99e-07
+    },
+    {
+        "Isotope": "protactinium-220m1",
+        "Half Life": 308.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 3.08e-07
+    },
+    {
+        "Isotope": "bismuth-202m2",
+        "Half Life": 310.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 3.1e-07
+    },
+    {
+        "Isotope": "polonium-205m1",
+        "Half Life": 310.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 3.1e-07
+    },
+    {
+        "Isotope": "plutonium-243m",
+        "Half Life": 330.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 3.3e-07
+    },
+    {
+        "Isotope": "thallium-200m2",
+        "Half Life": 330.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 3.3e-07
+    },
+    {
+        "Isotope": "neptunium-222",
+        "Half Life": 380.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 3.8e-07
+    },
+    {
+        "Isotope": "lead-216m",
+        "Half Life": 400.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 4.0000000000000003e-07
+    },
+    {
+        "Isotope": "astatine-206m",
+        "Half Life": 410.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 4.1000000000000004e-07
+    },
+    {
+        "Isotope": "protactinium-229m",
+        "Half Life": 420.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 4.2e-07
+    },
+    {
+        "Isotope": "lead-204m3",
+        "Half Life": 450.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 4.5000000000000003e-07
+    },
+    {
+        "Isotope": "lead-208m",
+        "Half Life": 500.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 5.000000000000001e-07
+    },
+    {
+        "Isotope": "bismuth-190m2",
+        "Half Life": 500.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 5.000000000000001e-07
+    },
+    {
+        "Isotope": "curium-244m2",
+        "Half Life": 500.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 5.000000000000001e-07
+    },
+    {
+        "Isotope": "lead-201m2",
+        "Half Life": 508.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 5.08e-07
+    },
+    {
+        "Isotope": "radium-215m3",
+        "Half Life": 555.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 5.550000000000001e-07
+    },
+    {
+        "Isotope": "astatine-214",
+        "Half Life": 558.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 5.58e-07
+    },
+    {
+        "Isotope": "berkelium-242m",
+        "Half Life": 600.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 6.000000000000001e-07
+    },
+    {
+        "Isotope": "thorium-216m2",
+        "Half Life": 615.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 6.15e-07
+    },
+    {
+        "Isotope": "radon-210m1",
+        "Half Life": 644.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 6.44e-07
+    },
+    {
+        "Isotope": "uranium-221",
+        "Half Life": 660.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 6.6e-07
+    },
+    {
+        "Isotope": "francium-216",
+        "Half Life": 700.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 7.000000000000001e-07
+    },
+    {
+        "Isotope": "actinium-217m",
+        "Half Life": 740.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 7.4e-07
+    },
+    {
+        "Isotope": "bismuth-195m2",
+        "Half Life": 750.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 7.5e-07
+    },
+    {
+        "Isotope": "polonium-198m2",
+        "Half Life": 750.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 7.5e-07
+    },
+    {
+        "Isotope": "lead-192m3",
+        "Half Life": 756.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 7.56e-07
+    },
+    {
+        "Isotope": "astatine-214m2",
+        "Half Life": 760.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 7.6e-07
+    },
+    {
+        "Isotope": "protactinium-220",
+        "Half Life": 780.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 7.8e-07
+    },
+    {
+        "Isotope": "uranium-239m2",
+        "Half Life": 780.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 7.8e-07
+    },
+    {
+        "Isotope": "lead-188m2",
+        "Half Life": 797.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 7.970000000000001e-07
+    },
+    {
+        "Isotope": "lead-188m1",
+        "Half Life": 830.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 8.300000000000001e-07
+    },
+    {
+        "Isotope": "radium-212m2",
+        "Half Life": 850.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 8.5e-07
+    },
+    {
+        "Isotope": "polonium-196m",
+        "Half Life": 850.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 8.5e-07
+    },
+    {
+        "Isotope": "bismuth-189m2",
+        "Half Life": 880.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 8.8e-07
+    },
+    {
+        "Isotope": "plutonium-241m1",
+        "Half Life": 880.0,
+        "Unit": "10^-9 seconds",
+        "Computed Half Life": 8.8e-07
+    },
+    {
+        "Isotope": "lead-196m2",
+        "Half Life": null,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": null
+    },
+    {
+        "Isotope": "polonium-192m",
+        "Half Life": 1.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1e-06
+    },
+    {
+        "Isotope": "radon-210m3",
+        "Half Life": 1.04,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.04e-06
+    },
+    {
+        "Isotope": "thorium-219",
+        "Half Life": 1.05,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.05e-06
+    },
+    {
+        "Isotope": "polonium-206m2",
+        "Half Life": 1.05,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.05e-06
+    },
+    {
+        "Isotope": "radon-210m2",
+        "Half Life": 1.06,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.06e-06
+    },
+    {
+        "Isotope": "curium-243m",
+        "Half Life": 1.08,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.08e-06
+    },
+    {
+        "Isotope": "actinium-218",
+        "Half Life": 1.08,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.08e-06
+    },
+    {
+        "Isotope": "lead-192m2",
+        "Half Life": 1.1,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.1e-06
+    },
+    {
+        "Isotope": "plutonium-237m2",
+        "Half Life": 1.1,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.1e-06
+    },
+    {
+        "Isotope": "lead-197m2",
+        "Half Life": 1.15,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.1499999999999998e-06
+    },
+    {
+        "Isotope": "americium-241m",
+        "Half Life": 1.2,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.2e-06
+    },
+    {
+        "Isotope": "radium-215m2",
+        "Half Life": 1.39,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.3899999999999998e-06
+    },
+    {
+        "Isotope": "bismuth-211m",
+        "Half Life": 1.4,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.4e-06
+    },
+    {
+        "Isotope": "uranium-222",
+        "Half Life": 1.4,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.4e-06
+    },
+    {
+        "Isotope": "radium-217",
+        "Half Life": 1.63,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.6299999999999999e-06
+    },
+    {
+        "Isotope": "neptunium-223",
+        "Half Life": 2.15,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.1499999999999997e-06
+    },
+    {
+        "Isotope": "radium-210m",
+        "Half Life": 2.24,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.24e-06
+    },
+    {
+        "Isotope": "radon-215",
+        "Half Life": 2.3,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.2999999999999996e-06
+    },
+    {
+        "Isotope": "bismuth-217m",
+        "Half Life": 2.7,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.7e-06
+    },
+    {
+        "Isotope": "polonium-211m3",
+        "Half Life": 2.8,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.8e-06
+    },
+    {
+        "Isotope": "radon-209m2",
+        "Half Life": 3.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 3e-06
+    },
+    {
+        "Isotope": "bismuth-202m1",
+        "Half Life": 3.04,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 3.0399999999999997e-06
+    },
+    {
+        "Isotope": "polonium-213",
+        "Half Life": 3.65,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 3.6499999999999998e-06
+    },
+    {
+        "Isotope": "lead-198m1",
+        "Half Life": 4.19,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 4.1900000000000005e-06
+    },
+    {
+        "Isotope": "protactinium-221",
+        "Half Life": 4.9,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 4.9000000000000005e-06
+    },
+    {
+        "Isotope": "astatine-210m2",
+        "Half Life": 5.66,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 5.66e-06
+    },
+    {
+        "Isotope": "nobelium-250",
+        "Half Life": 5.7,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 5.7e-06
+    },
+    {
+        "Isotope": "lead-212m",
+        "Half Life": 6.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 6e-06
+    },
+    {
+        "Isotope": "lead-214m",
+        "Half Life": 6.2,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 6.2e-06
+    },
+    {
+        "Isotope": "bismuth-187m2",
+        "Half Life": 7.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 7e-06
+    },
+    {
+        "Isotope": "thorium-229m",
+        "Half Life": 7.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 7e-06
+    },
+    {
+        "Isotope": "radium-215m1",
+        "Half Life": 7.1,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 7.099999999999999e-06
+    },
+    {
+        "Isotope": "lead-190m3",
+        "Half Life": 7.2,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 7.2e-06
+    },
+    {
+        "Isotope": "plutonium-239m2",
+        "Half Life": 7.5,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 7.499999999999999e-06
+    },
+    {
+        "Isotope": "bismuth-206m1",
+        "Half Life": 7.7,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 7.699999999999999e-06
+    },
+    {
+        "Isotope": "astatine-205m",
+        "Half Life": 7.76,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 7.76e-06
+    },
+    {
+        "Isotope": "thorium-220",
+        "Half Life": 9.7,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 9.699999999999999e-06
+    },
+    {
+        "Isotope": "lead-195m2",
+        "Half Life": 10.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 9.999999999999999e-06
+    },
+    {
+        "Isotope": "lead-199m2",
+        "Half Life": 10.1,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.01e-05
+    },
+    {
+        "Isotope": "radium-212m1",
+        "Half Life": 10.9,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.09e-05
+    },
+    {
+        "Isotope": "astatine-196m2",
+        "Half Life": 11.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.1e-05
+    },
+    {
+        "Isotope": "actinium-219",
+        "Half Life": 11.8,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.18e-05
+    },
+    {
+        "Isotope": "radon-209m1",
+        "Half Life": 13.4,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.34e-05
+    },
+    {
+        "Isotope": "polonium-194m",
+        "Half Life": 15.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.4999999999999999e-05
+    },
+    {
+        "Isotope": "caesium-113",
+        "Half Life": 16.7,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.67e-05
+    },
+    {
+        "Isotope": "francium-217",
+        "Half Life": 16.8,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 1.68e-05
+    },
+    {
+        "Isotope": "uranium-223",
+        "Half Life": 21.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.1e-05
+    },
+    {
+        "Isotope": "plutonium-241m2",
+        "Half Life": 21.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.1e-05
+    },
+    {
+        "Isotope": "fermium-251m",
+        "Half Life": 21.1,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.11e-05
+    },
+    {
+        "Isotope": "curium-249m",
+        "Half Life": 23.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.3e-05
+    },
+    {
+        "Isotope": "rutherfordium-254",
+        "Half Life": 23.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.3e-05
+    },
+    {
+        "Isotope": "lead-205m1",
+        "Half Life": 24.2,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.42e-05
+    },
+    {
+        "Isotope": "neptunium-220",
+        "Half Life": 25.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.4999999999999998e-05
+    },
+    {
+        "Isotope": "lead-190m2",
+        "Half Life": 25.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.4999999999999998e-05
+    },
+    {
+        "Isotope": "radium-218",
+        "Half Life": 25.2,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.52e-05
+    },
+    {
+        "Isotope": "lead-189m2",
+        "Half Life": 26.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.6e-05
+    },
+    {
+        "Isotope": "curium-247m1",
+        "Half Life": 26.3,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.63e-05
+    },
+    {
+        "Isotope": "berkelium-250m1",
+        "Half Life": 29.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 2.9e-05
+    },
+    {
+        "Isotope": "nobelium-253m",
+        "Half Life": 31.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 3.1e-05
+    },
+    {
+        "Isotope": "polonium-186",
+        "Half Life": 34.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 3.4e-05
+    },
+    {
+        "Isotope": "americium-238m",
+        "Half Life": 35.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 3.5e-05
+    },
+    {
+        "Isotope": "nobelium-250m",
+        "Half Life": 36.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 3.6e-05
+    },
+    {
+        "Isotope": "neptunium-224",
+        "Half Life": 38.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 3.7999999999999995e-05
+    },
+    {
+        "Isotope": "californium-249m",
+        "Half Life": 45.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 4.4999999999999996e-05
+    },
+    {
+        "Isotope": "radon-216",
+        "Half Life": 45.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 4.4999999999999996e-05
+    },
+    {
+        "Isotope": "rutherfordium-253",
+        "Half Life": 48.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 4.8e-05
+    },
+    {
+        "Isotope": "bismuth-185m",
+        "Half Life": 49.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 4.9e-05
+    },
+    {
+        "Isotope": "polonium-207m2",
+        "Half Life": 49.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 4.9e-05
+    },
+    {
+        "Isotope": "radium-231m",
+        "Half Life": 53.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 5.3e-05
+    },
+    {
+        "Isotope": "uranium-219",
+        "Half Life": 55.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 5.4999999999999995e-05
+    },
+    {
+        "Isotope": "berkelium-251m",
+        "Half Life": 58.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 5.8e-05
+    },
+    {
+        "Isotope": "americium-246m2",
+        "Half Life": 73.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 7.3e-05
+    },
+    {
+        "Isotope": "seaborgium-261m",
+        "Half Life": 92.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 9.2e-05
+    },
+    {
+        "Isotope": "astatine-215",
+        "Half Life": 100.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 9.999999999999999e-05
+    },
+    {
+        "Isotope": "astatine-216m",
+        "Half Life": 100.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 9.999999999999999e-05
+    },
+    {
+        "Isotope": "protactinium-218",
+        "Half Life": 113.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.000113
+    },
+    {
+        "Isotope": "lead-206m1",
+        "Half Life": 125.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.000125
+    },
+    {
+        "Isotope": "thorium-216m1",
+        "Half Life": 137.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.000137
+    },
+    {
+        "Isotope": "curium-248m",
+        "Half Life": 146.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.000146
+    },
+    {
+        "Isotope": "neptunium-219",
+        "Half Life": 150.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00015
+    },
+    {
+        "Isotope": "astatine-212m2",
+        "Half Life": 152.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00015199999999999998
+    },
+    {
+        "Isotope": "polonium-214",
+        "Half Life": 164.3,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.0001643
+    },
+    {
+        "Isotope": "radon-207m",
+        "Half Life": 181.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00018099999999999998
+    },
+    {
+        "Isotope": "bismuth-207m",
+        "Half Life": 182.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00018199999999999998
+    },
+    {
+        "Isotope": "darmstadtium-270",
+        "Half Life": 205.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.000205
+    },
+    {
+        "Isotope": "berkelium-250m2",
+        "Half Life": 213.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.000213
+    },
+    {
+        "Isotope": "darmstadtium-269",
+        "Half Life": 230.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00022999999999999998
+    },
+    {
+        "Isotope": "lead-178",
+        "Half Life": 230.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00022999999999999998
+    },
+    {
+        "Isotope": "copernicium-277",
+        "Half Life": 240.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00023999999999999998
+    },
+    {
+        "Isotope": "thorium-217",
+        "Half Life": 240.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00023999999999999998
+    },
+    {
+        "Isotope": "darmstadtium-273",
+        "Half Life": 240.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00023999999999999998
+    },
+    {
+        "Isotope": "berkelium-249m",
+        "Half Life": 300.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.0003
+    },
+    {
+        "Isotope": "astatine-216",
+        "Half Life": 300.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.0003
+    },
+    {
+        "Isotope": "bismuth-187m1",
+        "Half Life": 320.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00031999999999999997
+    },
+    {
+        "Isotope": "nihonium-278",
+        "Half Life": 340.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00033999999999999997
+    },
+    {
+        "Isotope": "hassium-265m",
+        "Half Life": 360.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00035999999999999997
+    },
+    {
+        "Isotope": "fermium-258",
+        "Half Life": 370.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00037
+    },
+    {
+        "Isotope": "polonium-188",
+        "Half Life": 430.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00043
+    },
+    {
+        "Isotope": "actinium-216",
+        "Half Life": 440.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00043999999999999996
+    },
+    {
+        "Isotope": "actinium-216m",
+        "Half Life": 443.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.000443
+    },
+    {
+        "Isotope": "astatine-210m1",
+        "Half Life": 482.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00048199999999999995
+    },
+    {
+        "Isotope": "caesium-112",
+        "Half Life": 500.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.0005
+    },
+    {
+        "Isotope": "polonium-187m",
+        "Half Life": 500.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.0005
+    },
+    {
+        "Isotope": "hassium-264",
+        "Half Life": 540.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00054
+    },
+    {
+        "Isotope": "radon-217",
+        "Half Life": 540.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00054
+    },
+    {
+        "Isotope": "polonium-205m2",
+        "Half Life": 645.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.000645
+    },
+    {
+        "Isotope": "copernicium-277",
+        "Half Life": 690.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00069
+    },
+    {
+        "Isotope": "oganesson-294",
+        "Half Life": 690.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00069
+    },
+    {
+        "Isotope": "fermium-241",
+        "Half Life": 730.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00073
+    },
+    {
+        "Isotope": "hassium-263",
+        "Half Life": 760.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.0007599999999999999
+    },
+    {
+        "Isotope": "fermium-242",
+        "Half Life": 800.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.0007999999999999999
+    },
+    {
+        "Isotope": "bismuth-206m2",
+        "Half Life": 890.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00089
+    },
+    {
+        "Isotope": "mendelevium-245",
+        "Half Life": 900.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.0009
+    },
+    {
+        "Isotope": "copernicium-282",
+        "Half Life": 910.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00091
+    },
+    {
+        "Isotope": "uranium-224",
+        "Half Life": 940.0,
+        "Unit": "10^-6 seconds",
+        "Computed Half Life": 0.00094
+    },
+    {
+        "Isotope": "francium-218",
+        "Half Life": 1.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.001
+    },
+    {
+        "Isotope": "bismuth-204m2",
+        "Half Life": 1.07,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00107
+    },
+    {
+        "Isotope": "protactinium-217m",
+        "Half Life": 1.08,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00108
+    },
+    {
+        "Isotope": "meitnerium-266",
+        "Half Life": 1.2,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0012
+    },
+    {
+        "Isotope": "nobelium-258",
+        "Half Life": 1.2,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0012
+    },
+    {
+        "Isotope": "uranium-216m",
+        "Half Life": 1.31,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0013100000000000002
+    },
+    {
+        "Isotope": "polonium-187",
+        "Half Life": 1.4,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0014
+    },
+    {
+        "Isotope": "nihonium-278",
+        "Half Life": 1.4,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0014
+    },
+    {
+        "Isotope": "sodium-35",
+        "Half Life": 1.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0015
+    },
+    {
+        "Isotope": "radium-215",
+        "Half Life": 1.55,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0015500000000000002
+    },
+    {
+        "Isotope": "darmstadtium-271m",
+        "Half Life": 1.7,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0017
+    },
+    {
+        "Isotope": "astatine-191",
+        "Half Life": 1.7,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0017
+    },
+    {
+        "Isotope": "thorium-208",
+        "Half Life": 1.7,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0017
+    },
+    {
+        "Isotope": "thorium-221",
+        "Half Life": 1.73,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00173
+    },
+    {
+        "Isotope": "polonium-215",
+        "Half Life": 1.781,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.001781
+    },
+    {
+        "Isotope": "hassium-265",
+        "Half Life": 1.96,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00196
+    },
+    {
+        "Isotope": "bismuth-185",
+        "Half Life": 2.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.002
+    },
+    {
+        "Isotope": "roentgenium-272",
+        "Half Life": 2.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.002
+    },
+    {
+        "Isotope": "astatine-191m",
+        "Half Life": 2.1,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0021000000000000003
+    },
+    {
+        "Isotope": "radium-213m",
+        "Half Life": 2.1,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0021000000000000003
+    },
+    {
+        "Isotope": "thorium-222",
+        "Half Life": 2.237,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0022370000000000003
+    },
+    {
+        "Isotope": "uranium-215",
+        "Half Life": 2.24,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0022400000000000002
+    },
+    {
+        "Isotope": "polonium-190",
+        "Half Life": 2.46,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00246
+    },
+    {
+        "Isotope": "fluorine-29",
+        "Half Life": 2.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0025
+    },
+    {
+        "Isotope": "flerovium-284",
+        "Half Life": 2.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0025
+    },
+    {
+        "Isotope": "bismuth-208m",
+        "Half Life": 2.58,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0025800000000000003
+    },
+    {
+        "Isotope": "radium-202",
+        "Half Life": 2.6,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0026000000000000003
+    },
+    {
+        "Isotope": "boron-19",
+        "Half Life": 2.92,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00292
+    },
+    {
+        "Isotope": "seaborgium-258",
+        "Half Life": 3.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.003
+    },
+    {
+        "Isotope": "hassium-266",
+        "Half Life": 3.02,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00302
+    },
+    {
+        "Isotope": "fermium-244",
+        "Half Life": 3.12,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0031200000000000004
+    },
+    {
+        "Isotope": "protactinium-222",
+        "Half Life": 3.2,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0032
+    },
+    {
+        "Isotope": "francium-214m1",
+        "Half Life": 3.35,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00335
+    },
+    {
+        "Isotope": "neon-31",
+        "Half Life": 3.4,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0034
+    },
+    {
+        "Isotope": "protactinium-217",
+        "Half Life": 3.48,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00348
+    },
+    {
+        "Isotope": "neon-32",
+        "Half Life": 3.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0035
+    },
+    {
+        "Isotope": "darmstadtium-277",
+        "Half Life": 3.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0035
+    },
+    {
+        "Isotope": "protactinium-211",
+        "Half Life": 3.8,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0038
+    },
+    {
+        "Isotope": "lead-179",
+        "Half Life": 3.9,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0039
+    },
+    {
+        "Isotope": "roentgenium-278",
+        "Half Life": 4.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.004
+    },
+    {
+        "Isotope": "radium-203",
+        "Half Life": 4.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.004
+    },
+    {
+        "Isotope": "seaborgium-260",
+        "Half Life": 4.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.004
+    },
+    {
+        "Isotope": "uranium-216",
+        "Half Life": 4.3,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0043
+    },
+    {
+        "Isotope": "beryllium-14",
+        "Half Life": 4.35,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00435
+    },
+    {
+        "Isotope": "lead-180",
+        "Half Life": 4.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0045000000000000005
+    },
+    {
+        "Isotope": "radon-196",
+        "Half Life": 4.7,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0047
+    },
+    {
+        "Isotope": "fluorine-27",
+        "Half Life": 5.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.005
+    },
+    {
+        "Isotope": "bismuth-189m1",
+        "Half Life": 5.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.005
+    },
+    {
+        "Isotope": "francium-214",
+        "Half Life": 5.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.005
+    },
+    {
+        "Isotope": "meitnerium-277",
+        "Half Life": 5.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.005
+    },
+    {
+        "Isotope": "nobelium-262",
+        "Half Life": 5.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.005
+    },
+    {
+        "Isotope": "polonium-189",
+        "Half Life": 5.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.005
+    },
+    {
+        "Isotope": "boron-17",
+        "Half Life": 5.08,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00508
+    },
+    {
+        "Isotope": "protactinium-223",
+        "Half Life": 5.1,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0050999999999999995
+    },
+    {
+        "Isotope": "americium-223",
+        "Half Life": 5.2,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.005200000000000001
+    },
+    {
+        "Isotope": "sodium-34",
+        "Half Life": 5.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0055
+    },
+    {
+        "Isotope": "lead-205m2",
+        "Half Life": 5.55,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00555
+    },
+    {
+        "Isotope": "neptunium-225",
+        "Half Life": 6.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.006
+    },
+    {
+        "Isotope": "uranium-218",
+        "Half Life": 6.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.006
+    },
+    {
+        "Isotope": "radon-195",
+        "Half Life": 6.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.006
+    },
+    {
+        "Isotope": "radon-195m",
+        "Half Life": 6.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.006
+    },
+    {
+        "Isotope": "carbon-22",
+        "Half Life": 6.2,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.006200000000000001
+    },
+    {
+        "Isotope": "meitnerium-270",
+        "Half Life": 6.3,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0063
+    },
+    {
+        "Isotope": "rutherfordium-256",
+        "Half Life": 6.4,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0064
+    },
+    {
+        "Isotope": "bismuth-184",
+        "Half Life": 6.6,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0066
+    },
+    {
+        "Isotope": "thorium-209",
+        "Half Life": 7.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.007
+    },
+    {
+        "Isotope": "protactinium-213",
+        "Half Life": 7.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.007
+    },
+    {
+        "Isotope": "seaborgium-262",
+        "Half Life": 7.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.007
+    },
+    {
+        "Isotope": "neon-30",
+        "Half Life": 7.3,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0073
+    },
+    {
+        "Isotope": "protactinium-212",
+        "Half Life": 8.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.008
+    },
+    {
+        "Isotope": "sodium-33",
+        "Half Life": 8.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.008
+    },
+    {
+        "Isotope": "magnesium-37",
+        "Half Life": 8.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.008
+    },
+    {
+        "Isotope": "livermorium-290",
+        "Half Life": 8.3,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0083
+    },
+    {
+        "Isotope": "oxygen-13",
+        "Half Life": 8.58,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00858
+    },
+    {
+        "Isotope": "lithium-11",
+        "Half Life": 8.59,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.00859
+    },
+    {
+        "Isotope": "fluorine-26",
+        "Half Life": 9.6,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0096
+    },
+    {
+        "Isotope": "bohrium-262m",
+        "Half Life": 9.6,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0096
+    },
+    {
+        "Isotope": "thorium-207",
+        "Half Life": 9.7,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0097
+    },
+    {
+        "Isotope": "bismuth-186m",
+        "Half Life": 9.8,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.009800000000000001
+    },
+    {
+        "Isotope": "boron-15",
+        "Half Life": 9.87,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.009869999999999999
+    },
+    {
+        "Isotope": "darmstadtium-270m",
+        "Half Life": 10.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.01
+    },
+    {
+        "Isotope": "radium-219",
+        "Half Life": 10.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.01
+    },
+    {
+        "Isotope": "hassium-277",
+        "Half Life": 11.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.011
+    },
+    {
+        "Isotope": "nitrogen-12",
+        "Half Life": 11.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.011
+    },
+    {
+        "Isotope": "astatine-192",
+        "Half Life": 11.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0115
+    },
+    {
+        "Isotope": "bohrium-261",
+        "Half Life": 11.8,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.011800000000000001
+    },
+    {
+        "Isotope": "roentgenium-274",
+        "Half Life": 12.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.012
+    },
+    {
+        "Isotope": "boron-14",
+        "Half Life": 12.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0125
+    },
+    {
+        "Isotope": "bismuth-204m1",
+        "Half Life": 13.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.013000000000000001
+    },
+    {
+        "Isotope": "livermorium-292",
+        "Half Life": 13.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.013000000000000001
+    },
+    {
+        "Isotope": "bismuth-184m",
+        "Half Life": 13.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.013000000000000001
+    },
+    {
+        "Isotope": "sodium-32",
+        "Half Life": 13.2,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0132
+    },
+    {
+        "Isotope": "americium-242m2",
+        "Half Life": 14.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.014
+    },
+    {
+        "Isotope": "protactinium-215",
+        "Half Life": 14.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.014
+    },
+    {
+        "Isotope": "nitrogen-23",
+        "Half Life": 14.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0145
+    },
+    {
+        "Isotope": "rutherfordium-258",
+        "Half Life": 14.7,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0147
+    },
+    {
+        "Isotope": "bismuth-186",
+        "Half Life": 14.8,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0148
+    },
+    {
+        "Isotope": "neon-29",
+        "Half Life": 14.8,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0148
+    },
+    {
+        "Isotope": "actinium-206m1",
+        "Half Life": 15.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.015
+    },
+    {
+        "Isotope": "carbon-20",
+        "Half Life": 16.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.016
+    },
+    {
+        "Isotope": "francium-199",
+        "Half Life": 16.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.016
+    },
+    {
+        "Isotope": "protactinium-214",
+        "Half Life": 17.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.017
+    },
+    {
+        "Isotope": "sodium-31",
+        "Half Life": 17.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.017
+    },
+    {
+        "Isotope": "thorium-210",
+        "Half Life": 17.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.017
+    },
+    {
+        "Isotope": "boron-13",
+        "Half Life": 17.33,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.017329999999999998
+    },
+    {
+        "Isotope": "radium-220",
+        "Half Life": 17.9,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0179
+    },
+    {
+        "Isotope": "neon-28",
+        "Half Life": 18.9,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0189
+    },
+    {
+        "Isotope": "livermorium-291",
+        "Half Life": 19.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.019
+    },
+    {
+        "Isotope": "radon-213",
+        "Half Life": 19.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0195
+    },
+    {
+        "Isotope": "actinium-205",
+        "Half Life": 20.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.02
+    },
+    {
+        "Isotope": "astatine-196m1",
+        "Half Life": 20.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.02
+    },
+    {
+        "Isotope": "rutherfordium-270",
+        "Half Life": 20.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.02
+    },
+    {
+        "Isotope": "francium-219",
+        "Half Life": 20.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.02
+    },
+    {
+        "Isotope": "meitnerium-275",
+        "Half Life": 20.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.02
+    },
+    {
+        "Isotope": "boron-12",
+        "Half Life": 20.2,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0202
+    },
+    {
+        "Isotope": "radon-197m",
+        "Half Life": 21.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.021
+    },
+    {
+        "Isotope": "rutherfordium-260",
+        "Half Life": 21.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.021
+    },
+    {
+        "Isotope": "astatine-193m1",
+        "Half Life": 21.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.021
+    },
+    {
+        "Isotope": "californium-238",
+        "Half Life": 21.1,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0211
+    },
+    {
+        "Isotope": "beryllium-12",
+        "Half Life": 21.49,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.02149
+    },
+    {
+        "Isotope": "francium-218m1",
+        "Half Life": 22.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.022
+    },
+    {
+        "Isotope": "tennessine-293",
+        "Half Life": 22.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.022
+    },
+    {
+        "Isotope": "polonium-191",
+        "Half Life": 22.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.022
+    },
+    {
+        "Isotope": "francium-200",
+        "Half Life": 24.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.024
+    },
+    {
+        "Isotope": "nitrogen-22",
+        "Half Life": 24.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.024
+    },
+    {
+        "Isotope": "actinium-206",
+        "Half Life": 25.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.025
+    },
+    {
+        "Isotope": "uranium-217",
+        "Half Life": 26.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.026000000000000002
+    },
+    {
+        "Isotope": "actinium-220",
+        "Half Life": 26.36,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.02636
+    },
+    {
+        "Isotope": "thorium-216",
+        "Half Life": 26.8,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0268
+    },
+    {
+        "Isotope": "meitnerium-268",
+        "Half Life": 27.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.027
+    },
+    {
+        "Isotope": "astatine-193m2",
+        "Half Life": 27.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.027
+    },
+    {
+        "Isotope": "lawrencium-251",
+        "Half Life": 27.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.027
+    },
+    {
+        "Isotope": "actinium-208m",
+        "Half Life": 28.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.028
+    },
+    {
+        "Isotope": "astatine-193",
+        "Half Life": 28.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.028
+    },
+    {
+        "Isotope": "manganese-68",
+        "Half Life": 28.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.028
+    },
+    {
+        "Isotope": "sodium-28",
+        "Half Life": 30.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0305
+    },
+    {
+        "Isotope": "actinium-207",
+        "Half Life": 31.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.031
+    },
+    {
+        "Isotope": "neon-27",
+        "Half Life": 32.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.032
+    },
+    {
+        "Isotope": "bismuth-187",
+        "Half Life": 32.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.032
+    },
+    {
+        "Isotope": "polonium-192",
+        "Half Life": 32.2,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.032200000000000006
+    },
+    {
+        "Isotope": "astatine-217",
+        "Half Life": 32.3,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.032299999999999995
+    },
+    {
+        "Isotope": "uranium-234m",
+        "Half Life": 33.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0335
+    },
+    {
+        "Isotope": "curium-244m1",
+        "Half Life": 34.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.034
+    },
+    {
+        "Isotope": "bohrium-260",
+        "Half Life": 35.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.035
+    },
+    {
+        "Isotope": "radon-218",
+        "Half Life": 35.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.035
+    },
+    {
+        "Isotope": "neptunium-226",
+        "Half Life": 35.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.035
+    },
+    {
+        "Isotope": "thorium-212",
+        "Half Life": 36.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.036000000000000004
+    },
+    {
+        "Isotope": "moscovium-287",
+        "Half Life": 37.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.037
+    },
+    {
+        "Isotope": "seaborgium-264",
+        "Half Life": 37.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.037
+    },
+    {
+        "Isotope": "dubnium-255",
+        "Half Life": 37.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.037
+    },
+    {
+        "Isotope": "actinium-206m2",
+        "Half Life": 41.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.041
+    },
+    {
+        "Isotope": "radium-203m",
+        "Half Life": 41.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.041
+    },
+    {
+        "Isotope": "bismuth-188",
+        "Half Life": 44.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.044
+    },
+    {
+        "Isotope": "sodium-29",
+        "Half Life": 44.9,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0449
+    },
+    {
+        "Isotope": "lead-181",
+        "Half Life": 45.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.045
+    },
+    {
+        "Isotope": "carbon-19",
+        "Half Life": 46.2,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.046200000000000005
+    },
+    {
+        "Isotope": "thorium-211",
+        "Half Life": 48.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.048
+    },
+    {
+        "Isotope": "sodium-30",
+        "Half Life": 48.4,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0484
+    },
+    {
+        "Isotope": "fluorine-25",
+        "Half Life": 50.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.05
+    },
+    {
+        "Isotope": "tennessine-294",
+        "Half Life": 51.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.051000000000000004
+    },
+    {
+        "Isotope": "actinium-221",
+        "Half Life": 52.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.052000000000000005
+    },
+    {
+        "Isotope": "hassium-267",
+        "Half Life": 55.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.055
+    },
+    {
+        "Isotope": "radium-207m",
+        "Half Life": 57.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.057
+    },
+    {
+        "Isotope": "livermorium-293",
+        "Half Life": 57.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.057
+    },
+    {
+        "Isotope": "polonium-205m3",
+        "Half Life": 57.4,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.0574
+    },
+    {
+        "Isotope": "radium-204",
+        "Half Life": 60.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.06
+    },
+    {
+        "Isotope": "lead-182",
+        "Half Life": 60.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.06
+    },
+    {
+        "Isotope": "uranium-225",
+        "Half Life": 61.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.061
+    },
+    {
+        "Isotope": "oxygen-24",
+        "Half Life": 65.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.065
+    },
+    {
+        "Isotope": "radon-198",
+        "Half Life": 65.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.065
+    },
+    {
+        "Isotope": "radon-197",
+        "Half Life": 66.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.066
+    },
+    {
+        "Isotope": "francium-201",
+        "Half Life": 67.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.067
+    },
+    {
+        "Isotope": "nihonium-282",
+        "Half Life": 73.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.073
+    },
+    {
+        "Isotope": "nihonium-283",
+        "Half Life": 75.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.075
+    },
+    {
+        "Isotope": "oxygen-23",
+        "Half Life": 82.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.082
+    },
+    {
+        "Isotope": "bohrium-262",
+        "Half Life": 84.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.084
+    },
+    {
+        "Isotope": "nitrogen-21",
+        "Half Life": 87.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.08700000000000001
+    },
+    {
+        "Isotope": "astatine-192m",
+        "Half Life": 88.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.088
+    },
+    {
+        "Isotope": "darmstadtium-271",
+        "Half Life": 90.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.09
+    },
+    {
+        "Isotope": "roentgenium-279",
+        "Half Life": 90.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.09
+    },
+    {
+        "Isotope": "carbon-18",
+        "Half Life": 92.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.092
+    },
+    {
+        "Isotope": "actinium-209",
+        "Half Life": 92.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.092
+    },
+    {
+        "Isotope": "polonium-191m",
+        "Half Life": 93.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.093
+    },
+    {
+        "Isotope": "actinium-208",
+        "Half Life": 97.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.097
+    },
+    {
+        "Isotope": "copernicium-284",
+        "Half Life": 98.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.098
+    },
+    {
+        "Isotope": "thorium-214",
+        "Half Life": 100.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.1
+    },
+    {
+        "Isotope": "flerovium-285",
+        "Half Life": 100.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.1
+    },
+    {
+        "Isotope": "protactinium-216",
+        "Half Life": 105.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.105
+    },
+    {
+        "Isotope": "nobelium-260",
+        "Half Life": 106.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.106
+    },
+    {
+        "Isotope": "astatine-204m",
+        "Half Life": 108.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.108
+    },
+    {
+        "Isotope": "astatine-212m1",
+        "Half Life": 119.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.11900000000000001
+    },
+    {
+        "Isotope": "helium-8",
+        "Half Life": 119.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.11900000000000001
+    },
+    {
+        "Isotope": "flerovium-286",
+        "Half Life": 120.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.12
+    },
+    {
+        "Isotope": "seaborgium-263m",
+        "Half Life": 120.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.12
+    },
+    {
+        "Isotope": "bismuth-191m",
+        "Half Life": 124.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.124
+    },
+    {
+        "Isotope": "carbon-9",
+        "Half Life": 126.5,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.1265
+    },
+    {
+        "Isotope": "nitrogen-20",
+        "Half Life": 130.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.13
+    },
+    {
+        "Isotope": "thorium-213",
+        "Half Life": 140.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.14
+    },
+    {
+        "Isotope": "polonium-216",
+        "Half Life": 145.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.145
+    },
+    {
+        "Isotope": "astatine-195m",
+        "Half Life": 147.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.147
+    },
+    {
+        "Isotope": "moscovium-288",
+        "Half Life": 164.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.164
+    },
+    {
+        "Isotope": "actinium-215",
+        "Half Life": 170.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.17
+    },
+    {
+        "Isotope": "lithium-9",
+        "Half Life": 178.3,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.17830000000000001
+    },
+    {
+        "Isotope": "copernicium-281",
+        "Half Life": 180.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.18
+    },
+    {
+        "Isotope": "radium-205m",
+        "Half Life": 180.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.18
+    },
+    {
+        "Isotope": "plutonium-237m1",
+        "Half Life": 180.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.18
+    },
+    {
+        "Isotope": "neon-26",
+        "Half Life": 192.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.192
+    },
+    {
+        "Isotope": "carbon-17",
+        "Half Life": 193.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.193
+    },
+    {
+        "Isotope": "mendelevium-247m",
+        "Half Life": 200.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.2
+    },
+    {
+        "Isotope": "seaborgium-261",
+        "Half Life": 200.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.2
+    },
+    {
+        "Isotope": "darmstadtium-279",
+        "Half Life": 210.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.21
+    },
+    {
+        "Isotope": "actinium-211",
+        "Half Life": 213.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.213
+    },
+    {
+        "Isotope": "bismuth-188m",
+        "Half Life": 220.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.22
+    },
+    {
+        "Isotope": "radium-205",
+        "Half Life": 220.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.22
+    },
+    {
+        "Isotope": "fermium-243",
+        "Half Life": 231.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.231
+    },
+    {
+        "Isotope": "polonium-193m",
+        "Half Life": 240.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.24
+    },
+    {
+        "Isotope": "radium-206",
+        "Half Life": 240.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.24
+    },
+    {
+        "Isotope": "astatine-196",
+        "Half Life": 253.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.253
+    },
+    {
+        "Isotope": "uranium-226",
+        "Half Life": 269.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.269
+    },
+    {
+        "Isotope": "nitrogen-19",
+        "Half Life": 271.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.271
+    },
+    {
+        "Isotope": "hassium-266m",
+        "Half Life": 280.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.28
+    },
+    {
+        "Isotope": "nobelium-254m",
+        "Half Life": 280.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.28
+    },
+    {
+        "Isotope": "astatine-194",
+        "Half Life": 286.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.28600000000000003
+    },
+    {
+        "Isotope": "hassium-275",
+        "Half Life": 290.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.29
+    },
+    {
+        "Isotope": "francium-202",
+        "Half Life": 290.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.29
+    },
+    {
+        "Isotope": "sodium-27",
+        "Half Life": 301.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.301
+    },
+    {
+        "Isotope": "bismuth-203m1",
+        "Half Life": 303.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.303
+    },
+    {
+        "Isotope": "astatine-212",
+        "Half Life": 314.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.314
+    },
+    {
+        "Isotope": "radon-199m",
+        "Half Life": 320.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.32
+    },
+    {
+        "Isotope": "astatine-194m",
+        "Half Life": 323.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.323
+    },
+    {
+        "Isotope": "astatine-195",
+        "Half Life": 328.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.328
+    },
+    {
+        "Isotope": "moscovium-289",
+        "Half Life": 330.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.33
+    },
+    {
+        "Isotope": "francium-202m",
+        "Half Life": 340.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.34
+    },
+    {
+        "Isotope": "actinium-210",
+        "Half Life": 350.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.35000000000000003
+    },
+    {
+        "Isotope": "seaborgium-266",
+        "Half Life": 360.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.36
+    },
+    {
+        "Isotope": "astatine-197",
+        "Half Life": 388.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.388
+    },
+    {
+        "Isotope": "fluorine-24",
+        "Half Life": 390.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.39
+    },
+    {
+        "Isotope": "lawrencium-252",
+        "Half Life": 390.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.39
+    },
+    {
+        "Isotope": "polonium-194",
+        "Half Life": 392.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.392
+    },
+    {
+        "Isotope": "bismuth-200m2",
+        "Half Life": 400.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.4
+    },
+    {
+        "Isotope": "mendelevium-245m",
+        "Half Life": 400.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.4
+    },
+    {
+        "Isotope": "mendelevium-244",
+        "Half Life": 400.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.4
+    },
+    {
+        "Isotope": "lead-183m",
+        "Half Life": 415.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.41500000000000004
+    },
+    {
+        "Isotope": "polonium-193",
+        "Half Life": 420.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.42
+    },
+    {
+        "Isotope": "meitnerium-274",
+        "Half Life": 440.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.44
+    },
+    {
+        "Isotope": "sodium-20",
+        "Half Life": 447.9,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.44789999999999996
+    },
+    {
+        "Isotope": "meitnerium-276",
+        "Half Life": 450.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.45
+    },
+    {
+        "Isotope": "astatine-202m2",
+        "Half Life": 460.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.46
+    },
+    {
+        "Isotope": "flerovium-287",
+        "Half Life": 480.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.48
+    },
+    {
+        "Isotope": "lead-203m2",
+        "Half Life": 480.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.48
+    },
+    {
+        "Isotope": "lead-184",
+        "Half Life": 490.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.49
+    },
+    {
+        "Isotope": "hassium-273",
+        "Half Life": 510.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.51
+    },
+    {
+        "Isotope": "neptunium-227",
+        "Half Life": 510.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.51
+    },
+    {
+        "Isotope": "dubnium-259",
+        "Half Life": 510.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.51
+    },
+    {
+        "Isotope": "polonium-211",
+        "Half Life": 516.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.516
+    },
+    {
+        "Isotope": "lead-183",
+        "Half Life": 535.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.535
+    },
+    {
+        "Isotope": "francium-203",
+        "Half Life": 550.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.55
+    },
+    {
+        "Isotope": "lawrencium-253",
+        "Half Life": 580.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.58
+    },
+    {
+        "Isotope": "thorium-223",
+        "Half Life": 600.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.6
+    },
+    {
+        "Isotope": "bismuth-196m1",
+        "Half Life": 600.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.6
+    },
+    {
+        "Isotope": "seaborgium-259",
+        "Half Life": 600.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.6
+    },
+    {
+        "Isotope": "neon-25",
+        "Half Life": 602.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.602
+    },
+    {
+        "Isotope": "radon-199",
+        "Half Life": 620.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.62
+    },
+    {
+        "Isotope": "nitrogen-18",
+        "Half Life": 622.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.622
+    },
+    {
+        "Isotope": "lawrencium-257",
+        "Half Life": 646.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.646
+    },
+    {
+        "Isotope": "moscovium-290",
+        "Half Life": 650.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.65
+    },
+    {
+        "Isotope": "francium-200m",
+        "Half Life": 650.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.65
+    },
+    {
+        "Isotope": "flerovium-288",
+        "Half Life": 660.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.66
+    },
+    {
+        "Isotope": "dubnium-257m",
+        "Half Life": 670.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.67
+    },
+    {
+        "Isotope": "bismuth-189",
+        "Half Life": 674.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.674
+    },
+    {
+        "Isotope": "francium-206m2",
+        "Half Life": 700.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.7000000000000001
+    },
+    {
+        "Isotope": "actinium-213",
+        "Half Life": 731.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.731
+    },
+    {
+        "Isotope": "carbon-16",
+        "Half Life": 747.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.747
+    },
+    {
+        "Isotope": "boron-8",
+        "Half Life": 770.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.77
+    },
+    {
+        "Isotope": "nobelium-251",
+        "Half Life": 780.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.78
+    },
+    {
+        "Isotope": "lead-207m",
+        "Half Life": 806.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.806
+    },
+    {
+        "Isotope": "helium-6",
+        "Half Life": 806.7,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.8067000000000001
+    },
+    {
+        "Isotope": "lithium-8",
+        "Half Life": 839.9,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.8399
+    },
+    {
+        "Isotope": "protactinium-224",
+        "Half Life": 844.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.844
+    },
+    {
+        "Isotope": "bohrium-265",
+        "Half Life": 900.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.9
+    },
+    {
+        "Isotope": "bohrium-266",
+        "Half Life": 900.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.9
+    },
+    {
+        "Isotope": "lutetium-153",
+        "Half Life": 900.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.9
+    },
+    {
+        "Isotope": "nihonium-284",
+        "Half Life": 910.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.91
+    },
+    {
+        "Isotope": "actinium-212",
+        "Half Life": 920.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.92
+    },
+    {
+        "Isotope": "radon-200",
+        "Half Life": 960.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.96
+    },
+    {
+        "Isotope": "bohrium-264",
+        "Half Life": 970.0,
+        "Unit": "10^-3 seconds",
+        "Computed Half Life": 0.97
+    },
+    {
+        "Isotope": "seaborgium-263",
+        "Half Life": 1.0,
+        "Unit": "seconds",
+        "Computed Half Life": 1.0
+    },
+    {
+        "Isotope": "astatine-198m",
+        "Half Life": 1.0,
+        "Unit": "seconds",
+        "Computed Half Life": 1.0
+    },
+    {
+        "Isotope": "mendelevium-246",
+        "Half Life": 1.0,
+        "Unit": "seconds",
+        "Computed Half Life": 1.0
+    },
+    {
+        "Isotope": "thorium-224",
+        "Half Life": 1.05,
+        "Unit": "seconds",
+        "Computed Half Life": 1.05
+    },
+    {
+        "Isotope": "sodium-26",
+        "Half Life": 1.077,
+        "Unit": "seconds",
+        "Computed Half Life": 1.077
+    },
+    {
+        "Isotope": "plutonium-228",
+        "Half Life": 1.1,
+        "Unit": "seconds",
+        "Computed Half Life": 1.1
+    },
+    {
+        "Isotope": "mendelevium-247",
+        "Half Life": 1.12,
+        "Unit": "seconds",
+        "Computed Half Life": 1.12
+    },
+    {
+        "Isotope": "curium-246m",
+        "Half Life": 1.12,
+        "Unit": "seconds",
+        "Computed Half Life": 1.12
+    },
+    {
+        "Isotope": "bohrium-271",
+        "Half Life": 1.2,
+        "Unit": "seconds",
+        "Computed Half Life": 1.2
+    },
+    {
+        "Isotope": "thorium-215",
+        "Half Life": 1.2,
+        "Unit": "seconds",
+        "Computed Half Life": 1.2
+    },
+    {
+        "Isotope": "radium-208",
+        "Half Life": 1.3,
+        "Unit": "seconds",
+        "Computed Half Life": 1.3
+    },
+    {
+        "Isotope": "radium-207",
+        "Half Life": 1.3,
+        "Unit": "seconds",
+        "Computed Half Life": 1.3
+    },
+    {
+        "Isotope": "rutherfordium-268",
+        "Half Life": 1.4,
+        "Unit": "seconds",
+        "Computed Half Life": 1.4
+    },
+    {
+        "Isotope": "hassium-268",
+        "Half Life": 1.42,
+        "Unit": "seconds",
+        "Computed Half Life": 1.42
+    },
+    {
+        "Isotope": "polonium-217",
+        "Half Life": 1.47,
+        "Unit": "seconds",
+        "Computed Half Life": 1.47
+    },
+    {
+        "Isotope": "astatine-218",
+        "Half Life": 1.5,
+        "Unit": "seconds",
+        "Computed Half Life": 1.5
+    },
+    {
+        "Isotope": "lawrencium-253m",
+        "Half Life": 1.5,
+        "Unit": "seconds",
+        "Computed Half Life": 1.5
+    },
+    {
+        "Isotope": "fermium-259",
+        "Half Life": 1.5,
+        "Unit": "seconds",
+        "Computed Half Life": 1.5
+    },
+    {
+        "Isotope": "dubnium-260",
+        "Half Life": 1.52,
+        "Unit": "seconds",
+        "Computed Half Life": 1.52
+    },
+    {
+        "Isotope": "dubnium-257",
+        "Half Life": 1.53,
+        "Unit": "seconds",
+        "Computed Half Life": 1.53
+    },
+    {
+        "Isotope": "fermium-246",
+        "Half Life": 1.54,
+        "Unit": "seconds",
+        "Computed Half Life": 1.54
+    },
+    {
+        "Isotope": "neon-18",
+        "Half Life": 1.672,
+        "Unit": "seconds",
+        "Computed Half Life": 1.672
+    },
+    {
+        "Isotope": "francium-204",
+        "Half Life": 1.7,
+        "Unit": "seconds",
+        "Computed Half Life": 1.7
+    },
+    {
+        "Isotope": "francium-204m2",
+        "Half Life": 1.7,
+        "Unit": "seconds",
+        "Computed Half Life": 1.7
+    },
+    {
+        "Isotope": "nobelium-251m",
+        "Half Life": 1.7,
+        "Unit": "seconds",
+        "Computed Half Life": 1.7
+    },
+    {
+        "Isotope": "protactinium-225",
+        "Half Life": 1.7,
+        "Unit": "seconds",
+        "Computed Half Life": 1.7
+    },
+    {
+        "Isotope": "americium-229",
+        "Half Life": 1.8,
+        "Unit": "seconds",
+        "Computed Half Life": 1.8
+    },
+    {
+        "Isotope": "flerovium-289",
+        "Half Life": 1.9,
+        "Unit": "seconds",
+        "Computed Half Life": 1.9
+    },
+    {
+        "Isotope": "dubnium-256",
+        "Half Life": 1.9,
+        "Unit": "seconds",
+        "Computed Half Life": 1.9
+    },
+    {
+        "Isotope": "mendelevium-249m",
+        "Half Life": 1.9,
+        "Unit": "seconds",
+        "Computed Half Life": 1.9
+    },
+    {
+        "Isotope": "dubnium-258m",
+        "Half Life": 1.9,
+        "Unit": "seconds",
+        "Computed Half Life": 1.9
+    },
+    {
+        "Isotope": "polonium-195m",
+        "Half Life": 1.92,
+        "Unit": "seconds",
+        "Computed Half Life": 1.92
+    },
+    {
+        "Isotope": "fermium-250m",
+        "Half Life": 1.92,
+        "Unit": "seconds",
+        "Computed Half Life": 1.92
+    },
+    {
+        "Isotope": "astatine-197m",
+        "Half Life": 2.0,
+        "Unit": "seconds",
+        "Computed Half Life": 2.0
+    },
+    {
+        "Isotope": "californium-237",
+        "Half Life": 2.1,
+        "Unit": "seconds",
+        "Computed Half Life": 2.1
+    },
+    {
+        "Isotope": "fluorine-23",
+        "Half Life": 2.23,
+        "Unit": "seconds",
+        "Computed Half Life": 2.23
+    },
+    {
+        "Isotope": "oxygen-22",
+        "Half Life": 2.25,
+        "Unit": "seconds",
+        "Computed Half Life": 2.25
+    },
+    {
+        "Isotope": "nobelium-252",
+        "Half Life": 2.27,
+        "Unit": "seconds",
+        "Computed Half Life": 2.27
+    },
+    {
+        "Isotope": "rutherfordium-255",
+        "Half Life": 2.3,
+        "Unit": "seconds",
+        "Computed Half Life": 2.3
+    },
+    {
+        "Isotope": "rutherfordium-262",
+        "Half Life": 2.3,
+        "Unit": "seconds",
+        "Computed Half Life": 2.3
+    },
+    {
+        "Isotope": "carbon-15",
+        "Half Life": 2.449,
+        "Unit": "seconds",
+        "Computed Half Life": 2.449
+    },
+    {
+        "Isotope": "radium-214",
+        "Half Life": 2.46,
+        "Unit": "seconds",
+        "Computed Half Life": 2.46
+    },
+    {
+        "Isotope": "rutherfordium-259m",
+        "Half Life": 2.5,
+        "Unit": "seconds",
+        "Computed Half Life": 2.5
+    },
+    {
+        "Isotope": "francium-204m1",
+        "Half Life": 2.6,
+        "Unit": "seconds",
+        "Computed Half Life": 2.6
+    },
+    {
+        "Isotope": "radium-213",
+        "Half Life": 2.74,
+        "Unit": "seconds",
+        "Computed Half Life": 2.74
+    },
+    {
+        "Isotope": "polonium-207m3",
+        "Half Life": 2.79,
+        "Unit": "seconds",
+        "Computed Half Life": 2.79
+    },
+    {
+        "Isotope": "nobelium-256",
+        "Half Life": 2.91,
+        "Unit": "seconds",
+        "Computed Half Life": 2.91
+    },
+    {
+        "Isotope": "bismuth-193m",
+        "Half Life": 3.2,
+        "Unit": "seconds",
+        "Computed Half Life": 3.2
+    },
+    {
+        "Isotope": "rutherfordium-259",
+        "Half Life": 3.2,
+        "Unit": "seconds",
+        "Computed Half Life": 3.2
+    },
+    {
+        "Isotope": "oxygen-21",
+        "Half Life": 3.42,
+        "Unit": "seconds",
+        "Computed Half Life": 3.42
+    },
+    {
+        "Isotope": "astatine-200m2",
+        "Half Life": 3.5,
+        "Unit": "seconds",
+        "Computed Half Life": 3.5
+    },
+    {
+        "Isotope": "radium-210",
+        "Half Life": 3.7,
+        "Unit": "seconds",
+        "Computed Half Life": 3.7
+    },
+    {
+        "Isotope": "francium-205",
+        "Half Life": 3.8,
+        "Unit": "seconds",
+        "Computed Half Life": 3.8
+    },
+    {
+        "Isotope": "radon-201m",
+        "Half Life": 3.8,
+        "Unit": "seconds",
+        "Computed Half Life": 3.8
+    },
+    {
+        "Isotope": "radon-219",
+        "Half Life": 3.96,
+        "Unit": "seconds",
+        "Computed Half Life": 3.96
+    },
+    {
+        "Isotope": "rutherfordium-261m",
+        "Half Life": 4.0,
+        "Unit": "seconds",
+        "Computed Half Life": 4.0
+    },
+    {
+        "Isotope": "lead-185m",
+        "Half Life": 4.07,
+        "Unit": "seconds",
+        "Computed Half Life": 4.07
+    },
+    {
+        "Isotope": "rutherfordium-257m",
+        "Half Life": 4.1,
+        "Unit": "seconds",
+        "Computed Half Life": 4.1
+    },
+    {
+        "Isotope": "lawrencium-258",
+        "Half Life": 4.1,
+        "Unit": "seconds",
+        "Computed Half Life": 4.1
+    },
+    {
+        "Isotope": "fluorine-21",
+        "Half Life": 4.158,
+        "Unit": "seconds",
+        "Computed Half Life": 4.158
+    },
+    {
+        "Isotope": "nitrogen-17",
+        "Half Life": 4.173,
+        "Unit": "seconds",
+        "Computed Half Life": 4.173
+    },
+    {
+        "Isotope": "copernicium-283",
+        "Half Life": 4.2,
+        "Unit": "seconds",
+        "Computed Half Life": 4.2
+    },
+    {
+        "Isotope": "astatine-198",
+        "Half Life": 4.2,
+        "Unit": "seconds",
+        "Computed Half Life": 4.2
+    },
+    {
+        "Isotope": "nihonium-285",
+        "Half Life": 4.2,
+        "Unit": "seconds",
+        "Computed Half Life": 4.2
+    },
+    {
+        "Isotope": "fermium-245",
+        "Half Life": 4.2,
+        "Unit": "seconds",
+        "Computed Half Life": 4.2
+    },
+    {
+        "Isotope": "fluorine-22",
+        "Half Life": 4.23,
+        "Unit": "seconds",
+        "Computed Half Life": 4.23
+    },
+    {
+        "Isotope": "meitnerium-278",
+        "Half Life": 4.5,
+        "Unit": "seconds",
+        "Computed Half Life": 4.5
+    },
+    {
+        "Isotope": "dubnium-258",
+        "Half Life": 4.5,
+        "Unit": "seconds",
+        "Computed Half Life": 4.5
+    },
+    {
+        "Isotope": "dubnium-261",
+        "Half Life": 4.5,
+        "Unit": "seconds",
+        "Computed Half Life": 4.5
+    },
+    {
+        "Isotope": "roentgenium-280",
+        "Half Life": 4.6,
+        "Unit": "seconds",
+        "Computed Half Life": 4.6
+    },
+    {
+        "Isotope": "radium-209",
+        "Half Life": 4.6,
+        "Unit": "seconds",
+        "Computed Half Life": 4.6
+    },
+    {
+        "Isotope": "polonium-195",
+        "Half Life": 4.64,
+        "Unit": "seconds",
+        "Computed Half Life": 4.64
+    },
+    {
+        "Isotope": "rutherfordium-257",
+        "Half Life": 4.7,
+        "Unit": "seconds",
+        "Computed Half Life": 4.7
+    },
+    {
+        "Isotope": "lead-186",
+        "Half Life": 4.82,
+        "Unit": "seconds",
+        "Computed Half Life": 4.82
+    },
+    {
+        "Isotope": "actinium-222",
+        "Half Life": 5.0,
+        "Unit": "seconds",
+        "Computed Half Life": 5.0
+    },
+    {
+        "Isotope": "francium-232",
+        "Half Life": 5.0,
+        "Unit": "seconds",
+        "Computed Half Life": 5.0
+    },
+    {
+        "Isotope": "polonium-196",
+        "Half Life": 5.56,
+        "Unit": "seconds",
+        "Computed Half Life": 5.56
+    },
+    {
+        "Isotope": "einsteinium-240",
+        "Half Life": 6.0,
+        "Unit": "seconds",
+        "Computed Half Life": 6.0
+    },
+    {
+        "Isotope": "lawrencium-259",
+        "Half Life": 6.2,
+        "Unit": "seconds",
+        "Computed Half Life": 6.2
+    },
+    {
+        "Isotope": "bismuth-190m1",
+        "Half Life": 6.2,
+        "Unit": "seconds",
+        "Computed Half Life": 6.2
+    },
+    {
+        "Isotope": "lead-203m1",
+        "Half Life": 6.21,
+        "Unit": "seconds",
+        "Computed Half Life": 6.21
+    },
+    {
+        "Isotope": "bismuth-190",
+        "Half Life": 6.3,
+        "Unit": "seconds",
+        "Computed Half Life": 6.3
+    },
+    {
+        "Isotope": "lead-185",
+        "Half Life": 6.3,
+        "Unit": "seconds",
+        "Computed Half Life": 6.3
+    },
+    {
+        "Isotope": "astatine-199",
+        "Half Life": 6.92,
+        "Unit": "seconds",
+        "Computed Half Life": 6.92
+    },
+    {
+        "Isotope": "radon-201",
+        "Half Life": 7.0,
+        "Unit": "seconds",
+        "Computed Half Life": 7.0
+    },
+    {
+        "Isotope": "mendelevium-248",
+        "Half Life": 7.0,
+        "Unit": "seconds",
+        "Computed Half Life": 7.0
+    },
+    {
+        "Isotope": "nitrogen-16",
+        "Half Life": 7.13,
+        "Unit": "seconds",
+        "Computed Half Life": 7.13
+    },
+    {
+        "Isotope": "bismuth-198m2",
+        "Half Life": 7.7,
+        "Unit": "seconds",
+        "Computed Half Life": 7.7
+    },
+    {
+        "Isotope": "seaborgium-265",
+        "Half Life": 8.0,
+        "Unit": "seconds",
+        "Computed Half Life": 8.0
+    },
+    {
+        "Isotope": "actinium-214",
+        "Half Life": 8.2,
+        "Unit": "seconds",
+        "Computed Half Life": 8.2
+    },
+    {
+        "Isotope": "bismuth-219",
+        "Half Life": 8.7,
+        "Unit": "seconds",
+        "Computed Half Life": 8.7
+    },
+    {
+        "Isotope": "hassium-270",
+        "Half Life": 9.0,
+        "Unit": "seconds",
+        "Computed Half Life": 9.0
+    },
+    {
+        "Isotope": "bismuth-220",
+        "Half Life": 9.5,
+        "Unit": "seconds",
+        "Computed Half Life": 9.5
+    },
+    {
+        "Isotope": "nihonium-286",
+        "Half Life": 9.5,
+        "Unit": "seconds",
+        "Computed Half Life": 9.5
+    },
+    {
+        "Isotope": "radon-202",
+        "Half Life": 9.94,
+        "Unit": "seconds",
+        "Computed Half Life": 9.94
+    },
+    {
+        "Isotope": "bohrium-272",
+        "Half Life": 10.0,
+        "Unit": "seconds",
+        "Computed Half Life": 10.0
+    },
+    {
+        "Isotope": "hassium-271",
+        "Half Life": 10.0,
+        "Unit": "seconds",
+        "Computed Half Life": 10.0
+    },
+    {
+        "Isotope": "einsteinium-241",
+        "Half Life": 10.0,
+        "Unit": "seconds",
+        "Computed Half Life": 10.0
+    },
+    {
+        "Isotope": "fluorine-20",
+        "Half Life": 11.07,
+        "Unit": "seconds",
+        "Computed Half Life": 11.07
+    },
+    {
+        "Isotope": "radon-229",
+        "Half Life": 12.0,
+        "Unit": "seconds",
+        "Computed Half Life": 12.0
+    },
+    {
+        "Isotope": "bismuth-191",
+        "Half Life": 12.3,
+        "Unit": "seconds",
+        "Computed Half Life": 12.3
+    },
+    {
+        "Isotope": "darmstadtium-281",
+        "Half Life": 12.7,
+        "Unit": "seconds",
+        "Computed Half Life": 12.7
+    },
+    {
+        "Isotope": "radium-212",
+        "Half Life": 13.0,
+        "Unit": "seconds",
+        "Computed Half Life": 13.0
+    },
+    {
+        "Isotope": "radium-211",
+        "Half Life": 13.0,
+        "Unit": "seconds",
+        "Computed Half Life": 13.0
+    },
+    {
+        "Isotope": "lawrencium-254",
+        "Half Life": 13.0,
+        "Unit": "seconds",
+        "Computed Half Life": 13.0
+    },
+    {
+        "Isotope": "einsteinium-242",
+        "Half Life": 13.5,
+        "Unit": "seconds",
+        "Computed Half Life": 13.5
+    },
+    {
+        "Isotope": "oxygen-20",
+        "Half Life": 13.51,
+        "Unit": "seconds",
+        "Computed Half Life": 13.51
+    },
+    {
+        "Isotope": "beryllium-11",
+        "Half Life": 13.81,
+        "Unit": "seconds",
+        "Computed Half Life": 13.81
+    },
+    {
+        "Isotope": "francium-207",
+        "Half Life": 14.8,
+        "Unit": "seconds",
+        "Computed Half Life": 14.8
+    },
+    {
+        "Isotope": "lead-218",
+        "Half Life": 15.0,
+        "Unit": "seconds",
+        "Computed Half Life": 15.0
+    },
+    {
+        "Isotope": "lead-187",
+        "Half Life": 15.2,
+        "Unit": "seconds",
+        "Computed Half Life": 15.2
+    },
+    {
+        "Isotope": "francium-206m1",
+        "Half Life": 15.9,
+        "Unit": "seconds",
+        "Computed Half Life": 15.9
+    },
+    {
+        "Isotope": "francium-206",
+        "Half Life": 16.0,
+        "Unit": "seconds",
+        "Computed Half Life": 16.0
+    },
+    {
+        "Isotope": "hassium-269",
+        "Half Life": 16.0,
+        "Unit": "seconds",
+        "Computed Half Life": 16.0
+    },
+    {
+        "Isotope": "seaborgium-265m",
+        "Half Life": 16.2,
+        "Unit": "seconds",
+        "Computed Half Life": 16.2
+    },
+    {
+        "Isotope": "bohrium-267",
+        "Half Life": 17.0,
+        "Unit": "seconds",
+        "Computed Half Life": 17.0
+    },
+    {
+        "Isotope": "roentgenium-281",
+        "Half Life": 17.0,
+        "Unit": "seconds",
+        "Computed Half Life": 17.0
+    },
+    {
+        "Isotope": "neon-19",
+        "Half Life": 17.22,
+        "Unit": "seconds",
+        "Computed Half Life": 17.22
+    },
+    {
+        "Isotope": "francium-231",
+        "Half Life": 17.6,
+        "Unit": "seconds",
+        "Computed Half Life": 17.6
+    },
+    {
+        "Isotope": "lead-187m",
+        "Half Life": 18.3,
+        "Unit": "seconds",
+        "Computed Half Life": 18.3
+    },
+    {
+        "Isotope": "berkelium-234",
+        "Half Life": 19.0,
+        "Unit": "seconds",
+        "Computed Half Life": 19.0
+    },
+    {
+        "Isotope": "francium-230",
+        "Half Life": 19.1,
+        "Unit": "seconds",
+        "Computed Half Life": 19.1
+    },
+    {
+        "Isotope": "carbon-10",
+        "Half Life": 19.29,
+        "Unit": "seconds",
+        "Computed Half Life": 19.29
+    },
+    {
+        "Isotope": "lead-217",
+        "Half Life": 20.0,
+        "Unit": "seconds",
+        "Computed Half Life": 20.0
+    },
+    {
+        "Isotope": "radon-227",
+        "Half Life": 20.8,
+        "Unit": "seconds",
+        "Computed Half Life": 20.8
+    },
+    {
+        "Isotope": "einsteinium-243",
+        "Half Life": 21.0,
+        "Unit": "seconds",
+        "Computed Half Life": 21.0
+    },
+    {
+        "Isotope": "berkelium-233",
+        "Half Life": 21.0,
+        "Unit": "seconds",
+        "Computed Half Life": 21.0
+    },
+    {
+        "Isotope": "berkelium-236",
+        "Half Life": 22.0,
+        "Unit": "seconds",
+        "Computed Half Life": 22.0
+    },
+    {
+        "Isotope": "lawrencium-255",
+        "Half Life": 22.0,
+        "Unit": "seconds",
+        "Computed Half Life": 22.0
+    },
+    {
+        "Isotope": "sodium-21",
+        "Half Life": 22.49,
+        "Unit": "seconds",
+        "Computed Half Life": 22.49
+    },
+    {
+        "Isotope": "rutherfordium-266",
+        "Half Life": 23.0,
+        "Unit": "seconds",
+        "Computed Half Life": 23.0
+    },
+    {
+        "Isotope": "mendelevium-249",
+        "Half Life": 24.0,
+        "Unit": "seconds",
+        "Computed Half Life": 24.0
+    },
+    {
+        "Isotope": "nobelium-257",
+        "Half Life": 25.0,
+        "Unit": "seconds",
+        "Computed Half Life": 25.0
+    },
+    {
+        "Isotope": "polonium-211m1",
+        "Half Life": 25.2,
+        "Unit": "seconds",
+        "Computed Half Life": 25.2
+    },
+    {
+        "Isotope": "lead-188",
+        "Half Life": 25.5,
+        "Unit": "seconds",
+        "Computed Half Life": 25.5
+    },
+    {
+        "Isotope": "polonium-197m",
+        "Half Life": 25.8,
+        "Unit": "seconds",
+        "Computed Half Life": 25.8
+    },
+    {
+        "Isotope": "oxygen-19",
+        "Half Life": 26.464,
+        "Unit": "seconds",
+        "Computed Half Life": 26.464
+    },
+    {
+        "Isotope": "radon-203m",
+        "Half Life": 26.7,
+        "Unit": "seconds",
+        "Computed Half Life": 26.7
+    },
+    {
+        "Isotope": "curium-233",
+        "Half Life": 27.0,
+        "Unit": "seconds",
+        "Computed Half Life": 27.0
+    },
+    {
+        "Isotope": "lawrencium-256",
+        "Half Life": 27.0,
+        "Unit": "seconds",
+        "Computed Half Life": 27.0
+    },
+    {
+        "Isotope": "francium-220",
+        "Half Life": 27.4,
+        "Unit": "seconds",
+        "Computed Half Life": 27.4
+    },
+    {
+        "Isotope": "copernicium-285",
+        "Half Life": 28.0,
+        "Unit": "seconds",
+        "Computed Half Life": 28.0
+    },
+    {
+        "Isotope": "radium-221",
+        "Half Life": 28.0,
+        "Unit": "seconds",
+        "Computed Half Life": 28.0
+    },
+    {
+        "Isotope": "dubnium-263",
+        "Half Life": 29.0,
+        "Unit": "seconds",
+        "Computed Half Life": 29.0
+    },
+    {
+        "Isotope": "radium-234",
+        "Half Life": 30.0,
+        "Unit": "seconds",
+        "Computed Half Life": 30.0
+    },
+    {
+        "Isotope": "radium-233",
+        "Half Life": 30.0,
+        "Unit": "seconds",
+        "Computed Half Life": 30.0
+    },
+    {
+        "Isotope": "radium-221",
+        "Half Life": 30.0,
+        "Unit": "seconds",
+        "Computed Half Life": 30.0
+    },
+    {
+        "Isotope": "fermium-247",
+        "Half Life": 31.0,
+        "Unit": "seconds",
+        "Computed Half Life": 31.0
+    },
+    {
+        "Isotope": "americium-230",
+        "Half Life": 32.0,
+        "Unit": "seconds",
+        "Computed Half Life": 32.0
+    },
+    {
+        "Isotope": "bismuth-218",
+        "Half Life": 33.0,
+        "Unit": "seconds",
+        "Computed Half Life": 33.0
+    },
+    {
+        "Isotope": "bismuth-192",
+        "Half Life": 34.6,
+        "Unit": "seconds",
+        "Computed Half Life": 34.6
+    },
+    {
+        "Isotope": "francium-213",
+        "Half Life": 34.6,
+        "Unit": "seconds",
+        "Computed Half Life": 34.6
+    },
+    {
+        "Isotope": "dubnium-262",
+        "Half Life": 35.0,
+        "Unit": "seconds",
+        "Computed Half Life": 35.0
+    },
+    {
+        "Isotope": "fermium-248",
+        "Half Life": 35.1,
+        "Unit": "seconds",
+        "Computed Half Life": 35.1
+    },
+    {
+        "Isotope": "bismuth-215m",
+        "Half Life": 36.9,
+        "Unit": "seconds",
+        "Computed Half Life": 36.9
+    },
+    {
+        "Isotope": "einsteinium-244",
+        "Half Life": 37.0,
+        "Unit": "seconds",
+        "Computed Half Life": 37.0
+    },
+    {
+        "Isotope": "neon-23",
+        "Half Life": 37.24,
+        "Unit": "seconds",
+        "Computed Half Life": 37.24
+    },
+    {
+        "Isotope": "radium-222",
+        "Half Life": 38.0,
+        "Unit": "seconds",
+        "Computed Half Life": 38.0
+    },
+    {
+        "Isotope": "francium-228",
+        "Half Life": 38.0,
+        "Unit": "seconds",
+        "Computed Half Life": 38.0
+    },
+    {
+        "Isotope": "bismuth-192m",
+        "Half Life": 39.6,
+        "Unit": "seconds",
+        "Computed Half Life": 39.6
+    },
+    {
+        "Isotope": "polonium-220",
+        "Half Life": 40.0,
+        "Unit": "seconds",
+        "Computed Half Life": 40.0
+    },
+    {
+        "Isotope": "bohrium-274",
+        "Half Life": 40.0,
+        "Unit": "seconds",
+        "Computed Half Life": 40.0
+    },
+    {
+        "Isotope": "astatine-200",
+        "Half Life": 43.2,
+        "Unit": "seconds",
+        "Computed Half Life": 43.2
+    },
+    {
+        "Isotope": "actinium-234",
+        "Half Life": 44.0,
+        "Unit": "seconds",
+        "Computed Half Life": 44.0
+    },
+    {
+        "Isotope": "radon-203",
+        "Half Life": 44.2,
+        "Unit": "seconds",
+        "Computed Half Life": 44.2
+    },
+    {
+        "Isotope": "polonium-203m1",
+        "Half Life": 45.0,
+        "Unit": "seconds",
+        "Computed Half Life": 45.0
+    },
+    {
+        "Isotope": "polonium-212m",
+        "Half Life": 45.1,
+        "Unit": "seconds",
+        "Computed Half Life": 45.1
+    },
+    {
+        "Isotope": "astatine-200m1",
+        "Half Life": 47.0,
+        "Unit": "seconds",
+        "Computed Half Life": 47.0
+    },
+    {
+        "Isotope": "francium-226",
+        "Half Life": 49.0,
+        "Unit": "seconds",
+        "Computed Half Life": 49.0
+    },
+    {
+        "Isotope": "francium-209",
+        "Half Life": 50.0,
+        "Unit": "seconds",
+        "Computed Half Life": 50.0
+    },
+    {
+        "Isotope": "astatine-223",
+        "Half Life": 50.0,
+        "Unit": "seconds",
+        "Computed Half Life": 50.0
+    },
+    {
+        "Isotope": "francium-229",
+        "Half Life": 50.2,
+        "Unit": "seconds",
+        "Computed Half Life": 50.2
+    },
+    {
+        "Isotope": "lead-189m1",
+        "Half Life": 50.5,
+        "Unit": "seconds",
+        "Computed Half Life": 50.5
+    },
+    {
+        "Isotope": "nobelium-254",
+        "Half Life": 51.0,
+        "Unit": "seconds",
+        "Computed Half Life": 51.0
+    },
+    {
+        "Isotope": "lead-189",
+        "Half Life": 51.0,
+        "Unit": "seconds",
+        "Computed Half Life": 51.0
+    },
+    {
+        "Isotope": "curium-234",
+        "Half Life": 52.0,
+        "Unit": "seconds",
+        "Computed Half Life": 52.0
+    },
+    {
+        "Isotope": "mendelevium-250",
+        "Half Life": 52.0,
+        "Unit": "seconds",
+        "Computed Half Life": 52.0
+    },
+    {
+        "Isotope": "polonium-197",
+        "Half Life": 53.6,
+        "Unit": "seconds",
+        "Computed Half Life": 53.6
+    },
+    {
+        "Isotope": "astatine-222",
+        "Half Life": 54.0,
+        "Unit": "seconds",
+        "Computed Half Life": 54.0
+    },
+    {
+        "Isotope": "radon-220",
+        "Half Life": 55.6,
+        "Unit": "seconds",
+        "Computed Half Life": 55.6
+    },
+    {
+        "Isotope": "astatine-219",
+        "Half Life": 56.0,
+        "Unit": "seconds",
+        "Computed Half Life": 56.0
+    },
+    {
+        "Isotope": "francium-208",
+        "Half Life": 59.1,
+        "Unit": "seconds",
+        "Computed Half Life": 59.1
+    },
+    {
+        "Isotope": "sodium-25",
+        "Half Life": 59.1,
+        "Unit": "seconds",
+        "Computed Half Life": 59.1
+    }
+]
