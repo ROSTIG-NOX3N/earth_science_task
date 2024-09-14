@@ -5,23 +5,44 @@ import json
 from languages import get_labels
 
 # 방사성 동위원소 데이터 읽기
+def parse_isotope_data(data):
+    isotope_data = []
+    if isinstance(data, list) and data[0] == "Dataset":
+        for entry in data[1]:
+            if entry[0] == "Association":
+                isotope_name = None
+                half_life = None
+                
+                # 각 Association 내부의 Rule을 확인하여 Isotope와 Half Life 추출
+                for rule in entry[1:]:
+                    if rule[0] == "Rule":
+                        key = rule[1].strip("'")  # 키에서 따옴표 제거
+                        value = rule[2].strip("'") if isinstance(rule[2], str) else rule[2]  # 값에서 따옴표 제거
+                        
+                        if key == "Isotope":
+                            isotope_name = value
+                        elif key == "Half Life":
+                            half_life = float(value)
+
+                # Isotope와 Half Life가 모두 존재할 경우 리스트에 추가
+                if isotope_name and half_life:
+                    isotope_data.append((isotope_name, half_life))
+                else:
+                    st.warning(f"Missing 'Isotope' or 'Half Life' in entry: {entry}")
+    return isotope_data
+
+# 방사성 동위원소 데이터 불러오기
 def load_isotope_data(file_path):
     with open(file_path, 'r') as file:
         data = json.load(file)
     
-    # 데이터에서 방사성 동위원소와 반감기 추출
-    isotope_data = []
-    for entry in data:  # 데이터의 각 항목을 순회합니다.
-        isotope_name = entry.get('Isotope')
-        half_life = entry.get('Half Life')
-        
-        if isotope_name and half_life:
-            isotope_data.append((isotope_name, float(half_life)))
-    
-    return isotope_data
+    return parse_isotope_data(data)
 
 # 방사성 동위원소 데이터 불러오기
-isotope_data = load_isotope_data('Formatted-Radioactive-Isotope-Half-Lives.json')
+try:
+    isotope_data = load_isotope_data('Formatted-Radioactive-Isotope-Half-Lives.json')
+except Exception as e:
+    st.error(f"Failed to load isotope data: {e}")
 
 # 언어 선택
 language = st.selectbox('Select language:', ['English', '한국어'])
@@ -35,7 +56,7 @@ half_lives = [item[1] for item in isotope_data]
 isotope_names = [item[0] for item in isotope_data]
 
 # 가장 입력된 나이에 가까운 반감기 찾기
-diffs = [abs(half_life - input_age) for half_life in half_lives]
+diffs = [abs(half_life - input_age) for half_lives in isotope_data]
 nearest_idx = np.argmin(diffs)
 nearest_isotope = isotope_names[nearest_idx]
 
