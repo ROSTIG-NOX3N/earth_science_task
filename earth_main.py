@@ -42,8 +42,8 @@ isotope_data = load_isotope_data('Formatted-Radioactive-Isotope-Half-Lives.json'
 if not isotope_data:
     st.stop()
 
-# 언어 선택 (한국어와 영어를 지원)
-language = st.selectbox('언어를 선택해주세요 / Select language:', ['English', '한국어'])
+# 언어 선택 (한국어, 영어, 일본어 지원)
+language = st.selectbox('언어를 선택해주세요 / Select language:', ['English', '한국어', '日本語'])
 labels = get_labels(language)  # 선택된 언어에 맞는 라벨 가져오기
 
 # 입력 연대 (1~9999 범위 강제)
@@ -114,5 +114,4 @@ if st.button(labels['plot_same_name']):
 
 # 결과 표시 (UI는 언어에 따라 변경됨)
 st.write(f"{labels['selected_isotope']} **{selected_isotope}**")
-st.write(f"**{labels['selected_half_life']}: {selected_half_life} {labels['half_life_years']}**")
-st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life} {labels['half_life_years']})")
+st.write(f"**{labels['selected_half_life']
