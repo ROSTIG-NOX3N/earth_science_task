@@ -14,13 +14,13 @@ def get_labels(language):
             'selected_half_life': 'Half-life of selected isotope',
             'nearest_isotope': 'Closest Isotope to Input Age',
             'half_life_years': 'years (Half-life)',
-            'input_age_help': 'Please enter an age between 1 and 999 years.'  # 도움말 추가
+            'nearest_to_one': 'Isotope with Half-life closest to 1'  # 이 라벨 추가
         }
     elif language == '한국어':
         return {
             'input_age': '지질의 연대를 입력해주세요:',
             'select_isotope_name': '동위원소 이름을 선택해주세요:',
-            'select_isotope_number': '동위원소 넘버를 선택해주세요:',
+            'select_isotope_number': '동위원소 번호를 선택해주세요:',
             'scatter_plot_title': '동위원소 반감기 산포도',
             'half_life': '년 (반감기)',
             'isotope_index': '동위원소 인덱스',
@@ -31,7 +31,7 @@ def get_labels(language):
             'selected_half_life': '선택된 동위원소의 반감기',
             'nearest_isotope': '입력된 연대와 가장 가까운 동위원소',
             'half_life_years': '년 (반감기)',
-            'input_age_help': '1에서 999 사이의 연대를 입력해주세요.'  # 도움말 추가
+            'nearest_to_one': '반감기가 1에 가장 가까운 동위원소'  # 이 라벨 추가
         }
     elif language == '日本語':
         return {
@@ -48,5 +48,5 @@ def get_labels(language):
             'selected_half_life': '選択された同位体の半減期',
             'nearest_isotope': '入力された時代に最も近い同位体',
             'half_life_years': '年 (半減期)',
-            'input_age_help': '1から999までの年代を入力してください。'  # 도움말 추가
+            'nearest_to_one': '半減期が1に最も近い同位体'  # 이 라벨 추가
         }
