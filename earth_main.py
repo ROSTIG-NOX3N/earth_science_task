@@ -11,19 +11,12 @@ def load_isotope_data(file_path):
     
     # 데이터에서 방사성 동위원소와 반감기 추출
     isotope_data = []
-    for entry in data[1]:  # data[1]에 리스트 형태로 동위원소 정보가 있습니다.
-        for association in entry[1]:  # Association 항목을 탐색합니다.
-            isotope_name = None
-            half_life = None
-            
-            for rule in association[1]:  # Rule 항목을 탐색합니다.
-                if rule[1] == "'Isotope'":
-                    isotope_name = rule[2].strip("'")
-                elif rule[1] == "'Half Life'":
-                    half_life = rule[2]
-            
-            if isotope_name and half_life:
-                isotope_data.append((isotope_name, half_life))
+    for entry in data:  # 데이터의 각 항목을 순회합니다.
+        isotope_name = entry.get('Isotope')
+        half_life = entry.get('Half Life')
+        
+        if isotope_name and half_life:
+            isotope_data.append((isotope_name, float(half_life)))
     
     return isotope_data
 
