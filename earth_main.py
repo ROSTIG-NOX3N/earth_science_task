@@ -114,4 +114,5 @@ if st.button(labels['plot_same_name']):
 
 # 결과 표시 (UI는 언어에 따라 변경됨)
 st.write(f"{labels['selected_isotope']} **{selected_isotope}**")
-st.write(f"**{labels['selected_half_life']
+st.write(f"**{labels['selected_half_life']}: {selected_half_life} {labels['half_life_years']}**")
+st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life} {labels['half_life_years']})")
