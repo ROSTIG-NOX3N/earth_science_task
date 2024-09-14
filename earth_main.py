@@ -4,7 +4,7 @@ import numpy as np
 import json
 from languages import get_labels
 
-# 방사성 동위원소 데이터 읽기
+# 방사성 동위원소 데이터 읽기 및 파싱
 def parse_isotope_data(data):
     isotope_data = []
     if isinstance(data, list) and data[0] == "Dataset":
@@ -33,16 +33,19 @@ def parse_isotope_data(data):
 
 # 방사성 동위원소 데이터 불러오기
 def load_isotope_data(file_path):
-    with open(file_path, 'r') as file:
-        data = json.load(file)
-    
-    return parse_isotope_data(data)
+    try:
+        with open(file_path, 'r') as file:
+            data = json.load(file)
+        return parse_isotope_data(data)
+    except Exception as e:
+        st.error(f"Failed to load isotope data: {e}")
+        return []
 
 # 방사성 동위원소 데이터 불러오기
-try:
-    isotope_data = load_isotope_data('Formatted-Radioactive-Isotope-Half-Lives.json')
-except Exception as e:
-    st.error(f"Failed to load isotope data: {e}")
+isotope_data = load_isotope_data('Formatted-Radioactive-Isotope-Half-Lives.json')
+
+if not isotope_data:
+    st.stop()  # 데이터 로드에 실패하면 앱 중지
 
 # 언어 선택
 language = st.selectbox('Select language:', ['English', '한국어'])
@@ -55,8 +58,8 @@ input_age = st.number_input(labels['input_age'], min_value=1, value=1)
 half_lives = [item[1] for item in isotope_data]
 isotope_names = [item[0] for item in isotope_data]
 
-# 가장 입력된 나이에 가까운 반감기 찾기
-diffs = [abs(half_life - input_age) for half_lives in isotope_data]
+# 입력된 나이에 가장 가까운 반감기 찾기
+diffs = [abs(half_life - input_age) for half_life in half_lives]
 nearest_idx = np.argmin(diffs)
 nearest_isotope = isotope_names[nearest_idx]
 
