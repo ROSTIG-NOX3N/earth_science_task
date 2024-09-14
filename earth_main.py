@@ -64,7 +64,7 @@ nearest_to_one_isotope = isotope_data[nearest_to_one_idx][0]
 nearest_to_one_half_life = isotope_data[nearest_to_one_idx][2]
 
 # 1. 산포도 그리기 (그래프 내 텍스트는 영어로 고정)
-fig, ax = plt.subplots(figsize=(15, 6))
+fig, ax = plt.subplots(figsize=(28, 6))
 ax.scatter(range(len(half_lives)), half_lives, color='blue', label='Half-life', s=10)
 
 # 입력된 연대에 가장 가까운 동위원소 강조
