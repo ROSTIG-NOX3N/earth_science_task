@@ -52,7 +52,7 @@ language = st.selectbox('Select language:', ['English', '한국어'])
 labels = get_labels(language)
 
 # 입력 연대
-input_age = st.number_input(labels['input_age'], min_value=1, value=1)
+input_age = st.number_input('Enter a comparison age:', min_value=1, value=1)  # 그래프 관련 입력 영어로 고정
 
 # 반감기 값을 추출
 half_lives = [item[1] for item in isotope_data]
@@ -70,14 +70,14 @@ nearest_isotopes = [isotope_names[i] for i in nearest_idxs]
 fig, ax = plt.subplots(figsize=(15, 6))
 ax.hist(nearest_half_lives, bins=10, color='blue', alpha=0.7)
 
-# 그래프 라벨 추가
-ax.set_xlabel(labels['isotope_index'])
-ax.set_ylabel(labels['half_life'])
-ax.set_title(labels['histogram_title'])
+# 그래프 라벨은 영어로 고정
+ax.set_xlabel('Isotope Index')
+ax.set_ylabel('Half-life (years)')
+ax.set_title('Histogram of Isotope Half-lives')
 
 # 그래프 출력
 st.pyplot(fig)
 
-# 결과 표시
-st.write(f"{labels['closest']} : **{nearest_isotopes[0]}**")
-st.write(f"**{labels['half_life_of_selected_isotope']}: {nearest_half_lives[0]}**")
+# 결과 표시 (언어에 따라 표시되는 부분)
+st.write(f"Closest isotope: **{nearest_isotopes[0]}**")
+st.write(f"Half-life of closest isotope: **{nearest_half_lives[0]}** years")
