@@ -47,37 +47,56 @@ isotope_data = load_isotope_data('Formatted-Radioactive-Isotope-Half-Lives.json'
 if not isotope_data:
     st.stop()  # 데이터 로드에 실패하면 앱 중지
 
-# 언어 선택
+# 언어 선택 (그래프는 무조건 영어로 표시되지만 인터페이스는 언어 선택 가능)
 language = st.selectbox('Select language:', ['English', '한국어'])
 labels = get_labels(language)
 
 # 입력 연대
-input_age = st.number_input('Enter a comparison age:', min_value=1, value=1)  # 그래프 관련 입력 영어로 고정
+input_age = st.number_input(labels['input_age'], min_value=1, value=1)
 
 # 반감기 값을 추출
 half_lives = [item[1] for item in isotope_data]
 isotope_names = [item[0] for item in isotope_data]
 
-# 입력된 나이에 가장 가까운 반감기 찾기
+# 입력된 연대와 반감기 차이를 계산하여 가장 가까운 100개 선택
 diffs = [abs(half_life - input_age) for half_life in half_lives]
-nearest_idxs = np.argsort(diffs)[:35]  # 상위 35개의 가장 가까운 반감기 찾기
+sorted_indices = np.argsort(diffs)[:100]  # 차이가 가장 작은 100개의 인덱스
 
-# 상위 35개의 동위원소와 반감기만 추출
-nearest_half_lives = [half_lives[i] for i in nearest_idxs]
-nearest_isotopes = [isotope_names[i] for i in nearest_idxs]
-
-# 히스토그램 그리기
+# 1. 히스토그램 그리기
 fig, ax = plt.subplots(figsize=(15, 6))
-ax.hist(nearest_half_lives, bins=10, color='blue', alpha=0.7)
-
-# 그래프 라벨은 영어로 고정
-ax.set_xlabel('Isotope Index')
-ax.set_ylabel('Half-life (years)')
-ax.set_title('Histogram of Isotope Half-lives')
-
-# 그래프 출력
+closest_half_lives = [half_lives[i] for i in sorted_indices]  # 가장 가까운 100개의 반감기
+ax.hist(closest_half_lives, bins=20, color='blue', alpha=0.7)
+ax.set_xlabel(labels['isotope_index'])
+ax.set_ylabel(labels['half_life'])
+ax.set_title(labels['histogram_title'])  # 영어 고정 제목 사용
 st.pyplot(fig)
 
-# 결과 표시 (언어에 따라 표시되는 부분)
-st.write(f"Closest isotope: **{nearest_isotopes[0]}**")
-st.write(f"Half-life of closest isotope: **{nearest_half_lives[0]}** years")
+# 2. 방사성 동위원소 선택
+selected_isotope = st.selectbox(labels['select_isotope'], [isotope_names[i] for i in sorted_indices])
+selected_idx = isotope_names.index(selected_isotope)
+selected_half_life = half_lives[selected_idx]
+
+# 3. "더보기" 버튼을 눌렀을 때 산포도 표시
+if st.button('더보기'):
+    # 선택된 동위원소 주변 100개의 데이터를 반감기 기준으로 가져오기
+    diffs_selected = [abs(half_life - selected_half_life) for half_life in half_lives]
+    sorted_selected_indices = np.argsort(diffs_selected)[:100]  # 차이가 가장 작은 100개의 인덱스
+    
+    fig, ax = plt.subplots(figsize=(15, 6))
+    
+    # 주변 100개의 데이터를 산포도로 표시
+    ax.scatter(sorted_selected_indices, [half_lives[i] for i in sorted_selected_indices], color='blue', label='Half-life')
+    
+    # 선택된 동위원소 강조
+    ax.scatter(selected_idx, selected_half_life, color='orange', label=f'Selected Isotope: {selected_isotope}')
+    ax.set_xlabel(labels['isotope_index'])
+    ax.set_ylabel(labels['half_life'])
+    ax.set_title(labels['scatter_around_title'])  # 영어 고정 제목 사용
+    ax.set_yscale('log')  # 로그 스케일 설정
+    ax.legend()
+    
+    st.pyplot(fig)
+
+# 결과 표시 (영어로 고정)
+st.write(f"Selected Isotope: **{selected_isotope}**")
+st.write(f"**Half-life of selected isotope: {selected_half_life} years**")
