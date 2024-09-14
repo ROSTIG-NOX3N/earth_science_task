@@ -5,7 +5,7 @@ def get_labels(language):
             'select_isotope_name': 'Select Isotope Name:',
             'select_isotope_number': 'Select Isotope Number:',
             'scatter_plot_title': 'Scatter plot of Isotope Half-lives',
-            'half_life': 'Half-life (years)',
+            'half_life': 'years (Half-life)',
             'isotope_index': 'Isotope Index',
             'closest_to_age': 'Closest to input age',
             'selected_isotope': 'Selected Isotope:',
@@ -13,7 +13,7 @@ def get_labels(language):
             'input_age_label': 'Input Age',
             'selected_half_life': 'Half-life of selected isotope',
             'nearest_isotope': 'Closest Isotope to Input Age',
-            'half_life_years': 'Half-life (years)'
+            'half_life_years': 'years (Half-life)'
         }
     elif language == '한국어':
         return {
