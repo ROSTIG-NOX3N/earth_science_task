@@ -21,7 +21,7 @@ def get_labels(language):
             'select_isotope_name': '동위원소 이름을 선택해주세요:',
             'select_isotope_number': '동위원소 넘버를 선택해주세요:',
             'scatter_plot_title': '동위원소 반감기 산포도',
-            'half_life': '반감기 (년)',
+            'half_life': '년 (반감기)',
             'isotope_index': '동위원소 인덱스',
             'closest_to_age': '입력된 연대와 가장 가까운 동위원소',
             'selected_isotope': '선택된 동위원소:',
@@ -29,5 +29,5 @@ def get_labels(language):
             'input_age_label': '입력 연대',
             'selected_half_life': '선택된 동위원소의 반감기',
             'nearest_isotope': '입력된 연대와 가장 가까운 동위원소',
-            'half_life_years': '반감기 (년)'
+            'half_life_years': '년 (반감기)'
         }
