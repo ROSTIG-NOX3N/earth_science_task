@@ -46,8 +46,8 @@ if not isotope_data:
 language = st.selectbox('언어를 선택해주세요 / Select language:', ['English', '한국어', '日本語'])
 labels = get_labels(language)  # 선택된 언어에 맞는 라벨 가져오기
 
-# 입력 연대 (1~9999 범위 강제)
-input_age = st.number_input(labels['input_age'], min_value=1, max_value=9999, value=1, help="1에서 9999 사이의 연대를 입력해주세요.")
+# 입력 연대 (1~999 범위 강제)
+input_age = st.number_input(labels['input_age'], min_value=1, max_value=999, value=1, help="1에서 999 사이의 연대를 입력해주세요.")
 
 # 동위원소 이름과 넘버 분리
 isotope_names = [item.split('-')[0] for item in [entry[0] for entry in isotope_data]]
