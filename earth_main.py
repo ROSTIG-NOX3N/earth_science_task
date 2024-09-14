@@ -22,7 +22,7 @@ isotope_data = load_isotope_data('updated_isotope_data.json')
 if not isotope_data:
     st.stop()
 
-# 언어 선택 (한국어, 영어, 일본어 지원) - 그래프 외부 UI만 다국어 지원
+# 언어 선택 (한국어, 영어, 일본어 지원)
 language = st.selectbox('언어를 선택해주세요 / Select language:', ['English', '한국어', '日本語'])
 labels = get_labels(language)  # 선택된 언어에 맞는 라벨 가져오기
 
@@ -64,7 +64,7 @@ nearest_to_one_isotope = isotope_data[nearest_to_one_idx][0]
 nearest_to_one_half_life = isotope_data[nearest_to_one_idx][2]
 
 # 1. 산포도 그리기 (그래프 내 텍스트는 영어로 고정)
-fig, ax = plt.subplots(figsize=(28, 6))
+fig, ax = plt.subplots(figsize=(15, 6))
 ax.scatter(range(len(half_lives)), half_lives, color='blue', label='Half-life', s=10)
 
 # 입력된 연대에 가장 가까운 동위원소 강조
@@ -80,6 +80,10 @@ ax.annotate(f'Closest to Half-life of 1: {nearest_to_one_isotope}', xy=(nearest_
 # 선택된 동위원소 강조
 ax.scatter(selected_idx, selected_half_life, color='orange', label=f'Selected Isotope: {selected_isotope}', s=50)
 ax.axhline(y=input_age, color='gray', linestyle='--', label=f'Input Age: {input_age}')
+
+# 모든 Isotope Index 표시
+ax.set_xticks(range(len(half_lives)))  # 모든 인덱스를 표시
+ax.set_xlim(0, len(half_lives))        # x축 범위를 설정
 
 # 라벨 및 제목 설정 (그래프 내부는 영어로 고정)
 ax.set_xlabel('Isotope Index')
