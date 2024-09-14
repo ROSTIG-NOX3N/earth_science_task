@@ -62,13 +62,14 @@ isotope_names = [item[0] for item in isotope_data]
 diffs = [abs(half_life - input_age) for half_life in half_lives]
 sorted_indices = np.argsort(diffs)[:100]  # 차이가 가장 작은 100개의 인덱스
 
-# 1. 히스토그램 그리기
+# 1. 산포도 그리기 (우상향으로 정렬)
+sorted_half_lives = sorted([half_lives[i] for i in sorted_indices])  # 반감기 값을 오름차순 정렬
 fig, ax = plt.subplots(figsize=(15, 6))
-closest_half_lives = [half_lives[i] for i in sorted_indices]  # 가장 가까운 100개의 반감기
-ax.hist(closest_half_lives, bins=20, color='blue', alpha=0.7)
+ax.scatter(range(len(sorted_half_lives)), sorted_half_lives, color='blue', label='Half-life')
 ax.set_xlabel(labels['isotope_index'])
 ax.set_ylabel(labels['half_life'])
-ax.set_title(labels['histogram_title'])  # 영어 고정 제목 사용
+ax.set_title(labels['scatter_plot_title'])  # 영어 고정 제목 사용
+ax.set_yscale('log')  # 로그 스케일 설정
 st.pyplot(fig)
 
 # 2. 방사성 동위원소 선택
@@ -81,11 +82,12 @@ if st.button('더보기'):
     # 선택된 동위원소 주변 100개의 데이터를 반감기 기준으로 가져오기
     diffs_selected = [abs(half_life - selected_half_life) for half_life in half_lives]
     sorted_selected_indices = np.argsort(diffs_selected)[:100]  # 차이가 가장 작은 100개의 인덱스
+    sorted_selected_half_lives = sorted([half_lives[i] for i in sorted_selected_indices])  # 반감기 값을 오름차순 정렬
     
     fig, ax = plt.subplots(figsize=(15, 6))
     
     # 주변 100개의 데이터를 산포도로 표시
-    ax.scatter(sorted_selected_indices, [half_lives[i] for i in sorted_selected_indices], color='blue', label='Half-life')
+    ax.scatter(range(len(sorted_selected_half_lives)), sorted_selected_half_lives, color='blue', label='Half-life')
     
     # 선택된 동위원소 강조
     ax.scatter(selected_idx, selected_half_life, color='orange', label=f'Selected Isotope: {selected_isotope}')
