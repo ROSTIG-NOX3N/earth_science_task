@@ -13,7 +13,8 @@ def get_labels(language):
             'input_age_label': 'Input Age',
             'selected_half_life': 'Half-life of selected isotope',
             'nearest_isotope': 'Closest Isotope to Input Age',
-            'half_life_years': 'years (Half-life)'
+            'half_life_years': 'years (Half-life)',
+            'input_age_help': 'Please enter an age between 1 and 999 years.'  # 도움말 추가
         }
     elif language == '한국어':
         return {
@@ -29,7 +30,8 @@ def get_labels(language):
             'input_age_label': '입력 연대',
             'selected_half_life': '선택된 동위원소의 반감기',
             'nearest_isotope': '입력된 연대와 가장 가까운 동위원소',
-            'half_life_years': '년 (반감기)'
+            'half_life_years': '년 (반감기)',
+            'input_age_help': '1에서 999 사이의 연대를 입력해주세요.'  # 도움말 추가
         }
     elif language == '日本語':
         return {
@@ -45,5 +47,6 @@ def get_labels(language):
             'input_age_label': '入力された時代',
             'selected_half_life': '選択された同位体の半減期',
             'nearest_isotope': '入力された時代に最も近い同位体',
-            'half_life_years': '年 (半減期)'
+            'half_life_years': '年 (半減期)',
+            'input_age_help': '1から999までの年代を入力してください。'  # 도움말 추가
         }
