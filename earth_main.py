@@ -41,9 +41,11 @@ selected_isotopes = [entry for entry in isotope_data if entry[0] == selected_iso
 selected_isotope = selected_isotopes[0] if selected_isotopes else None
 selected_half_life = selected_isotope[2] if selected_isotope else None
 
-# 입력된 연대와 가장 가까운 동위원소 찾기
-half_lives = [item[2] for item in isotope_data]
+# None 값을 제외하고 계산
+half_lives = [item[2] for item in isotope_data if item[2] is not None]
 diffs = [abs(half_life - input_age) for half_life in half_lives]
+
+# 입력된 연대에 가장 가까운 동위원소 찾기
 nearest_idx = np.argmin(diffs)
 nearest_isotope = isotope_data[nearest_idx][0]
 nearest_half_life = isotope_data[nearest_idx][2]
