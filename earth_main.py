@@ -21,7 +21,7 @@ def load_isotope_data(file_path):
     return isotope_data
 
 # 방사성 동위원소 데이터 불러오기
-isotope_data = load_isotope_data('Radioactive-Isotope-Half-Lives.json')
+isotope_data = load_isotope_data('Formatted-Radioactive-Isotope-Half-Lives.json')
 
 # 언어 선택
 language = st.selectbox('Select language:', ['English', '한국어'])
@@ -34,7 +34,7 @@ input_age = st.number_input(labels['input_age'], min_value=1, value=1)
 half_lives = [item[1] for item in isotope_data]
 isotope_names = [item[0] for item in isotope_data]
 
-# 가장 1에 가까운 반감기 찾기
+# 가장 입력된 나이에 가까운 반감기 찾기
 diffs = [abs(half_life - input_age) for half_life in half_lives]
 nearest_idx = np.argmin(diffs)
 nearest_isotope = isotope_names[nearest_idx]
@@ -48,7 +48,7 @@ selected_half_life = half_lives[selected_idx]
 fig, ax = plt.subplots(figsize=(15, 6))
 ax.scatter(range(len(half_lives)), half_lives, color='blue', label='Half-life')
 
-# 1에 가장 가까운 동위원소에 화살표 추가
+# 입력된 연대에 가장 가까운 동위원소에 화살표 추가
 ax.annotate(f'{labels["annotate_closest"]} : {nearest_isotope}', xy=(nearest_idx, half_lives[nearest_idx]),
             xytext=(nearest_idx, half_lives[nearest_idx] * 1.5),
             arrowprops=dict(facecolor='green', shrink=0.05))
