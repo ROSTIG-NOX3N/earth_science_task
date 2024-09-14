@@ -86,7 +86,7 @@ fig, ax = plt.subplots(figsize=(15, 6))
 ax.scatter(range(len(half_lives)), half_lives, color='blue', label='Half-life', s=10)  # 점 크기 줄임 (s=10)
 
 # 입력된 연대에 가장 가까운 동위원소 강조 및 화살표 추가
-ax.annotate(f'Closest to input age: {nearest_isotope}', xy=(nearest_idx, nearest_half_life),
+ax.annotate(f'Closest to input age ({input_age} years): {nearest_isotope}', xy=(nearest_idx, nearest_half_life),
             xytext=(nearest_idx, nearest_half_life * 1.5),
             arrowprops=dict(facecolor='green', shrink=0.05))
 
