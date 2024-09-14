@@ -81,9 +81,8 @@ ax.annotate(f'Closest to Half-life of 1: {nearest_to_one_isotope}', xy=(nearest_
 ax.scatter(selected_idx, selected_half_life, color='orange', label=f'Selected Isotope: {selected_isotope}', s=50)
 ax.axhline(y=input_age, color='gray', linestyle='--', label=f'Input Age: {input_age}')
 
-# 모든 Isotope Index 표시
-ax.set_xticks(range(len(half_lives)))  # 모든 인덱스를 표시
-ax.set_xlim(0, len(half_lives))        # x축 범위를 설정
+# x축 범위를 전체 데이터로 설정 (데이터가 다 표시되도록)
+ax.set_xlim(0, len(half_lives) - 1)
 
 # 라벨 및 제목 설정 (그래프 내부는 영어로 고정)
 ax.set_xlabel('Isotope Index')
