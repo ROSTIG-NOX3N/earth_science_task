@@ -1,19 +1,34 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
+import json
 from languages import get_labels
 
-# 파일에서 방사성 동위원소 데이터 읽기
+# 방사성 동위원소 데이터 읽기
 def load_isotope_data(file_path):
-    data = []
     with open(file_path, 'r') as file:
-        for line in file:
-            name, half_life = line.strip().split(',')
-            data.append((name, float(half_life)))
-    return data
+        data = json.load(file)
+    
+    # 데이터에서 방사성 동위원소와 반감기 추출
+    isotope_data = []
+    for entry in data[1]:  # data[1]에 리스트 형태로 동위원소 정보가 있습니다.
+        for association in entry[1]:  # Association 항목을 탐색합니다.
+            isotope_name = None
+            half_life = None
+            
+            for rule in association[1]:  # Rule 항목을 탐색합니다.
+                if rule[1] == "'Isotope'":
+                    isotope_name = rule[2].strip("'")
+                elif rule[1] == "'Half Life'":
+                    half_life = rule[2]
+            
+            if isotope_name and half_life:
+                isotope_data.append((isotope_name, half_life))
+    
+    return isotope_data
 
 # 방사성 동위원소 데이터 불러오기
-isotope_data = load_isotope_data('radio_data.txt')
+isotope_data = load_isotope_data('Radioactive-Isotope-Half-Lives.json')
 
 # 언어 선택
 language = st.selectbox('Select language:', ['English', '한국어'])
