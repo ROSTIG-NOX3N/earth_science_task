@@ -81,8 +81,8 @@ ax.annotate(f'Closest to Half-life of 1: {nearest_to_one_isotope}', xy=(nearest_
 ax.scatter(selected_idx, selected_half_life, color='orange', label=f'Selected Isotope: {selected_isotope}', s=50)
 ax.axhline(y=input_age, color='gray', linestyle='--', label=f'Input Age: {input_age}')
 
-# x축 범위를 전체 데이터로 설정 (데이터가 다 표시되도록)
-ax.set_xlim(0, len(half_lives) - 1)
+# y축 범위를 설정하여 10^3 이상의 데이터가 포함되도록 설정
+ax.set_ylim(10**-21, 10**5)  # y축 범위를 넓힘
 
 # 라벨 및 제목 설정 (그래프 내부는 영어로 고정)
 ax.set_xlabel('Isotope Index')
@@ -105,6 +105,7 @@ if st.button(labels['plot_same_name']):
     ax.set_ylabel('Half-life (years)')
     ax.set_title(f'Scatter plot of all isotopes with the name {selected_isotope_name}')
     ax.set_yscale('log')
+    ax.set_ylim(10**-21, 10**5)  # y축 범위를 설정하여 더 큰 범위의 값을 표시
     ax.legend()
     st.pyplot(fig)
 
