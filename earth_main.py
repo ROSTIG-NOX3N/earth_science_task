@@ -68,9 +68,9 @@ selected_isotope = st.selectbox(labels['select_isotope'], isotope_names)
 selected_idx = isotope_names.index(selected_isotope)
 selected_half_life = half_lives[selected_idx]
 
-# 기본 산포도 그리기
+# 기본 막대 그래프 그리기
 fig, ax = plt.subplots(figsize=(15, 6))
-ax.scatter(range(len(half_lives)), half_lives, color='blue', label='Half-life')
+ax.bar(range(len(half_lives)), half_lives, color='blue', label='Half-life')
 
 # 입력된 연대에 가장 가까운 동위원소에 화살표 추가
 ax.annotate(f'{labels["annotate_closest"]} : {nearest_isotope}', xy=(nearest_idx, half_lives[nearest_idx]),
@@ -78,7 +78,7 @@ ax.annotate(f'{labels["annotate_closest"]} : {nearest_isotope}', xy=(nearest_idx
             arrowprops=dict(facecolor='green', shrink=0.05))
 
 # 선택된 동위원소의 반감기 강조
-ax.scatter(selected_idx, selected_half_life, color='orange', label=f'{labels["annotate_selected"]} {selected_isotope}')
+ax.bar(selected_idx, selected_half_life, color='orange', label=f'{labels["annotate_selected"]} {selected_isotope}')
 ax.axhline(y=input_age, color='gray', linestyle='--', label=f'{labels["input_age_label"]} {input_age}')
 
 # 반감기 값은 로그 스케일로 표시
@@ -87,7 +87,7 @@ ax.set_yscale('log')
 # 그래프 라벨 추가
 ax.set_xlabel(labels['isotope_index'])
 ax.set_ylabel(labels['half_life'])
-ax.set_title(labels['scatter_plot_title'])
+ax.set_title(labels['bar_chart_title'])
 
 # 범례 추가
 ax.legend()
@@ -100,7 +100,7 @@ if st.button('더보기'):
     fig, ax = plt.subplots(figsize=(8, 4))
     
     # 선택된 동위원소와 가장 가까운 동위원소만 표시
-    ax.scatter([nearest_idx, selected_idx], [half_lives[nearest_idx], selected_half_life], color=['green', 'orange'], label=[nearest_isotope, selected_isotope])
+    ax.bar([nearest_idx, selected_idx], [half_lives[nearest_idx], selected_half_life], color=['green', 'orange'], label=[nearest_isotope, selected_isotope])
     
     # 주석 추가
     ax.annotate(f'{labels["annotate_closest"]}: {nearest_isotope}', xy=(nearest_idx, half_lives[nearest_idx]), xytext=(nearest_idx, half_lives[nearest_idx] * 1.5),
