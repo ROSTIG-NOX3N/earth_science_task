@@ -75,18 +75,18 @@ nearest_idx = np.argmin(diffs)
 nearest_isotope = isotope_data[nearest_idx][0]
 nearest_half_life = isotope_data[nearest_idx][1]
 
-# 1. 모든 동위원소 산포도 그리기 (점 크기 줄이기)
+# 1. 모든 동위원소 산포도 그리기 (점 크기 줄이기) - 그래프 내용은 영어로 유지
 fig, ax = plt.subplots(figsize=(15, 6))
 ax.scatter(range(len(half_lives)), half_lives, color='blue', label='Half-life', s=10)
 
-# 입력된 연대에 가장 가까운 동위원소 강조 및 화살표 추가
-ax.annotate(f'{labels["closest_to_age"]} ({input_age} years): {nearest_isotope}', xy=(nearest_idx, nearest_half_life),
+# 입력된 연대에 가장 가까운 동위원소 강조 및 화살표 추가 (영어로 표시)
+ax.annotate(f'Closest to input age ({input_age} years): {nearest_isotope}', xy=(nearest_idx, nearest_half_life),
             xytext=(nearest_idx, nearest_half_life * 1.5),
             arrowprops=dict(facecolor='green', shrink=0.05))
 
-# 선택된 동위원소 강조
-ax.scatter(selected_idx, selected_half_life, color='orange', label=f'{labels["selected_isotope"]} {selected_isotope}', s=50)
-ax.axhline(y=input_age, color='gray', linestyle='--', label=f'{labels["input_age_label"]}: {input_age}')
+# 선택된 동위원소 강조 (영어로 표시)
+ax.scatter(selected_idx, selected_half_life, color='orange', label=f'Selected Isotope: {selected_isotope}', s=50)
+ax.axhline(y=input_age, color='gray', linestyle='--', label=f'Input Age: {input_age}')
 
 # 라벨 및 제목 설정 (그래프 내부는 영어로 유지)
 ax.set_xlabel('Isotope Index')
@@ -104,7 +104,7 @@ if st.button(labels['plot_same_name']):
     fig, ax = plt.subplots(figsize=(15, 6))
     for i, (name, number, half_life) in enumerate(filtered_isotopes):
         ax.scatter(i, half_life, color='blue', label=f'{name}-{number}' if i == 0 else "", s=50)
-    ax.scatter(filtered_isotope_numbers.index(selected_isotope_number), selected_half_life, color='orange', label=f'{labels["selected_isotope"]} {selected_isotope}', s=100)
+    ax.scatter(filtered_isotope_numbers.index(selected_isotope_number), selected_half_life, color='orange', label=f'Selected Isotope: {selected_isotope}', s=100)
     ax.set_xlabel('Isotope Index')
     ax.set_ylabel('Half-life (years)')
     ax.set_title(f'Scatter plot of all isotopes with the name {selected_isotope_name}')
@@ -112,7 +112,7 @@ if st.button(labels['plot_same_name']):
     ax.legend()
     st.pyplot(fig)
 
-# 결과 표시 (UI는 언어에 따라 변경됨)
+# 결과 표시 (UI는 언어에 따라 변경됨, 그래프 내부는 영어로 유지)
 st.write(f"{labels['selected_isotope']} **{selected_isotope}**")
 st.write(f"**{labels['selected_half_life']}: {selected_half_life} {labels['half_life_years']}**")
 st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life} {labels['half_life_years']})")
