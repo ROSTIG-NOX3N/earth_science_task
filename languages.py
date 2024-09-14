@@ -31,3 +31,19 @@ def get_labels(language):
             'nearest_isotope': '입력된 연대와 가장 가까운 동위원소',
             'half_life_years': '년 (반감기)'
         }
+    elif language == '日本語':
+        return {
+            'input_age': '地質時代を入力してください:',
+            'select_isotope_name': '同位体名を選択してください:',
+            'select_isotope_number': '同位体番号を選択してください:',
+            'scatter_plot_title': '同位体の半減期の散布図',
+            'half_life': '年 (半減期)',
+            'isotope_index': '同位体インデックス',
+            'closest_to_age': '入力された時代に最も近い同位体',
+            'selected_isotope': '選択された同位体:',
+            'plot_same_name': '同じ名前の同位体をプロットする',
+            'input_age_label': '入力された時代',
+            'selected_half_life': '選択された同位体の半減期',
+            'nearest_isotope': '入力された時代に最も近い同位体',
+            'half_life_years': '年 (半減期)'
+        }
