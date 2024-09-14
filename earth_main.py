@@ -58,47 +58,45 @@ input_age = st.number_input(labels['input_age'], min_value=1, value=1)
 half_lives = [item[1] for item in isotope_data]
 isotope_names = [item[0] for item in isotope_data]
 
-# 입력된 연대와 반감기 차이를 계산하여 가장 가까운 100개 선택
+# 입력된 연대와 반감기 차이를 계산하여 가장 가까운 동위원소 찾기
 diffs = [abs(half_life - input_age) for half_life in half_lives]
-sorted_indices = np.argsort(diffs)[:100]  # 차이가 가장 작은 100개의 인덱스
+nearest_idx = np.argmin(diffs)  # 입력된 연대에 가장 가까운 동위원소의 인덱스
+nearest_isotope = isotope_names[nearest_idx]
+nearest_half_life = half_lives[nearest_idx]
 
-# 1. 산포도 그리기 (우상향으로 정렬)
-sorted_half_lives = sorted([half_lives[i] for i in sorted_indices])  # 반감기 값을 오름차순 정렬
+# 반감기 데이터를 오름차순으로 정렬
+sorted_indices = np.argsort(half_lives)[:100]
+sorted_half_lives = sorted([half_lives[i] for i in sorted_indices])
+
+# 1. 산포도 그리기
 fig, ax = plt.subplots(figsize=(15, 6))
 ax.scatter(range(len(sorted_half_lives)), sorted_half_lives, color='blue', label='Half-life')
-ax.set_xlabel(labels['isotope_index'])
-ax.set_ylabel(labels['half_life'])
-ax.set_title(labels['scatter_plot_title'])  # 영어 고정 제목 사용
-ax.set_yscale('log')  # 로그 스케일 설정
-st.pyplot(fig)
+
+# 입력된 연대에 가장 가까운 동위원소 강조 및 화살표 추가
+ax.annotate(f'Closest to input age: {nearest_isotope}', xy=(nearest_idx, nearest_half_life),
+            xytext=(nearest_idx, nearest_half_life * 1.5),
+            arrowprops=dict(facecolor='green', shrink=0.05))
 
 # 2. 방사성 동위원소 선택
-selected_isotope = st.selectbox(labels['select_isotope'], [isotope_names[i] for i in sorted_indices])
+selected_isotope = st.selectbox(labels['select_isotope'], isotope_names)
 selected_idx = isotope_names.index(selected_isotope)
 selected_half_life = half_lives[selected_idx]
 
-# 3. "더보기" 버튼을 눌렀을 때 산포도 표시
-if st.button('더보기'):
-    # 선택된 동위원소 주변 100개의 데이터를 반감기 기준으로 가져오기
-    diffs_selected = [abs(half_life - selected_half_life) for half_life in half_lives]
-    sorted_selected_indices = np.argsort(diffs_selected)[:100]  # 차이가 가장 작은 100개의 인덱스
-    sorted_selected_half_lives = sorted([half_lives[i] for i in sorted_selected_indices])  # 반감기 값을 오름차순 정렬
-    
-    fig, ax = plt.subplots(figsize=(15, 6))
-    
-    # 주변 100개의 데이터를 산포도로 표시
-    ax.scatter(range(len(sorted_selected_half_lives)), sorted_selected_half_lives, color='blue', label='Half-life')
-    
-    # 선택된 동위원소 강조
-    ax.scatter(selected_idx, selected_half_life, color='orange', label=f'Selected Isotope: {selected_isotope}')
-    ax.set_xlabel(labels['isotope_index'])
-    ax.set_ylabel(labels['half_life'])
-    ax.set_title(labels['scatter_around_title'])  # 영어 고정 제목 사용
-    ax.set_yscale('log')  # 로그 스케일 설정
-    ax.legend()
-    
-    st.pyplot(fig)
+# 선택된 동위원소 강조
+ax.scatter(selected_idx, selected_half_life, color='orange', label=f'Selected Isotope: {selected_isotope}')
+ax.axhline(y=input_age, color='gray', linestyle='--', label=f'Input Age: {input_age}')
+
+# 라벨 및 제목 설정
+ax.set_xlabel(labels['isotope_index'])
+ax.set_ylabel(labels['half_life'])
+ax.set_title(labels['scatter_plot_title'])
+ax.set_yscale('log')  # 로그 스케일 설정
+ax.legend()
+
+# 그래프 출력
+st.pyplot(fig)
 
 # 결과 표시 (영어로 고정)
 st.write(f"Selected Isotope: **{selected_isotope}**")
 st.write(f"**Half-life of selected isotope: {selected_half_life} years**")
+st.write(f"Closest Isotope to Input Age: **{nearest_isotope}** with half-life of {nearest_half_life} years")
