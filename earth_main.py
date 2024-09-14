@@ -54,15 +54,32 @@ labels = get_labels(language)
 # 입력 연대
 input_age = st.number_input(labels['input_age'], min_value=1, value=1)
 
-# 반감기 값을 추출
-half_lives = [item[1] for item in isotope_data]
-isotope_names = [item[0] for item in isotope_data]
+# 동위원소 이름과 넘버 분리
+isotope_names = [item.split('-')[0] for item in [entry[0] for entry in isotope_data]]
+isotope_numbers = [item.split('-')[1] for item in [entry[0] for entry in isotope_data]]
+
+# 동위원소 이름 중복 제거
+unique_isotope_names = list(set(isotope_names))
+
+# 1. 첫 번째 선택 칸: 동위원소 이름 선택
+selected_isotope_name = st.selectbox('Select Isotope Name:', unique_isotope_names)
+
+# 2. 두 번째 선택 칸: 선택된 동위원소의 넘버 선택
+# 선택된 동위원소 이름에 해당하는 넘버 필터링
+filtered_isotope_numbers = [num for name, num in zip(isotope_names, isotope_numbers) if name == selected_isotope_name]
+selected_isotope_number = st.selectbox(f'Select {selected_isotope_name} Number:', filtered_isotope_numbers)
+
+# 선택된 동위원소
+selected_isotope = f'{selected_isotope_name}-{selected_isotope_number}'
+selected_idx = [entry[0] for entry in isotope_data].index(selected_isotope)
+selected_half_life = isotope_data[selected_idx][1]
 
 # 입력된 연대와 반감기 차이를 계산하여 가장 가까운 동위원소 찾기
+half_lives = [item[1] for item in isotope_data]
 diffs = [abs(half_life - input_age) for half_life in half_lives]
 nearest_idx = np.argmin(diffs)  # 입력된 연대에 가장 가까운 동위원소의 인덱스
-nearest_isotope = isotope_names[nearest_idx]
-nearest_half_life = half_lives[nearest_idx]
+nearest_isotope = isotope_data[nearest_idx][0]
+nearest_half_life = isotope_data[nearest_idx][1]
 
 # 반감기 데이터를 오름차순으로 정렬
 sorted_indices = np.argsort(half_lives)[:100]
@@ -76,11 +93,6 @@ ax.scatter(range(len(sorted_half_lives)), sorted_half_lives, color='blue', label
 ax.annotate(f'Closest to input age: {nearest_isotope}', xy=(nearest_idx, nearest_half_life),
             xytext=(nearest_idx, nearest_half_life * 1.5),
             arrowprops=dict(facecolor='green', shrink=0.05))
-
-# 2. 방사성 동위원소 선택
-selected_isotope = st.selectbox(labels['select_isotope'], isotope_names)
-selected_idx = isotope_names.index(selected_isotope)
-selected_half_life = half_lives[selected_idx]
 
 # 선택된 동위원소 강조
 ax.scatter(selected_idx, selected_half_life, color='orange', label=f'Selected Isotope: {selected_isotope}')
