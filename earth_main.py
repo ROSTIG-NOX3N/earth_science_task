@@ -9,7 +9,7 @@ from languages import get_labels  # languages.py에서 라벨 가져오기
 # OpenAI API 키 설정
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-# 방사성 동위원소 데이터 불러오기 함수 (CSV 파일로 변경)
+# 방사성 동위원소 데이터 불러오기 함수 (CSV 파일을 읽도록 수정)
 def load_isotope_data(file_path):
     try:
         isotope_data = []
