@@ -2,6 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 import json
+import random
 import openai
 from languages import get_labels
 
@@ -149,6 +150,11 @@ with tab1:
         fig2, ax2 = plt.subplots(figsize=(15, 6))
         ax2.scatter(range(len(filtered_isotopes)), [item[1] for item in filtered_isotopes], color='purple', label=f'{selected_isotope_name} Isotopes', s=50)
 
+        # 선택된 동위원소 강조
+        selected_filtered_idx = next((idx for idx, (name, hl) in enumerate(filtered_isotopes) if f"{name}-{selected_isotope_number}" == selected_isotope), None)
+        if selected_filtered_idx is not None:
+            ax2.scatter(selected_filtered_idx, filtered_isotopes[selected_filtered_idx][1], color='orange', label=f"Selected Isotope: {selected_isotope}", s=100)
+
         # 라벨 및 제목 설정
         ax2.set_xlabel('Isotope Index')
         ax2.set_ylabel(y_label)
@@ -183,19 +189,36 @@ with tab2:
             st.error(f"{labels['error_message']} (Error Code: {error_code}): {error_message}")
             return None
 
-    # 채팅 기록 및 사용자가 입력한 메시지
-    user_input = st.text_input("Ask a question to the assistant:")
+    # 질문 버튼 3개 생성 및 랜덤 질문
+    col1, col2, col3 = st.columns(3)
 
-    # 사용자가 입력한 질문이 있으면 메시지 추가 및 응답 생성
-    if user_input:
-        st.session_state.messages.append({"role": "user", "content": user_input})
+    # 각 버튼에서 랜덤 질문 생성
+    with col1:
+        if st.button(labels['question1']):
+            user_input = random.choice(labels['paraphrases']['question1'])
+            st.session_state.messages.append({"role": "user", "content": user_input})
 
-        # OpenAI API를 사용하여 응답 생성
-        assistant_reply = generate_response()
+            assistant_reply = generate_response()
+            if assistant_reply:
+                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-        if assistant_reply:
-            # 어시스턴트의 응답 추가
-            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+    with col2:
+        if st.button(labels['question2']):
+            user_input = random.choice(labels['paraphrases']['question2'])
+            st.session_state.messages.append({"role": "user", "content": user_input})
+
+            assistant_reply = generate_response()
+            if assistant_reply:
+                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+
+    with col3:
+        if st.button(labels['question3']):
+            user_input = random.choice(labels['paraphrases']['question3'])
+            st.session_state.messages.append({"role": "user", "content": user_input})
+
+            assistant_reply = generate_response()
+            if assistant_reply:
+                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
     # 채팅 기록 표시
     for message in st.session_state.messages:
