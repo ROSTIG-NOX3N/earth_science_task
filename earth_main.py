@@ -144,11 +144,6 @@ with st.expander(labels['section1_header'], expanded=True):
     st.write(f"{labels['nearest_to_one']}: **{nearest_to_one_isotope}** ({nearest_to_one_half_life} {labels['half_life_seconds']})")
 
 # --- 섹션 2: 챗봇 ---
-with st.expander(labels['section1_header'], expanded=True):
-    # 섹션 1의 코드 그대로 유지
-    # ... (이전 코드와 동일하므로 생략)
-
-# --- 섹션 2: 챗봇 ---
 with st.expander(labels['section2_header'], expanded=False):
     # 고정된 질문 버튼 (질문 3개)
     col1, col2, col3 = st.columns(3)
@@ -162,8 +157,10 @@ with st.expander(labels['section2_header'], expanded=False):
             )
             assistant_reply = response.choices[0].message.content
             return assistant_reply
-        except Exception as e:
-            st.error(f"{labels['error_message']}: {str(e)}")
+        except openai.error.OpenAIError as e:
+            error_code = getattr(e, 'code', 'N/A')
+            error_message = str(e)
+            st.error(f"{labels['error_message']} (Error Code: {error_code}): {error_message}")
             return None
 
     with col1:
