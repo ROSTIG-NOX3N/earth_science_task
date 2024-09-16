@@ -8,7 +8,8 @@ import random  # 무작위 선택을 위해 필요
 from languages import get_labels  # languages.py에서 라벨 가져오기
 
 # OpenAI API 키 설정
-openai.api_key = os.environ.get("OPENAI_API_KEY") or st.secrets.get("OPENAI_API_KEY")
+openai.api_key = st.secrets["OPENAI_API_KEY"]
+
 
 # 방사성 동위원소 데이터 불러오기 함수
 def load_isotope_data(file_path):
