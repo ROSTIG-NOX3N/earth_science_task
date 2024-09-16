@@ -2,8 +2,9 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 import json
-import openai  # OpenAI 라이브러리 임포트
+import openai
 import os
+import random  # 무작위 선택을 위해 필요
 from languages import get_labels  # languages.py에서 라벨 가져오기
 
 # OpenAI API 키 설정
@@ -28,7 +29,7 @@ if not isotope_data:
     st.stop()
 
 # 언어 선택 (한국어, 영어, 일본어 지원)
-language = st.selectbox('언어를 선택해주세요 / Select language:', ['English', '한국어', '日本語'])
+language = st.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
 labels = get_labels(language)  # 선택된 언어에 맞는 라벨 가져오기
 
 # 언어 변경 시 채팅 기록 초기화
@@ -144,32 +145,71 @@ if "messages" not in st.session_state:
         "content": f"You are a helpful assistant that communicates in {language}."
     })
 
-# 고정된 질문 목록 (선택된 언어에 맞게)
-fixed_questions = labels['fixed_questions']
+# 고정된 질문 버튼 (질문 3개)
+col1, col2, col3 = st.columns(3)
 
-# 질문 선택
-selected_question = st.selectbox(labels['select_question'], fixed_questions)
+with col1:
+    if st.button(labels['question1']):
+        user_input = random.choice(labels['paraphrases']['question1'])
+        # 사용자의 메시지 추가
+        st.session_state.messages.append({"role": "user", "content": user_input})
 
-if st.button(labels['ask_question']):
-    user_input = selected_question
+        # OpenAI API를 사용하여 응답 생성
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=st.session_state.messages
+            )
+            assistant_reply = response["choices"][0]["message"]["content"]
+        except Exception as e:
+            st.error(labels['error_message'])
+            assistant_reply = None
 
-    # 사용자의 메시지 추가
-    st.session_state.messages.append({"role": "user", "content": user_input})
+        if assistant_reply:
+            # 어시스턴트의 응답 추가
+            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-    # OpenAI API를 사용하여 응답 생성
-    try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=st.session_state.messages
-        )
-        assistant_reply = response["choices"][0]["message"]["content"]
-    except Exception as e:
-        st.error(labels['error_message'])
-        assistant_reply = None
+with col2:
+    if st.button(labels['question2']):
+        user_input = random.choice(labels['paraphrases']['question2'])
+        # 사용자의 메시지 추가
+        st.session_state.messages.append({"role": "user", "content": user_input})
 
-    if assistant_reply:
-        # 어시스턴트의 응답 추가
-        st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+        # OpenAI API를 사용하여 응답 생성
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=st.session_state.messages
+            )
+            assistant_reply = response["choices"][0]["message"]["content"]
+        except Exception as e:
+            st.error(labels['error_message'])
+            assistant_reply = None
+
+        if assistant_reply:
+            # 어시스턴트의 응답 추가
+            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+
+with col3:
+    if st.button(labels['question3']):
+        user_input = random.choice(labels['paraphrases']['question3'])
+        # 사용자의 메시지 추가
+        st.session_state.messages.append({"role": "user", "content": user_input})
+
+        # OpenAI API를 사용하여 응답 생성
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=st.session_state.messages
+            )
+            assistant_reply = response["choices"][0]["message"]["content"]
+        except Exception as e:
+            st.error(labels['error_message'])
+            assistant_reply = None
+
+        if assistant_reply:
+            # 어시스턴트의 응답 추가
+            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
 # 채팅 내역 표시
 for message in st.session_state.messages:
