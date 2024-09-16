@@ -75,7 +75,7 @@ with st.expander(labels['section1_header'], expanded=True):
     nearest_isotope = isotope_data[nearest_idx][0]
     nearest_half_life = isotope_data[nearest_idx][2]
 
-    # 반감기 값이 1에 가장 가까운 동위원소 찾기
+    # 반감기 값이 1초에 가장 가까운 동위원소 찾기
     diffs_from_one = [abs(half_life - 1) for half_life in half_lives]
     nearest_to_one_idx = np.argmin(diffs_from_one)
     nearest_to_one_isotope = isotope_data[nearest_to_one_idx][0]
@@ -86,12 +86,12 @@ with st.expander(labels['section1_header'], expanded=True):
     ax.scatter(range(len(half_lives)), half_lives, color='blue', label='Half-life', s=10)
 
     # 입력된 연대에 가장 가까운 동위원소 강조
-    ax.annotate(f"Closest to input age ({input_age} years): {nearest_isotope}", xy=(nearest_idx, nearest_half_life),
+    ax.annotate(f"Closest to input age ({input_age} seconds): {nearest_isotope}", xy=(nearest_idx, nearest_half_life),
                 xytext=(nearest_idx, nearest_half_life * 1.5),
                 arrowprops=dict(facecolor='green', shrink=0.05))
 
-    # 반감기 값이 1에 가장 가까운 동위원소 강조
-    ax.annotate(f"Isotope with Half-life closest to 1 year: {nearest_to_one_isotope}", xy=(nearest_to_one_idx, nearest_to_one_half_life),
+    # 반감기 값이 1초에 가장 가까운 동위원소 강조
+    ax.annotate(f"Isotope with Half-life closest to 1 second: {nearest_to_one_isotope}", xy=(nearest_to_one_idx, nearest_to_one_half_life),
                 xytext=(nearest_to_one_idx, nearest_to_one_half_life * 1.5),
                 arrowprops=dict(facecolor='red', shrink=0.05))
 
@@ -101,12 +101,12 @@ with st.expander(labels['section1_header'], expanded=True):
 
     # x축 범위를 전체 데이터로 설정
     ax.set_xlim(0, len(half_lives) - 1)
-    # y축 범위를 설정하여 10^3 이상의 데이터가 포함되도록 설정
-    ax.set_ylim(1e-21, 1e5)  # y축 범위를 넓힘
+    # y축 범위를 설정하여 데이터가 잘 보이도록 설정
+    ax.set_ylim(min(half_lives)/10, max(half_lives)*10)
 
     # 라벨 및 제목 설정 (그래프 내부는 영어로 고정)
     ax.set_xlabel('Isotope Index')
-    ax.set_ylabel('Half-life (years)')
+    ax.set_ylabel('Half-life (seconds)')
     ax.set_title('Scatter plot of Isotope Half-lives')
     ax.set_yscale('log')
     ax.legend()
@@ -116,24 +116,30 @@ with st.expander(labels['section1_header'], expanded=True):
 
     # 동일한 이름의 동위원소만 산포도로 그리기 버튼
     if st.button(labels['plot_same_name']):
-        filtered_isotopes = [(name, number, hl) for name, number, hl in zip(isotope_names, isotope_numbers, half_lives) if name == selected_isotope_name]
+        # 선택한 동위원소의 인덱스 찾기
+        filtered_isotopes = [(i, name, number, hl) for i, (name, number, hl) in enumerate(zip(isotope_names, isotope_numbers, [entry[2] for entry in isotope_data])) if name == selected_isotope_name and hl is not None]
         fig, ax = plt.subplots(figsize=(15, 6))
-        for i, (name, number, half_life) in enumerate(filtered_isotopes):
-            ax.scatter(i, half_life, color='blue', label=f'{name}-{number}' if i == 0 else "", s=50)
-        ax.scatter(filtered_isotope_numbers.index(selected_isotope_number), selected_half_life, color='orange', label=f"Selected Isotope: {selected_isotope}", s=100)
+        for idx, (i, name, number, half_life) in enumerate(filtered_isotopes):
+            ax.scatter(idx, half_life, color='blue', label=f'{name}-{number}' if idx == 0 else "", s=50)
+        # 선택된 동위원소 강조
+        selected_filtered_idx = next((idx for idx, (i, name, number, hl) in enumerate(filtered_isotopes) if number == selected_isotope_number), None)
+        if selected_filtered_idx is not None:
+            ax.scatter(selected_filtered_idx, selected_half_life, color='orange', label=f"Selected Isotope: {selected_isotope}", s=100)
         ax.set_xlabel('Isotope Index')
-        ax.set_ylabel('Half-life (years)')
+        ax.set_ylabel('Half-life (seconds)')
         ax.set_title(f"Scatter plot of all isotopes with the name {selected_isotope_name}")
         ax.set_yscale('log')
-        ax.set_ylim(1e-21, 1e5)  # y축 범위를 설정하여 더 큰 범위의 값을 표시
+        # y축 범위를 설정하여 데이터가 잘 보이도록 설정
+        half_lives_filtered = [hl for i, name, number, hl in filtered_isotopes]
+        ax.set_ylim(min(half_lives_filtered)/10, max(half_lives_filtered)*10)
         ax.legend()
         st.pyplot(fig)
 
     # 결과 표시 (인터페이스 라벨은 선택된 언어로 표시)
     st.write(f"{labels['selected_isotope']}: **{selected_isotope}**")
-    st.write(f"**{labels['selected_half_life']}: {selected_half_life} {labels['half_life_years']}**")
-    st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life} {labels['half_life_years']})")
-    st.write(f"{labels['nearest_to_one']}: **{nearest_to_one_isotope}** ({nearest_to_one_half_life} {labels['half_life_years']})")
+    st.write(f"**{labels['selected_half_life']}: {selected_half_life} {labels['half_life_seconds']}**")
+    st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life} {labels['half_life_seconds']})")
+    st.write(f"{labels['nearest_to_one']}: **{nearest_to_one_isotope}** ({nearest_to_one_half_life} {labels['half_life_seconds']})")
 
 # --- 섹션 2: 챗봇 ---
 with st.expander(labels['section2_header'], expanded=False):
