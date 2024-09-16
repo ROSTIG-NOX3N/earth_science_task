@@ -89,24 +89,29 @@ with st.expander(labels['section1_header'], expanded=True):
         selected_half_life_display = selected_half_life / threshold
         half_life_unit = labels['half_life_years']
 
-    # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 찾기
+    # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 찾기 (단위 맞춰서 계산)
     ratios = [abs(input_age_seconds / half_life - 1) for half_life in [item[2] for item in isotope_data]]
     nearest_ratio_idx = np.argmin(ratios)
     nearest_isotope = isotope_data[nearest_ratio_idx][0]
     nearest_half_life = isotope_data[nearest_ratio_idx][2]
 
-    # 선택된 단위에 맞춰 반감기를 표시할 때 최소 소수점 자릿수 설정 (작은 값을 반올림하지 않도록)
-    if nearest_half_life < 0.01:  # 매우 작은 값일 경우
-        nearest_half_life_display = f"{nearest_half_life:.6f}"  # 소수점 6자리까지 표시
+    # 선택된 단위에 따라 반감기를 표시할 때 소수점 자릿수 처리
+    if time_unit == 'years':
+        nearest_half_life_display = nearest_half_life / threshold  # 년 단위로 변환
     else:
-        nearest_half_life_display = f"{nearest_half_life:.2f}"  # 소수점 2자리까지 표시
+        nearest_half_life_display = nearest_half_life  # 초 단위로 유지
+
+    if nearest_half_life_display < 0.01:  # 매우 작은 값일 경우
+        nearest_half_life_display = f"{nearest_half_life_display:.6f}"  # 소수점 6자리까지 표시
+    else:
+        nearest_half_life_display = f"{nearest_half_life_display:.2f}"  # 소수점 2자리까지 표시
 
     # 1. 산포도 그리기 (그래프 내 텍스트는 영어로 고정)
     fig, ax = plt.subplots(figsize=(15, 6))
     ax.scatter(range(len(half_lives)), half_lives, color='blue', label=y_label, s=10)
 
-    # 입력된 연대에 가장 가까운 동위원소 강조
-    ax.annotate(f"Closest to input age ({input_age} {time_unit}): {nearest_isotope}", xy=(nearest_ratio_idx, nearest_half_life),
+    # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 강조
+    ax.annotate(f"Closest to input age / half-life ratio = 1: {nearest_isotope}", xy=(nearest_ratio_idx, nearest_half_life),
                 xytext=(nearest_ratio_idx, nearest_half_life * 1.5),
                 arrowprops=dict(facecolor='green', shrink=0.05))
 
