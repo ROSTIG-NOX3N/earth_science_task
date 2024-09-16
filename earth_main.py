@@ -39,8 +39,11 @@ if "prev_language" not in st.session_state or st.session_state.prev_language != 
         "content": f"You are a helpful assistant that communicates in {language}."
     })
 
-# --- 섹션 1: 동위원소 산포도 ---
-with st.expander(labels['section1_header'], expanded=True):
+# --- 탭 생성 ---
+tab1, tab2 = st.tabs([labels['section1_header'], labels['section2_header']])
+
+# --- 탭 1: 동위원소 산포도 ---
+with tab1:
     # 단위 선택 (초/년)
     time_unit = st.radio("단위를 선택하세요 (Select time unit):", ('seconds', 'years'))
 
@@ -138,3 +141,43 @@ with st.expander(labels['section1_header'], expanded=True):
     st.write(f"{labels['selected_isotope']}: **{selected_isotope}**")
     st.write(f"**{labels['selected_half_life']}: {selected_half_life_display:.2f} {half_life_unit}**")
     st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life_display} {half_life_unit})")
+
+# --- 탭 2: 챗봇 기능 ---
+with tab2:
+    st.header(labels['chatbot_header'])
+
+    # OpenAI API 호출 함수 정의
+    def generate_response():
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=st.session_state.messages
+            )
+            assistant_reply = response.choices[0].message.content
+            return assistant_reply
+        except openai.error.OpenAIError as e:
+            error_code = getattr(e, 'code', 'N/A')
+            error_message = str(e)
+            st.error(f"{labels['error_message']} (Error Code: {error_code}): {error_message}")
+            return None
+
+    # 채팅 기록 및 사용자가 입력한 메시지
+    user_input = st.text_input("Ask a question to the assistant:")
+
+    # 사용자가 입력한 질문이 있으면 메시지 추가 및 응답 생성
+    if user_input:
+        st.session_state.messages.append({"role": "user", "content": user_input})
+
+        # OpenAI API를 사용하여 응답 생성
+        assistant_reply = generate_response()
+
+        if assistant_reply:
+            # 어시스턴트의 응답 추가
+            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+
+    # 채팅 기록 표시
+    for message in st.session_state.messages:
+        if message["role"] == "user":
+            st.markdown(f"**{labels['user']}:** {message['content']}")
+        elif message["role"] == "assistant":
+            st.markdown(f"**{labels['assistant']}:** {message['content']}")
