@@ -10,7 +10,6 @@ from languages import get_labels  # languages.py에서 라벨 가져오기
 # OpenAI API 키 설정
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-
 # 방사성 동위원소 데이터 불러오기 함수
 def load_isotope_data(file_path):
     try:
@@ -39,6 +38,9 @@ if "prev_language" not in st.session_state:
 elif st.session_state.prev_language != language:
     st.session_state.messages = []
     st.session_state.prev_language = language
+
+# --- 섹션 1: 동위원소 산포도 ---
+st.header(labels['section1_header'])
 
 # 입력 연대 (범위 제한 없음)
 input_age = st.number_input(labels['input_age'], value=1, help=labels['input_age_help'])
@@ -130,13 +132,13 @@ if st.button(labels['plot_same_name']):
     st.pyplot(fig)
 
 # 결과 표시
-st.write(f"{labels['selected_isotope']} **{selected_isotope}**")
+st.write(f"{labels['selected_isotope']}: **{selected_isotope}**")
 st.write(f"**{labels['selected_half_life']}: {selected_half_life} {labels['half_life_years']}**")
 st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life} {labels['half_life_years']})")
-st.write(f"**{labels['nearest_to_one']}: {nearest_to_one_isotope}** ({nearest_to_one_half_life} {labels['half_life_years']})")
+st.write(f"{labels['nearest_to_one']}: **{nearest_to_one_isotope}** ({nearest_to_one_half_life} {labels['half_life_years']})")
 
-# --- 챗봇 섹션 시작 ---
-st.header(labels['chatbot_header'])
+# --- 섹션 2: 챗봇 ---
+st.header(labels['section2_header'])
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -218,4 +220,3 @@ for message in st.session_state.messages:
         st.markdown(f"**{labels['user']}:** {message['content']}")
     elif message["role"] == "assistant":
         st.markdown(f"**{labels['assistant']}:** {message['content']}")
-# --- 챗봇 섹션 끝 ---
