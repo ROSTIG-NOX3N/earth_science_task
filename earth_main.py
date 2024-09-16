@@ -91,12 +91,6 @@ with st.expander(labels['section1_header'], expanded=True):
     nearest_isotope = isotope_data[nearest_idx][0]
     nearest_half_life = isotope_data[nearest_idx][2]
 
-    # 반감기 값이 1초에 가장 가까운 동위원소 찾기
-    diffs_from_one = [abs(half_life - 1) for half_life in [item[2] for item in isotope_data]]
-    nearest_to_one_idx = np.argmin(diffs_from_one)
-    nearest_to_one_isotope = isotope_data[nearest_to_one_idx][0]
-    nearest_to_one_half_life = isotope_data[nearest_to_one_idx][2]
-
     # 1. 산포도 그리기 (그래프 내 텍스트는 영어로 고정)
     fig, ax = plt.subplots(figsize=(15, 6))
     ax.scatter(range(len(half_lives)), half_lives, color='blue', label=y_label, s=10)
@@ -105,11 +99,6 @@ with st.expander(labels['section1_header'], expanded=True):
     ax.annotate(f"Closest to input age ({input_age} {time_unit}): {nearest_isotope}", xy=(nearest_idx, nearest_half_life),
                 xytext=(nearest_idx, nearest_half_life * 1.5),
                 arrowprops=dict(facecolor='green', shrink=0.05))
-
-    # 반감기 값이 1초에 가장 가까운 동위원소 강조
-    ax.annotate(f"Isotope with Half-life closest to 1 second: {nearest_to_one_isotope}", xy=(nearest_to_one_idx, nearest_to_one_half_life),
-                xytext=(nearest_to_one_idx, nearest_to_one_half_life * 1.5),
-                arrowprops=dict(facecolor='red', shrink=0.05))
 
     # 선택된 동위원소 강조
     ax.scatter(selected_idx, selected_half_life, color='orange', label=f"Selected Isotope: {selected_isotope}", s=50)
@@ -134,4 +123,3 @@ with st.expander(labels['section1_header'], expanded=True):
     st.write(f"{labels['selected_isotope']}: **{selected_isotope}**")
     st.write(f"**{labels['selected_half_life']}: {selected_half_life} {labels['half_life_seconds']}**")
     st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life} {labels['half_life_seconds']})")
-    st.write(f"{labels['nearest_to_one']}: **{nearest_to_one_isotope}** ({nearest_to_one_half_life} {labels['half_life_seconds']})")
