@@ -143,13 +143,14 @@ with st.expander(labels['section1_header'], expanded=True):
 
 # --- 섹션 2: 챗봇 ---
 with st.expander(labels['section2_header'], expanded=False):
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-        # 시스템 메시지 추가 (응답 언어 설정)
-        st.session_state.messages.append({
-            "role": "system",
-            "content": f"You are a helpful assistant that communicates in {language}."
-        })
+    # 기존 코드에서 시스템 메시지 추가 부분 제거
+    # if "messages" not in st.session_state:
+    #     st.session_state.messages = []
+    #     # 시스템 메시지 추가 (응답 언어 설정)
+    #     st.session_state.messages.append({
+    #         "role": "system",
+    #         "content": f"You are a helpful assistant that communicates in {language}."
+    #     })
 
     # 고정된 질문 버튼 (질문 3개)
     col1, col2, col3 = st.columns(3)
