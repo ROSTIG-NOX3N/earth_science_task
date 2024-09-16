@@ -81,9 +81,15 @@ with st.expander(labels['section1_header'], expanded=True):
     if time_unit == 'seconds':
         half_lives = [item[2] for item in isotope_data if item[2] < threshold]  # 초 단위 데이터
         y_label = 'Half-life (seconds)'
+        selected_half_life_display = selected_half_life
+        nearest_half_life_display = isotope_data[selected_idx][2]
+        half_life_unit = labels['half_life_seconds']
     else:
         half_lives = [item[2] / threshold for item in isotope_data if item[2] >= threshold]  # 년 단위 데이터
         y_label = 'Half-life (years)'
+        selected_half_life_display = selected_half_life / threshold
+        nearest_half_life_display = isotope_data[selected_idx][2] / threshold
+        half_life_unit = labels['half_life_years']
 
     # 입력된 연대와 가장 가까운 동위원소 찾기
     diffs = [abs(half_life - input_age_seconds) for half_life in [item[2] for item in isotope_data]]
@@ -121,5 +127,5 @@ with st.expander(labels['section1_header'], expanded=True):
 
     # 결과 표시 (인터페이스 라벨은 선택된 언어로 표시)
     st.write(f"{labels['selected_isotope']}: **{selected_isotope}**")
-    st.write(f"**{labels['selected_half_life']}: {selected_half_life} {labels['half_life_seconds']}**")
-    st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life} {labels['half_life_seconds']})")
+    st.write(f"**{labels['selected_half_life']}: {selected_half_life_display:.2f} {half_life_unit}**")
+    st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life_display:.2f} {half_life_unit})")
