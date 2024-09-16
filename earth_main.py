@@ -81,33 +81,33 @@ with st.expander(labels['section1_header'], expanded=True):
     nearest_to_one_isotope = isotope_data[nearest_to_one_idx][0]
     nearest_to_one_half_life = isotope_data[nearest_to_one_idx][2]
 
-    # 1. 산포도 그리기
+    # 1. 산포도 그리기 (그래프 내 텍스트는 영어로 고정)
     fig, ax = plt.subplots(figsize=(15, 6))
-    ax.scatter(range(len(half_lives)), half_lives, color='blue', label=labels['half_life'], s=10)
+    ax.scatter(range(len(half_lives)), half_lives, color='blue', label='Half-life', s=10)
 
     # 입력된 연대에 가장 가까운 동위원소 강조
-    ax.annotate(f"{labels['closest_to_age']} ({input_age} {labels['years']}): {nearest_isotope}", xy=(nearest_idx, nearest_half_life),
+    ax.annotate(f"Closest to input age ({input_age} years): {nearest_isotope}", xy=(nearest_idx, nearest_half_life),
                 xytext=(nearest_idx, nearest_half_life * 1.5),
                 arrowprops=dict(facecolor='green', shrink=0.05))
 
     # 반감기 값이 1에 가장 가까운 동위원소 강조
-    ax.annotate(f"{labels['nearest_to_one']}: {nearest_to_one_isotope}", xy=(nearest_to_one_idx, nearest_to_one_half_life),
+    ax.annotate(f"Isotope with Half-life closest to 1 year: {nearest_to_one_isotope}", xy=(nearest_to_one_idx, nearest_to_one_half_life),
                 xytext=(nearest_to_one_idx, nearest_to_one_half_life * 1.5),
                 arrowprops=dict(facecolor='red', shrink=0.05))
 
     # 선택된 동위원소 강조
-    ax.scatter(selected_idx, selected_half_life, color='orange', label=f"{labels['selected_isotope']}: {selected_isotope}", s=50)
-    ax.axhline(y=input_age, color='gray', linestyle='--', label=f"{labels['input_age_label']}: {input_age}")
+    ax.scatter(selected_idx, selected_half_life, color='orange', label=f"Selected Isotope: {selected_isotope}", s=50)
+    ax.axhline(y=input_age, color='gray', linestyle='--', label=f"Input Age: {input_age}")
 
     # x축 범위를 전체 데이터로 설정
     ax.set_xlim(0, len(half_lives) - 1)
     # y축 범위를 설정하여 10^3 이상의 데이터가 포함되도록 설정
     ax.set_ylim(1e-21, 1e5)  # y축 범위를 넓힘
 
-    # 라벨 및 제목 설정
-    ax.set_xlabel(labels['isotope_index'])
-    ax.set_ylabel(labels['half_life'])
-    ax.set_title(labels['scatter_plot_title'])
+    # 라벨 및 제목 설정 (그래프 내부는 영어로 고정)
+    ax.set_xlabel('Isotope Index')
+    ax.set_ylabel('Half-life (years)')
+    ax.set_title('Scatter plot of Isotope Half-lives')
     ax.set_yscale('log')
     ax.legend()
 
@@ -120,16 +120,16 @@ with st.expander(labels['section1_header'], expanded=True):
         fig, ax = plt.subplots(figsize=(15, 6))
         for i, (name, number, half_life) in enumerate(filtered_isotopes):
             ax.scatter(i, half_life, color='blue', label=f'{name}-{number}' if i == 0 else "", s=50)
-        ax.scatter(filtered_isotope_numbers.index(selected_isotope_number), selected_half_life, color='orange', label=f"{labels['selected_isotope']}: {selected_isotope}", s=100)
-        ax.set_xlabel(labels['isotope_index'])
-        ax.set_ylabel(labels['half_life'])
-        ax.set_title(f"{selected_isotope_name} {labels['scatter_plot_title']}")
+        ax.scatter(filtered_isotope_numbers.index(selected_isotope_number), selected_half_life, color='orange', label=f"Selected Isotope: {selected_isotope}", s=100)
+        ax.set_xlabel('Isotope Index')
+        ax.set_ylabel('Half-life (years)')
+        ax.set_title(f"Scatter plot of all isotopes with the name {selected_isotope_name}")
         ax.set_yscale('log')
         ax.set_ylim(1e-21, 1e5)  # y축 범위를 설정하여 더 큰 범위의 값을 표시
         ax.legend()
         st.pyplot(fig)
 
-    # 결과 표시
+    # 결과 표시 (인터페이스 라벨은 선택된 언어로 표시)
     st.write(f"{labels['selected_isotope']}: **{selected_isotope}**")
     st.write(f"**{labels['selected_half_life']}: {selected_half_life} {labels['half_life_years']}**")
     st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life} {labels['half_life_years']})")
