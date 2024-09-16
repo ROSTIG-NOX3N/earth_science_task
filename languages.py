@@ -16,11 +16,11 @@ def get_labels(language):
             'selected_half_life': '선택된 동위원소의 반감기',
             'nearest_isotope': '입력된 연대와 가장 가까운 동위원소',
             'half_life_seconds': '초 (반감기)',
-            'half_life_years': '년 (반감기)',  # 새로운 항목 추가
+            'half_life_years': '년 (반감기)',
             'nearest_to_one': '반감기가 1초에 가장 가까운 동위원소',
             'input_age_help': '동위원소를 비교할 연대를 입력하세요.',
-            'seconds': '초',  # 새로운 항목 추가
-            'years': '년',  # 새로운 항목 추가
+            'seconds': '초',
+            'years': '년',
             'isotope_not_found': '선택한 동위원소를 찾을 수 없습니다.',
             # 챗봇 라벨
             'chatbot_header': '챗봇',
@@ -65,13 +65,13 @@ def get_labels(language):
             'selected_half_life': 'Half-life of selected isotope',
             'nearest_isotope': 'Closest Isotope to Input Age',
             'half_life_seconds': 'seconds (Half-life)',
-            'half_life_years': 'years (Half-life)',  # 새로운 항목 추가
+            'half_life_years': 'years (Half-life)',
             'nearest_to_one': 'Isotope with Half-life closest to 1 second',
             'input_age_help': 'Please enter an age to compare isotopes.',
-            'seconds': 'seconds',  # 새로운 항목 추가
-            'years': 'years',  # 새로운 항목 추가
+            'seconds': 'seconds',
+            'years': 'years',
             'isotope_not_found': 'Selected isotope not found.',
-            # 챗봇 라벨
+            # Chatbot labels
             'chatbot_header': 'Chatbot',
             'error_message': 'Sorry, failed to generate a response.',
             'user': 'User',
@@ -114,13 +114,13 @@ def get_labels(language):
             'selected_half_life': '選択された同位体の半減期',
             'nearest_isotope': '入力された年代に最も近い同位体',
             'half_life_seconds': '秒 (半減期)',
-            'half_life_years': '年 (半減期)',  # 새로운 항목 추가
+            'half_life_years': '年 (半減期)',
             'nearest_to_one': '半減期が1秒に最も近い同位体',
             'input_age_help': '同位体を比較するための年代を入力してください。',
-            'seconds': '秒',  # 새로운 항목 추가
-            'years': '年',  # 새로운 항목 추가
+            'seconds': '秒',
+            'years': '年',
             'isotope_not_found': '選択した同位体が見つかりません。',
-            # 챗봇 라벨
+            # Chatbot labels
             'chatbot_header': 'チャットボット',
             'error_message': '申し訳ありませんが、応答の生成に失敗しました。',
             'user': 'ユーザー',
