@@ -26,7 +26,7 @@ def load_isotope_data(file_path):
         return []
 
 # 방사성 동위원소 데이터 불러오기
-isotope_data = load_isotope_data('Formatted_Radioactive_Isotope_Half_Lives.csv')
+isotope_data = load_isotope_data('Formatted_Radioactive_Isotope_Half_Lives.csv')  # JSON이 아닌 CSV 파일 사용
 
 if not isotope_data:
     st.stop()
@@ -34,7 +34,6 @@ if not isotope_data:
 # 언어 선택 (한국어, 영어, 일본어 지원)
 language = st.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
 labels = get_labels(language)  # 선택된 언어에 맞는 라벨 가져오기
-
 # 언어 변경 시 채팅 기록 초기화 및 시스템 메시지 추가
 if "prev_language" not in st.session_state or st.session_state.prev_language != language:
     st.session_state.prev_language = language
