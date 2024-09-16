@@ -2,6 +2,8 @@ def get_labels(language):
     if language == '한국어':
         return {
             # 기존 라벨...
+            'section1_header': '섹션 1: 동위원소 산포도',
+            'section2_header': '섹션 2: 챗봇',
             'input_age': '지질의 연대를 입력해주세요:',
             'select_isotope_name': '동위원소 이름을 선택해주세요:',
             'select_isotope_number': '동위원소 번호를 선택해주세요:',
@@ -48,6 +50,8 @@ def get_labels(language):
     elif language == 'English':
         return {
             # Existing labels...
+            'section1_header': 'Section 1: Isotope Scatter Plot',
+            'section2_header': 'Section 2: Chatbot',
             'input_age': 'Enter a comparison age:',
             'select_isotope_name': 'Select Isotope Name:',
             'select_isotope_number': 'Select Isotope Number:',
@@ -94,6 +98,8 @@ def get_labels(language):
     elif language == '日本語':
         return {
             # 既存のラベル...
+            'section1_header': 'セクション 1: 同位体の散布図',
+            'section2_header': 'セクション 2: チャットボット',
             'input_age': '比較する年代を入力してください:',
             'select_isotope_name': '同位体名を選択してください:',
             'select_isotope_number': '同位体番号を選択してください:',
