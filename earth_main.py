@@ -137,6 +137,25 @@ with tab1:
     # 그래프 출력
     st.pyplot(fig)
 
+    # 버튼을 눌러 선택한 동위원소의 산포도 보기
+    if st.button("동위원소 이름으로 산포도 보기"):
+        # 선택한 동위원소 이름으로 필터링
+        filtered_isotopes = [(name, half_life) for name, half_life in zip(isotope_names, [entry[2] for entry in isotope_data]) if name == selected_isotope_name]
+
+        # 필터링된 동위원소 산포도 그리기
+        fig2, ax2 = plt.subplots(figsize=(15, 6))
+        ax2.scatter(range(len(filtered_isotopes)), [item[1] for item in filtered_isotopes], color='purple', label=f'{selected_isotope_name} Isotopes', s=50)
+
+        # 라벨 및 제목 설정
+        ax2.set_xlabel('Isotope Index')
+        ax2.set_ylabel(y_label)
+        ax2.set_title(f'Scatter plot of {selected_isotope_name} Isotopes')
+        ax2.set_yscale('log')
+        ax2.legend()
+
+        # 그래프 출력
+        st.pyplot(fig2)
+
     # 결과 표시 (인터페이스 라벨은 선택된 언어로 표시)
     st.write(f"{labels['selected_isotope']}: **{selected_isotope}**")
     st.write(f"**{labels['selected_half_life']}: {selected_half_life_display:.2f} {half_life_unit}**")
