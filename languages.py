@@ -7,7 +7,7 @@ def get_labels(language):
             'input_age': '지질의 연대를 입력해주세요:',
             'select_isotope_name': '동위원소 이름을 선택해주세요:',
             'select_isotope_number': '동위원소 번호를 선택해주세요:',
-            'scatter_plot_title': '동위원소 반감기 산포도',
+            'scatter_plot_title': '동위원소 반감기 산포도',  # 그래프 내부는 영어로 고정되므로 이 라벨은 인터페이스에만 사용됩니다.
             'half_life': '반감기 (년)',
             'isotope_index': '동위원소 인덱스',
             'closest_to_age': '입력된 연대와 가장 가까운 동위원소',
