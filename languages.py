@@ -7,7 +7,7 @@ def get_labels(language):
             'input_age': '지질의 연대를 입력해주세요 (초 단위):',
             'select_isotope_name': '동위원소 이름을 선택해주세요:',
             'select_isotope_number': '동위원소 번호를 선택해주세요:',
-            'scatter_plot_title': '동위원소 반감기 산포도',
+            'scatter_plot_title': '동위원소 반감기 산포도',  # 그래프 내부는 영어로 고정되므로 이 라벨은 인터페이스에만 사용됩니다.
             'half_life': '반감기 (초)',
             'isotope_index': '동위원소 인덱스',
             'closest_to_age': '입력된 연대와 가장 가까운 동위원소',
@@ -20,10 +20,10 @@ def get_labels(language):
             'nearest_to_one': '반감기가 1초에 가장 가까운 동위원소',
             'input_age_help': '동위원소를 비교할 연대(초 단위)를 입력하세요.',
             'seconds': '초',
-            'isotope_not_found': '선택한 동위원소를 찾을 수 없습니다。',
+            'isotope_not_found': '선택한 동위원소를 찾을 수 없습니다.',
             # 챗봇 라벨
             'chatbot_header': '챗봇',
-            'error_message': '죄송합니다, 답변을 생성하는 데 실패했습니다。',
+            'error_message': '죄송합니다, 답변을 생성하는 데 실패했습니다.',
             'user': '사용자',
             'assistant': '어시스턴트',
             'question1': '질문 1',
