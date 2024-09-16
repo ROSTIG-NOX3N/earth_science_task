@@ -7,7 +7,7 @@ def get_labels(language):
             'input_age': '지질의 연대를 입력해주세요 (초 단위):',
             'select_isotope_name': '동위원소 이름을 선택해주세요:',
             'select_isotope_number': '동위원소 번호를 선택해주세요:',
-            'scatter_plot_title': '동위원소 반감기 산포도',  # 그래프 내부는 영어로 고정되므로 이 라벨은 인터페이스에만 사용됩니다.
+            'scatter_plot_title': '동위원소 반감기 산포도',
             'half_life': '반감기 (초)',
             'isotope_index': '동위원소 인덱스',
             'closest_to_age': '입력된 연대와 가장 가까운 동위원소',
@@ -16,14 +16,14 @@ def get_labels(language):
             'input_age_label': '입력 연대',
             'selected_half_life': '선택된 동위원소의 반감기',
             'nearest_isotope': '입력된 연대와 가장 가까운 동위원소',
-            'half_life_seconds': '초 (반감기)',
+            'half_life_seconds': '초 (반감기)',  # 이 부분을 추가했습니다.
             'nearest_to_one': '반감기가 1초에 가장 가까운 동위원소',
             'input_age_help': '동위원소를 비교할 연대(초 단위)를 입력하세요.',
             'seconds': '초',
-            'isotope_not_found': '선택한 동위원소를 찾을 수 없습니다.',
+            'isotope_not_found': '선택한 동위원소를 찾을 수 없습니다。',
             # 챗봇 라벨
             'chatbot_header': '챗봇',
-            'error_message': '죄송합니다, 답변을 생성하는 데 실패했습니다.',
+            'error_message': '죄송합니다, 답변을 생성하는 데 실패했습니다。',
             'user': '사용자',
             'assistant': '어시스턴트',
             'question1': '질문 1',
@@ -64,7 +64,7 @@ def get_labels(language):
             'input_age_label': 'Input Age',
             'selected_half_life': 'Half-life of selected isotope',
             'nearest_isotope': 'Closest Isotope to Input Age',
-            'half_life_seconds': 'seconds (Half-life)',
+            'half_life_seconds': 'seconds (Half-life)',  # This line was added.
             'nearest_to_one': 'Isotope with Half-life closest to 1 second',
             'input_age_help': 'Please enter an age to compare isotopes (in seconds).',
             'seconds': 'seconds',
@@ -112,7 +112,7 @@ def get_labels(language):
             'input_age_label': '入力された年代',
             'selected_half_life': '選択された同位体の半減期',
             'nearest_isotope': '入力された年代に最も近い同位体',
-            'half_life_seconds': '秒 (半減期)',
+            'half_life_seconds': '秒 (半減期)',  # この行を追加しました。
             'nearest_to_one': '半減期が1秒に最も近い同位体',
             'input_age_help': '同位体を比較するための年代（秒単位）を入力してください。',
             'seconds': '秒',
