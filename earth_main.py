@@ -144,9 +144,27 @@ with st.expander(labels['section1_header'], expanded=True):
     st.write(f"{labels['nearest_to_one']}: **{nearest_to_one_isotope}** ({nearest_to_one_half_life} {labels['half_life_seconds']})")
 
 # --- 섹션 2: 챗봇 ---
+with st.expander(labels['section1_header'], expanded=True):
+    # 섹션 1의 코드 그대로 유지
+    # ... (이전 코드와 동일하므로 생략)
+
+# --- 섹션 2: 챗봇 ---
 with st.expander(labels['section2_header'], expanded=False):
     # 고정된 질문 버튼 (질문 3개)
     col1, col2, col3 = st.columns(3)
+
+    # OpenAI API 호출 함수 정의
+    def generate_response():
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=st.session_state.messages
+            )
+            assistant_reply = response.choices[0].message.content
+            return assistant_reply
+        except Exception as e:
+            st.error(f"{labels['error_message']}: {str(e)}")
+            return None
 
     with col1:
         if st.button(labels['question1']):
@@ -155,17 +173,7 @@ with st.expander(labels['section2_header'], expanded=False):
             st.session_state.messages.append({"role": "user", "content": user_input})
 
             # OpenAI API를 사용하여 응답 생성
-            try:
-                response = openai.ChatCompletion.create(
-                    model="gpt-3.5-turbo",
-                    messages=st.session_state.messages
-                )
-                assistant_reply = response["choices"][0]["message"]["content"]
-                # 응답 객체 출력 (디버깅용)
-                # st.write(response)
-            except Exception as e:
-                st.error(f"{labels['error_message']}: {str(e)}")
-                assistant_reply = None
+            assistant_reply = generate_response()
 
             if assistant_reply:
                 # 어시스턴트의 응답 추가
@@ -178,17 +186,7 @@ with st.expander(labels['section2_header'], expanded=False):
             st.session_state.messages.append({"role": "user", "content": user_input})
 
             # OpenAI API를 사용하여 응답 생성
-            try:
-                response = openai.ChatCompletion.create(
-                    model="gpt-3.5-turbo",
-                    messages=st.session_state.messages
-                )
-                assistant_reply = response["choices"][0]["message"]["content"]
-                # 응답 객체 출력 (디버깅용)
-                # st.write(response)
-            except Exception as e:
-                st.error(f"{labels['error_message']}: {str(e)}")
-                assistant_reply = None
+            assistant_reply = generate_response()
 
             if assistant_reply:
                 # 어시스턴트의 응답 추가
@@ -201,17 +199,7 @@ with st.expander(labels['section2_header'], expanded=False):
             st.session_state.messages.append({"role": "user", "content": user_input})
 
             # OpenAI API를 사용하여 응답 생성
-            try:
-                response = openai.ChatCompletion.create(
-                    model="gpt-3.5-turbo",
-                    messages=st.session_state.messages
-                )
-                assistant_reply = response["choices"][0]["message"]["content"]
-                # 응답 객체 출력 (디버깅용)
-                # st.write(response)
-            except Exception as e:
-                st.error(f"{labels['error_message']}: {str(e)}")
-                assistant_reply = None
+            assistant_reply = generate_response()
 
             if assistant_reply:
                 # 어시스턴트의 응답 추가
