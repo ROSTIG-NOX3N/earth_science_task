@@ -138,9 +138,12 @@ with tab1:
     st.pyplot(fig)
 
     # 버튼을 눌러 선택한 동위원소의 산포도 보기
-    if st.button("동위원소 이름으로 산포도 보기"):
+    if st.button(labels['plot_same_name']):
         # 선택한 동위원소 이름으로 필터링
-        filtered_isotopes = [(name, half_life) for name, half_life in zip(isotope_names, [entry[2] for entry in isotope_data]) if name == selected_isotope_name]
+        if time_unit == 'years':
+            filtered_isotopes = [(name, half_life / threshold) for name, half_life in zip(isotope_names, [entry[2] for entry in isotope_data]) if name == selected_isotope_name]
+        else:
+            filtered_isotopes = [(name, half_life) for name, half_life in zip(isotope_names, [entry[2] for entry in isotope_data]) if name == selected_isotope_name]
 
         # 필터링된 동위원소 산포도 그리기
         fig2, ax2 = plt.subplots(figsize=(15, 6))
