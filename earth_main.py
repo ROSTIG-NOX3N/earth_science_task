@@ -1,10 +1,9 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
-import json  # JSON 파일을 읽기 위해 필요
+import json
 import openai
-import random  # 무작위 선택을 위해 필요
-from languages import get_labels  # languages.py에서 라벨 가져오기
+from languages import get_labels
 
 # OpenAI API 키 설정
 openai.api_key = st.secrets["OPENAI_API_KEY"]
@@ -30,6 +29,7 @@ if not isotope_data:
 # 언어 선택 (한국어, 영어, 일본어 지원)
 language = st.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
 labels = get_labels(language)  # 선택된 언어에 맞는 라벨 가져오기
+
 # 언어 변경 시 채팅 기록 초기화 및 시스템 메시지 추가
 if "prev_language" not in st.session_state or st.session_state.prev_language != language:
     st.session_state.prev_language = language
@@ -78,8 +78,12 @@ with st.expander(labels['section1_header'], expanded=True):
 
     # 초 단위 또는 년 단위로 반감기 데이터를 구분
     threshold = 31_536_000  # 1년을 초로 변환
-    half_lives_seconds = [item[2] for item in isotope_data if item[2] < threshold]  # 초 단위 데이터
-    half_lives_years = [item[2] / threshold for item in isotope_data if item[2] >= threshold]  # 년 단위 데이터
+    if time_unit == 'seconds':
+        half_lives = [item[2] for item in isotope_data if item[2] < threshold]  # 초 단위 데이터
+        y_label = 'Half-life (seconds)'
+    else:
+        half_lives = [item[2] / threshold for item in isotope_data if item[2] >= threshold]  # 년 단위 데이터
+        y_label = 'Half-life (years)'
 
     # 입력된 연대와 가장 가까운 동위원소 찾기
     diffs = [abs(half_life - input_age_seconds) for half_life in [item[2] for item in isotope_data]]
@@ -95,8 +99,7 @@ with st.expander(labels['section1_header'], expanded=True):
 
     # 1. 산포도 그리기 (그래프 내 텍스트는 영어로 고정)
     fig, ax = plt.subplots(figsize=(15, 6))
-    ax.scatter(range(len(half_lives_seconds)), half_lives_seconds, color='blue', label='Half-life (seconds)', s=10)
-    ax.scatter(range(len(half_lives_years)), half_lives_years, color='green', label='Half-life (years)', s=10)
+    ax.scatter(range(len(half_lives)), half_lives, color='blue', label=y_label, s=10)
 
     # 입력된 연대에 가장 가까운 동위원소 강조
     ax.annotate(f"Closest to input age ({input_age} {time_unit}): {nearest_isotope}", xy=(nearest_idx, nearest_half_life),
@@ -113,13 +116,13 @@ with st.expander(labels['section1_header'], expanded=True):
     ax.axhline(y=input_age_seconds, color='gray', linestyle='--', label=f"Input Age: {input_age} {time_unit}")
 
     # x축 범위를 전체 데이터로 설정
-    ax.set_xlim(0, len(half_lives_seconds) + len(half_lives_years) - 1)
+    ax.set_xlim(0, len(half_lives) - 1)
     # y축 범위를 설정하여 데이터가 잘 보이도록 설정
-    ax.set_ylim(min(half_lives_seconds + half_lives_years)/10, max(half_lives_seconds + half_lives_years)*10)
+    ax.set_ylim(min(half_lives)/10, max(half_lives)*10)
 
     # 라벨 및 제목 설정 (그래프 내부는 영어로 고정)
     ax.set_xlabel('Isotope Index')
-    ax.set_ylabel('Half-life (seconds or years)')
+    ax.set_ylabel(y_label)
     ax.set_title('Scatter plot of Isotope Half-lives')
     ax.set_yscale('log')
     ax.legend()
