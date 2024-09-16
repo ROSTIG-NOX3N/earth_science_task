@@ -1,8 +1,8 @@
 def get_labels(language):
     if language == '한국어':
         return {
-            'section1_header': '섹션 1: 동위원소 산포도',
-            'section2_header': '섹션 2: 챗봇',
+            'section1_header': '그래프',
+            'section2_header': '챗봇',
             'input_age': '지질의 연대를 입력해주세요:',
             'select_isotope_name': '동위원소 이름을 선택해주세요:',
             'select_isotope_number': '동위원소 번호를 선택해주세요:',
@@ -16,7 +16,7 @@ def get_labels(language):
             'selected_half_life': '선택된 동위원소의 반감기',
             'nearest_isotope': '입력된 연대와 가장 가까운 동위원소',
             'half_life_seconds': '초 (반감기)',
-            'half_life_years': '년 (반감기)',
+            'half_life_years': '년 (반감기)',  # 새로운 항목 추가
             'nearest_to_one': '반감기가 1초에 가장 가까운 동위원소',
             'input_age_help': '동위원소를 비교할 연대를 입력하세요.',
             'seconds': '초',
@@ -50,8 +50,8 @@ def get_labels(language):
         }
     elif language == 'English':
         return {
-            'section1_header': 'Section 1: Isotope Scatter Plot',
-            'section2_header': 'Section 2: Chatbot',
+            'section1_header': 'Graph',
+            'section2_header': 'Chatbot',
             'input_age': 'Enter a comparison age:',
             'select_isotope_name': 'Select Isotope Name:',
             'select_isotope_number': 'Select Isotope Number:',
@@ -65,13 +65,13 @@ def get_labels(language):
             'selected_half_life': 'Half-life of selected isotope',
             'nearest_isotope': 'Closest Isotope to Input Age',
             'half_life_seconds': 'seconds (Half-life)',
-            'half_life_years': 'years (Half-life)',
+            'half_life_years': 'years (Half-life)',  # 새로운 항목 추가
             'nearest_to_one': 'Isotope with Half-life closest to 1 second',
             'input_age_help': 'Please enter an age to compare isotopes.',
             'seconds': 'seconds',
             'years': 'years',
             'isotope_not_found': 'Selected isotope not found.',
-            # Chatbot labels
+            # 챗봇 라벨
             'chatbot_header': 'Chatbot',
             'error_message': 'Sorry, failed to generate a response.',
             'user': 'User',
@@ -99,8 +99,8 @@ def get_labels(language):
         }
     elif language == '日本語':
         return {
-            'section1_header': 'セクション 1: 同位体の散布図',
-            'section2_header': 'セクション 2: チャットボット',
+            'section1_header': 'グラフ',
+            'section2_header': 'チャットボット',
             'input_age': '比較する年代を入力してください:',
             'select_isotope_name': '同位体名を選択してください:',
             'select_isotope_number': '同位体番号を選択してください:',
@@ -114,13 +114,13 @@ def get_labels(language):
             'selected_half_life': '選択された同位体の半減期',
             'nearest_isotope': '入力された年代に最も近い同位体',
             'half_life_seconds': '秒 (半減期)',
-            'half_life_years': '年 (半減期)',
+            'half_life_years': '年 (半減期)',  # 새로운 항목 추가
             'nearest_to_one': '半減期が1秒に最も近い同位体',
             'input_age_help': '同位体を比較するための年代を入力してください。',
             'seconds': '秒',
             'years': '年',
             'isotope_not_found': '選択した同位体が見つかりません。',
-            # Chatbot labels
+            # チャットボットのラベル
             'chatbot_header': 'チャットボット',
             'error_message': '申し訳ありませんが、応答の生成に失敗しました。',
             'user': 'ユーザー',
