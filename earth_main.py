@@ -114,4 +114,67 @@ st.pyplot(fig)
 
 # 동일한 이름의 동위원소만 산포도로 그리기 버튼
 if st.button(labels['plot_same_name']):
-    filtered_isotopes = [(name, number, hl) for name, number, hl in zip(isotope_names, isotope_numbers, half_lives) if name =
+    filtered_isotopes = [(name, number, hl) for name, number, hl in zip(isotope_names, isotope_numbers, half_lives) if name == selected_isotope_name]
+    fig, ax = plt.subplots(figsize=(15, 6))
+    for i, (name, number, half_life) in enumerate(filtered_isotopes):
+        ax.scatter(i, half_life, color='blue', label=f'{name}-{number}' if i == 0 else "", s=50)
+    ax.scatter(filtered_isotope_numbers.index(selected_isotope_number), selected_half_life, color='orange', label=f"{labels['selected_isotope']}: {selected_isotope}", s=100)
+    ax.set_xlabel(labels['isotope_index'])
+    ax.set_ylabel(labels['half_life'])
+    ax.set_title(f"{selected_isotope_name} {labels['scatter_plot_title']}")
+    ax.set_yscale('log')
+    ax.set_ylim(1e-21, 1e5)  # y축 범위를 설정하여 더 큰 범위의 값을 표시
+    ax.legend()
+    st.pyplot(fig)
+
+# 결과 표시
+st.write(f"{labels['selected_isotope']} **{selected_isotope}**")
+st.write(f"**{labels['selected_half_life']}: {selected_half_life} {labels['half_life_years']}**")
+st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life} {labels['half_life_years']})")
+st.write(f"**{labels['nearest_to_one']}: {nearest_to_one_isotope}** ({nearest_to_one_half_life} {labels['half_life_years']})")
+
+# --- 챗봇 섹션 시작 ---
+st.header(labels['chatbot_header'])
+
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+    # 시스템 메시지 추가 (응답 언어 설정)
+    st.session_state.messages.append({
+        "role": "system",
+        "content": f"You are a helpful assistant that communicates in {language}."
+    })
+
+# 고정된 질문 목록 (선택된 언어에 맞게)
+fixed_questions = labels['fixed_questions']
+
+# 질문 선택
+selected_question = st.selectbox(labels['select_question'], fixed_questions)
+
+if st.button(labels['ask_question']):
+    user_input = selected_question
+
+    # 사용자의 메시지 추가
+    st.session_state.messages.append({"role": "user", "content": user_input})
+
+    # OpenAI API를 사용하여 응답 생성
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=st.session_state.messages
+        )
+        assistant_reply = response["choices"][0]["message"]["content"]
+    except Exception as e:
+        st.error(labels['error_message'])
+        assistant_reply = None
+
+    if assistant_reply:
+        # 어시스턴트의 응답 추가
+        st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+
+# 채팅 내역 표시
+for message in st.session_state.messages:
+    if message["role"] == "user":
+        st.markdown(f"**{labels['user']}:** {message['content']}")
+    elif message["role"] == "assistant":
+        st.markdown(f"**{labels['assistant']}:** {message['content']}")
+# --- 챗봇 섹션 끝 ---
