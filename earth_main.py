@@ -1,7 +1,7 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
-import csv  # CSV 파일을 읽기 위해 필요
+import json  # JSON 파일을 읽기 위해 필요
 import openai
 import random  # 무작위 선택을 위해 필요
 from languages import get_labels  # languages.py에서 라벨 가져오기
@@ -9,24 +9,20 @@ from languages import get_labels  # languages.py에서 라벨 가져오기
 # OpenAI API 키 설정
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-# 방사성 동위원소 데이터 불러오기 함수 (CSV 파일을 읽도록 수정)
+# 방사성 동위원소 데이터 불러오기 함수 (JSON 파일을 읽도록 수정)
 def load_isotope_data(file_path):
     try:
-        isotope_data = []
-        with open(file_path, newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                isotope_name = row["Isotope"]
-                half_life = float(row["Half Life"])
-                computed_half_life = float(row["Computed Half Life"])
-                isotope_data.append((isotope_name, half_life, computed_half_life))
+        with open(file_path, 'r', encoding='utf-8') as jsonfile:
+            isotope_data = json.load(jsonfile)
+        # JSON 파일에서 동위원소 이름, 반감기 정보 가져오기
+        isotope_data = [(entry["Isotope"], float(entry["Half Life"]), float(entry["Computed Half Life"])) for entry in isotope_data]
         return isotope_data
     except Exception as e:
         st.error(f"Failed to load isotope data: {e}")
         return []
 
 # 방사성 동위원소 데이터 불러오기
-isotope_data = load_isotope_data('Formatted_Radioactive_Isotope_Half_Lives.csv')  # JSON이 아닌 CSV 파일 사용
+isotope_data = load_isotope_data('Formatted_Radioactive_Isotope_Half_Lives.json')  # JSON 파일 사용
 
 if not isotope_data:
     st.stop()
