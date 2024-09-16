@@ -82,28 +82,32 @@ with st.expander(labels['section1_header'], expanded=True):
         half_lives = [item[2] for item in isotope_data if item[2] < threshold]  # 초 단위 데이터
         y_label = 'Half-life (seconds)'
         selected_half_life_display = selected_half_life
-        nearest_half_life_display = isotope_data[selected_idx][2]
         half_life_unit = labels['half_life_seconds']
     else:
         half_lives = [item[2] / threshold for item in isotope_data if item[2] >= threshold]  # 년 단위 데이터
         y_label = 'Half-life (years)'
         selected_half_life_display = selected_half_life / threshold
-        nearest_half_life_display = isotope_data[selected_idx][2] / threshold
         half_life_unit = labels['half_life_years']
 
-    # 입력된 연대와 가장 가까운 동위원소 찾기
-    diffs = [abs(half_life - input_age_seconds) for half_life in [item[2] for item in isotope_data]]
-    nearest_idx = np.argmin(diffs)
-    nearest_isotope = isotope_data[nearest_idx][0]
-    nearest_half_life = isotope_data[nearest_idx][2]
+    # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 찾기
+    ratios = [abs(input_age_seconds / half_life - 1) for half_life in [item[2] for item in isotope_data]]
+    nearest_ratio_idx = np.argmin(ratios)
+    nearest_isotope = isotope_data[nearest_ratio_idx][0]
+    nearest_half_life = isotope_data[nearest_ratio_idx][2]
+
+    # 선택된 단위에 맞춰 반감기를 표시할 때 최소 소수점 자릿수 설정 (작은 값을 반올림하지 않도록)
+    if nearest_half_life < 0.01:  # 매우 작은 값일 경우
+        nearest_half_life_display = f"{nearest_half_life:.6f}"  # 소수점 6자리까지 표시
+    else:
+        nearest_half_life_display = f"{nearest_half_life:.2f}"  # 소수점 2자리까지 표시
 
     # 1. 산포도 그리기 (그래프 내 텍스트는 영어로 고정)
     fig, ax = plt.subplots(figsize=(15, 6))
     ax.scatter(range(len(half_lives)), half_lives, color='blue', label=y_label, s=10)
 
     # 입력된 연대에 가장 가까운 동위원소 강조
-    ax.annotate(f"Closest to input age ({input_age} {time_unit}): {nearest_isotope}", xy=(nearest_idx, nearest_half_life),
-                xytext=(nearest_idx, nearest_half_life * 1.5),
+    ax.annotate(f"Closest to input age ({input_age} {time_unit}): {nearest_isotope}", xy=(nearest_ratio_idx, nearest_half_life),
+                xytext=(nearest_ratio_idx, nearest_half_life * 1.5),
                 arrowprops=dict(facecolor='green', shrink=0.05))
 
     # 선택된 동위원소 강조
@@ -128,4 +132,4 @@ with st.expander(labels['section1_header'], expanded=True):
     # 결과 표시 (인터페이스 라벨은 선택된 언어로 표시)
     st.write(f"{labels['selected_isotope']}: **{selected_isotope}**")
     st.write(f"**{labels['selected_half_life']}: {selected_half_life_display:.2f} {half_life_unit}**")
-    st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life_display:.2f} {half_life_unit})")
+    st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life_display} {half_life_unit})")
