@@ -31,12 +31,14 @@ if not isotope_data:
 language = st.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
 labels = get_labels(language)  # 선택된 언어에 맞는 라벨 가져오기
 
-# 언어 변경 시 채팅 기록 초기화
-if "prev_language" not in st.session_state:
+# 언어 변경 시 채팅 기록 초기화 및 시스템 메시지 추가
+if "prev_language" not in st.session_state or st.session_state.prev_language != language:
     st.session_state.prev_language = language
-elif st.session_state.prev_language != language:
     st.session_state.messages = []
-    st.session_state.prev_language = language
+    st.session_state.messages.append({
+        "role": "system",
+        "content": f"You are a helpful assistant that communicates in {language}."
+    })
 
 # --- 섹션 1: 동위원소 산포도 ---
 with st.expander(labels['section1_header'], expanded=True):
@@ -143,15 +145,6 @@ with st.expander(labels['section1_header'], expanded=True):
 
 # --- 섹션 2: 챗봇 ---
 with st.expander(labels['section2_header'], expanded=False):
-    # 기존 코드에서 시스템 메시지 추가 부분 제거
-    # if "messages" not in st.session_state:
-    #     st.session_state.messages = []
-    #     # 시스템 메시지 추가 (응답 언어 설정)
-    #     st.session_state.messages.append({
-    #         "role": "system",
-    #         "content": f"You are a helpful assistant that communicates in {language}."
-    #     })
-
     # 고정된 질문 버튼 (질문 3개)
     col1, col2, col3 = st.columns(3)
 
@@ -168,8 +161,10 @@ with st.expander(labels['section2_header'], expanded=False):
                     messages=st.session_state.messages
                 )
                 assistant_reply = response["choices"][0]["message"]["content"]
+                # 응답 객체 출력 (디버깅용)
+                # st.write(response)
             except Exception as e:
-                st.error(labels['error_message'])
+                st.error(f"{labels['error_message']}: {str(e)}")
                 assistant_reply = None
 
             if assistant_reply:
@@ -189,8 +184,10 @@ with st.expander(labels['section2_header'], expanded=False):
                     messages=st.session_state.messages
                 )
                 assistant_reply = response["choices"][0]["message"]["content"]
+                # 응답 객체 출력 (디버깅용)
+                # st.write(response)
             except Exception as e:
-                st.error(labels['error_message'])
+                st.error(f"{labels['error_message']}: {str(e)}")
                 assistant_reply = None
 
             if assistant_reply:
@@ -210,8 +207,10 @@ with st.expander(labels['section2_header'], expanded=False):
                     messages=st.session_state.messages
                 )
                 assistant_reply = response["choices"][0]["message"]["content"]
+                # 응답 객체 출력 (디버깅용)
+                # st.write(response)
             except Exception as e:
-                st.error(labels['error_message'])
+                st.error(f"{labels['error_message']}: {str(e)}")
                 assistant_reply = None
 
             if assistant_reply:
