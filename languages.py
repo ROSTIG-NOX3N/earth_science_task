@@ -105,7 +105,7 @@ def get_labels(language):
                 'question3': [
                     'If we don\'t know the geological age, how do we choose isotopes and measure the age?',
                     'How do we select isotopes and measure age when the geological age is unknown?',
-                    'How do geologists choose isotopes and determine age from samples with unknown ages?'
+                    'How do geologists choose isotopes and determine age from samples with unknown ages?',
                 ]
             }
         }
