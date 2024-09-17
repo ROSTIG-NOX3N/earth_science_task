@@ -61,7 +61,7 @@ def chatbot_ui(language):
             elif message["role"] == "assistant":
                 chat_messages += assistant_message_style.format(message['content'])
 
-        # 채팅 기록 출력
+        # 채팅 기록 출력 (디버깅 메시지 없음)
         st.markdown(chat_messages, unsafe_allow_html=True)
 
     # --- 오른쪽: 세로로 나열된 버튼 공간 ---
