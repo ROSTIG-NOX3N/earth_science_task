@@ -37,6 +37,24 @@ def chatbot_ui(language):
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
+    # 채팅 말풍선 스타일 적용을 위한 HTML/CSS
+    user_message_style = """
+        <div style='background-color: #dcf8c6; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%;'>
+            <b>User:</b> {}</div>
+    """
+
+    assistant_message_style = """
+        <div style='background-color: #f1f0f0; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left;'>
+            <b>Assistant:</b> {}</div>
+    """
+
+    # 채팅 기록 표시
+    for message in st.session_state.messages:
+        if message["role"] == "user":
+            st.markdown(user_message_style.format(message['content']), unsafe_allow_html=True)
+        elif message["role"] == "assistant":
+            st.markdown(assistant_message_style.format(message['content']), unsafe_allow_html=True)
+
     # 질문 버튼 3개 생성 및 랜덤 질문
     col1, col2, col3 = st.columns(3)
 
@@ -68,9 +86,3 @@ def chatbot_ui(language):
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-    # 채팅 기록 표시
-    for message in st.session_state.messages:
-        if message["role"] == "user":
-            st.markdown(f"**{labels['user']}:** {message['content']}")
-        elif message["role"] == "assistant":
-            st.markdown(f"**{labels['assistant']}:** {message['content']}")
