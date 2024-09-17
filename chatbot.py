@@ -12,8 +12,12 @@ def chatbot_ui(language):
         st.session_state.prev_language = language
 
     if st.session_state.prev_language != language:
-        st.session_state.messages = []
+        st.session_state.messages = []  # 언어 변경 시 대화 내역 초기화
         st.session_state.prev_language = language
+
+    # --- 세션 상태에서 'messages'가 존재하지 않을 경우 초기화 ---
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
 
     # --- 다크모드/라이트모드에 따라 색상 설정 ---
     theme_mode = st.get_option("theme.base")  # 'dark' 또는 'light' 반환
