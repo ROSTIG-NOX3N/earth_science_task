@@ -50,7 +50,7 @@ def chatbot_ui(language):
     st.header(labels['chatbot_header'])
 
     # 두 개의 열로 나누기 (비율 조정)
-    col1, col2 = st.columns([3, 1])  # col1이 3, col2가 1 비율로 설정
+    col1, col3, col2 = st.columns([3, 0.1, 1])  # col1과 col2 사이에 col3 (세로선) 추가
 
     with col1:
         # 채팅 기록을 출력
@@ -60,8 +60,9 @@ def chatbot_ui(language):
             elif message["role"] == "assistant":
                 st.markdown(assistant_message_style.format(message['content']), unsafe_allow_html=True)
 
-    # 중간에 세로선 추가
-    st.markdown("<div style='width: 1px; background-color: #ccc; height: 300px; display: inline-block;'></div>", unsafe_allow_html=True)
+    with col3:
+        # 세로선 표시
+        st.markdown("<div style='width: 1px; background-color: #ccc; height: 300px;'></div>", unsafe_allow_html=True)
 
     with col2:
         # 챗봇 시작하기 버튼
