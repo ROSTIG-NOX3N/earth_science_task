@@ -8,10 +8,10 @@ def get_labels(language):
             'light_mode': '라이트 모드',
             'dark_mode': '다크 모드',
             'input_age': '지질의 연대를 입력해주세요:',
+            'select_time_unit': '단위를 선택하세요:',  # 추가된 항목
             'select_isotope_name': '동위원소 이름을 선택해주세요:',
             'select_isotope_number': '동위원소 번호를 선택해주세요:',
             'scatter_plot_title': '동위원소 반감기 산포도',
-            'select_time_unit': '단위를 선택하세요:',  # 추가된 부분
             'half_life': '반감기 (초/년)',
             'isotope_index': '동위원소 인덱스',
             'closest_to_age': '입력된 연대와 가장 가까운 동위원소',
@@ -63,10 +63,10 @@ def get_labels(language):
             'light_mode': 'Light mode',
             'dark_mode': 'Dark mode',
             'input_age': 'Enter a comparison age:',
+            'select_time_unit': 'Select time unit:',  # 추가된 항목
             'select_isotope_name': 'Select Isotope Name:',
             'select_isotope_number': 'Select Isotope Number:',
             'scatter_plot_title': 'Scatter plot of Isotope Half-lives',
-            'select_time_unit': 'Select time unit:',  # 추가된 부분
             'half_life': 'Half-life (seconds/years)',
             'isotope_index': 'Isotope Index',
             'closest_to_age': 'Closest to input age',
@@ -118,7 +118,7 @@ def get_labels(language):
             'light_mode': 'ライトモード',
             'dark_mode': 'ダークモード',
             'input_age': '比較する年代を入力してください:',
-            'select_time_unit': '単位を選択してください:',  # 추가된 부분
+            'select_time_unit': '単位を選択してください:',  # 추가된 항목
             'select_isotope_name': '同位体名を選択してください:',
             'select_isotope_number': '同位体番号を選択してください:',
             'scatter_plot_title': '同位体の半減期の散布図',
