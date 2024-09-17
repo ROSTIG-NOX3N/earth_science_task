@@ -73,20 +73,22 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     # 가장 가까운 동위원소 강조
     if time_unit == "years":
         nearest_half_life_display = nearest_half_life / threshold  # 변환된 반감기
+        nearest_half_life_for_graph = nearest_half_life_display  # 그래프에서 사용할 값
     else:
         nearest_half_life_display = nearest_half_life  # 원래 반감기
+        nearest_half_life_for_graph = nearest_half_life  # 그래프에서 사용할 값
 
     ax.annotate(
         f"Closest Isotope: {nearest_isotope} (Half-life: {nearest_half_life_display:.2f} {y_label})",
-        xy=(nearest_ratio_idx, nearest_half_life_display),
-        xytext=(nearest_ratio_idx, nearest_half_life_display * 1.5),
+        xy=(nearest_ratio_idx, nearest_half_life_for_graph if time_unit == "years" else nearest_half_life),
+        xytext=(nearest_ratio_idx, nearest_half_life_for_graph * 1.5),
         arrowprops=dict(facecolor='green', shrink=0.05, linewidth=2, edgecolor='black'),  # 강조 표시
         fontsize=12, color='green', weight='bold'  # 강조된 텍스트
     )
 
     # 선택된 동위원소 강조
     selected_half_life = isotope_data[selected_idx][2]
-    ax.scatter(selected_idx, selected_half_life if time_unit == "seconds" else selected_half_life / threshold, 
+    ax.scatter(selected_idx, selected_half_life / threshold if time_unit == "years" else selected_half_life, 
                color='orange', label=f"Selected Isotope: {isotope_data[selected_idx][0]}", s=50)
 
     # 입력 연대 기준 수평선 추가
