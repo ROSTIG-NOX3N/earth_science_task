@@ -51,7 +51,7 @@ def chatbot_ui(language):
 
     # 채팅 기록을 스크롤할 수 있는 영역으로 만들기
     chat_history_container = """
-        <div style='height: 500px; overflow-y: auto; padding: 10px; border: 1px solid #ccc; border-radius: 10px;'>
+        <div style='height: 400px; overflow-y: scroll; padding: 10px; border: 1px solid #ccc; border-radius: 10px;'>
             {}
         </div>
     """
@@ -66,30 +66,35 @@ def chatbot_ui(language):
     # 채팅 기록 출력 (스크롤 가능 영역)
     st.markdown(chat_history_container.format(chat_messages), unsafe_allow_html=True)
 
-    # 질문 버튼 세로 배치 (스크롤 영역 외부에서 질문 버튼 표시)
-    if st.button(labels['question1']):
-        user_input = random.choice(labels['paraphrases']['question1'])
-        st.session_state.messages.append({"role": "user", "content": user_input})
+    # 질문 버튼 세로 배치 및 채팅 스크롤 영역 안에 질문 버튼 배치
+    col1, col2, col3 = st.columns(3)
 
-        assistant_reply = generate_response()
-        if assistant_reply:
-            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+    with col1:
+        if st.button(labels['question1']):
+            user_input = random.choice(labels['paraphrases']['question1'])
+            st.session_state.messages.append({"role": "user", "content": user_input})
 
-    if st.button(labels['question2']):
-        user_input = random.choice(labels['paraphrases']['question2'])
-        st.session_state.messages.append({"role": "user", "content": user_input})
+            assistant_reply = generate_response()
+            if assistant_reply:
+                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-        assistant_reply = generate_response()
-        if assistant_reply:
-            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+    with col2:
+        if st.button(labels['question2']):
+            user_input = random.choice(labels['paraphrases']['question2'])
+            st.session_state.messages.append({"role": "user", "content": user_input})
 
-    if st.button(labels['question3']):
-        user_input = random.choice(labels['paraphrases']['question3'])
-        st.session_state.messages.append({"role": "user", "content": user_input})
+            assistant_reply = generate_response()
+            if assistant_reply:
+                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-        assistant_reply = generate_response()
-        if assistant_reply:
-            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+    with col3:
+        if st.button(labels['question3']):
+            user_input = random.choice(labels['paraphrases']['question3'])
+            st.session_state.messages.append({"role": "user", "content": user_input})
+
+            assistant_reply = generate_response()
+            if assistant_reply:
+                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
 # OpenAI API 호출 함수 정의
 def generate_response():
