@@ -15,8 +15,13 @@ def local_css(file_name):
     except FileNotFoundError:
         st.error(f"CSS 파일 'css/{file_name}'을 찾을 수 없습니다.")
 
-# 모드 선택
-mode = st.selectbox('모드를 선택하세요:', ['사용자 기본 설정', '라이트 모드', '다크 모드'])
+# --- 사이드바 구성 ---
+# 1. 언어 선택
+language = st.sidebar.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
+labels = get_labels(language)
+
+# 2. 모드 선택
+mode = st.sidebar.selectbox('모드를 선택하세요:', ['사용자 기본 설정', '라이트 모드', '다크 모드'])
 
 # 선택된 모드에 따라 스타일 적용
 if mode == '라이트 모드':
@@ -24,11 +29,10 @@ if mode == '라이트 모드':
 elif mode == '다크 모드':
     local_css("dark_mode.css")
 else:
-    # 사용자 기본 설정에 따라 적용 (기본적으로 라이트 모드로 설정)
     local_css("default_mode.css")
 
-# OpenAI API 키 설정
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+# --- 사이드바 탭 선택 ---
+selected_tab = st.sidebar.radio("탭을 선택하세요", [labels['section1_header'], labels['section2_header']])
 
 # 방사성 동위원소 데이터 불러오기 함수 (JSON 파일을 읽도록 수정)
 def load_isotope_data(file_path):
@@ -48,24 +52,10 @@ isotope_data = load_isotope_data('Formatted_Radioactive_Isotope_Half_Lives.json'
 if not isotope_data:
     st.stop()
 
-# 언어 선택 (한국어, 영어, 일본어 지원)
-language = st.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
-labels = get_labels(language)
-
-# 언어 변경 시 채팅 기록 초기화 및 시스템 메시지 추가
-if "prev_language" not in st.session_state or st.session_state.prev_language != language:
-    st.session_state.prev_language = language
-    st.session_state.messages = []
-    st.session_state.messages.append({
-        "role": "system",
-        "content": f"You are a helpful assistant that communicates in {language}."
-    })
-
-# --- 탭 생성 ---
-tab1, tab2 = st.tabs([labels['section1_header'], labels['section2_header']])
-
-# --- 탭 1: 동위원소 산포도 ---
-with tab1:
+# --- 그래프 탭 ---
+if selected_tab == labels['section1_header']:
+    st.header(labels['section1_header'])
+    
     # 단위 선택 (초/년)
     time_unit = st.radio("단위를 선택하세요 (Select time unit):", ('seconds', 'years'))
 
@@ -191,8 +181,8 @@ with tab1:
     st.write(f"**{labels['selected_half_life']}: {selected_half_life_display:.2f} {half_life_unit}**")
     st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life_display} {half_life_unit})")
 
-# --- 탭 2: 챗봇 기능 ---
-with tab2:
+# --- 챗봇 탭 ---
+elif selected_tab == labels['section2_header']:
     st.header(labels['chatbot_header'])
 
     # OpenAI API 호출 함수 정의
