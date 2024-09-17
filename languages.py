@@ -8,6 +8,7 @@ def get_labels(language):
             'light_mode': '라이트 모드',
             'dark_mode': '다크 모드',
             'input_age': '지질의 연대를 입력해주세요:',
+            'select_time_unit': '단위를 선택하세요:',
             'select_isotope_name': '동위원소 이름을 선택해주세요:',
             'select_isotope_number': '동위원소 번호를 선택해주세요:',
             'scatter_plot_title': '동위원소 반감기 산포도',
@@ -34,24 +35,7 @@ def get_labels(language):
             'question1': '질문 1',
             'question2': '질문 2',
             'question3': '질문 3',
-            'error_load_data': '데이터를 불러오는 데 실패했습니다.',
-            'paraphrases': {
-                'question1': [
-                    '동위원소를 활용한 지질의 연대측정은 어떻게 이루어져?',
-                    '동위원소를 사용하여 지질 연대를 어떻게 측정하나요?',
-                    '방사성 동위원소는 지질 시대를 결정하는 데 어떻게 사용되나요?'
-                ],
-                'question2': [
-                    '동위원소를 활용한 지질의 연대측정을 할 때 동위원소를 왜 고정시키지 않을까?',
-                    '지질 연대 측정 시 왜 특정 동위원소만 사용하지 않나요?',
-                    '지질학에서 동위원소 선택은 왜 고정되어 있지 않나요?'
-                ],
-                'question3': [
-                    '만약 지질의 연대를 모른다면 어떤 과정을 통해서 동위원소를 선택하고 연대를 측정할까?',
-                    '지질 연대를 모를 때 어떤 동위원소를 선택하여 연대를 측정하나요?',
-                    '연대 미상의 지질에 대해 동위원소 선택과 연대 측정은 어떻게 이루어지나요?'
-                ]
-            }
+            'error_load_data': '데이터를 불러오는 데 실패했습니다.'
         }
     elif language == 'English':
         return {
@@ -62,6 +46,7 @@ def get_labels(language):
             'light_mode': 'Light mode',
             'dark_mode': 'Dark mode',
             'input_age': 'Enter a comparison age:',
+            'select_time_unit': 'Select time unit:',
             'select_isotope_name': 'Select Isotope Name:',
             'select_isotope_number': 'Select Isotope Number:',
             'scatter_plot_title': 'Scatter plot of Isotope Half-lives',
@@ -88,24 +73,7 @@ def get_labels(language):
             'question1': 'Question 1',
             'question2': 'Question 2',
             'question3': 'Question 3',
-            'error_load_data': 'Failed to load data.',
-            'paraphrases': {
-                'question1': [
-                    'How is geological age dating done using isotopes?',
-                    'How do we measure geological age using isotopes?',
-                    'How are radioactive isotopes used to determine geological periods?'
-                ],
-                'question2': [
-                    'Why don\'t we fix isotopes when measuring geological age?',
-                    'Why don\'t we use only specific isotopes for geological dating?',
-                    'Why is the choice of isotopes not fixed in geological age measurement?'
-                ],
-                'question3': [
-                    'If we don\'t know the geological age, how do we choose isotopes and measure the age?',
-                    'How do we select isotopes and measure age when the geological age is unknown?',
-                    'How do geologists choose isotopes and determine age from samples with unknown ages?'
-                ]
-            }
+            'error_load_data': 'Failed to load data.'
         }
     elif language == '日本語':
         return {
@@ -116,6 +84,7 @@ def get_labels(language):
             'light_mode': 'ライトモード',
             'dark_mode': 'ダークモード',
             'input_age': '比較する年代を入力してください:',
+            'select_time_unit': '単位を選択してください:',
             'select_isotope_name': '同位体名を選択してください:',
             'select_isotope_number': '同位体番号を選択してください:',
             'scatter_plot_title': '同位体の半減期の散布図',
@@ -142,22 +111,5 @@ def get_labels(language):
             'question1': '質問 1',
             'question2': '質問 2',
             'question3': '質問 3',
-            'error_load_data': 'データの読み込みに失敗しました。',
-            'paraphrases': {
-                'question1': [
-                    '同位体を利用した地質年代測定はどのように行われますか？',
-                    '同位体を使って地質年代をどのように測定しますか？',
-                    '放射性同位体は地質時代の決定にどのように使用されますか？'
-                ],
-                'question2': [
-                    '同位体を用いた地質年代測定の際、なぜ同位体を固定しないのですか？',
-                    '地質年代測定で特定の同位体のみを使用しないのはなぜですか？',
-                    '地質学で同位体の選択が固定されていないのはなぜですか？'
-                ],
-                'question3': [
-                    '地質年代がわからない場合、どのように同位体を選択し年代を測定しますか？',
-                    '地質年代が不明なとき、同位体の選択と年代測定はどう行われますか？',
-                    '地質学者は年代不明のサンプルからどのように同位体を選び年代を決定しますか？'
-                ]
-            }
+            'error_load_data': 'データの読み込みに失敗しました。'
         }
