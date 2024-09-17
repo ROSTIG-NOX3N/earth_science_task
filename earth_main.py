@@ -5,10 +5,10 @@ import json
 from languages import get_labels
 from chatbot import chatbot_ui  # 챗봇 UI 추가
 
-# --- 사이드바 구성 ---
+# --- 사이드바 구성 --- 
 # 언어 선택
 language = st.sidebar.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
-labels = get_labels(language)
+labels = get_labels(language)  # 언어에 따라 라벨 불러오기
 
 # --- 사이드바 탭 선택 ---
 selected_tab = st.sidebar.radio(labels['select_tab'], [labels['section1_header'], labels['section2_header']])
@@ -75,13 +75,9 @@ if selected_tab == labels['section1_header']:
     if time_unit == 'seconds':
         half_lives = [item[2] for item in isotope_data if item[2] < threshold]  # 초 단위 데이터
         y_label = 'Half-life (seconds)'  # 그래프 내부는 영어로 고정
-        selected_half_life_display = selected_half_life
-        half_life_unit = labels['half_life_seconds']
     else:
         half_lives = [item[2] / threshold for item in isotope_data if item[2] >= threshold]  # 년 단위 데이터
         y_label = 'Half-life (years)'  # 그래프 내부는 영어로 고정
-        selected_half_life_display = selected_half_life / threshold
-        half_life_unit = labels['half_life_years']
 
     # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 찾기
     ratios = [abs(input_age_seconds / half_life - 1) for half_life in [item[2] for item in isotope_data]]
@@ -118,12 +114,12 @@ if selected_tab == labels['section1_header']:
     # x축 범위를 전체 데이터로 설정
     ax.set_xlim(0, len(half_lives) - 1)
     # y축 범위를 설정하여 데이터가 잘 보이도록 설정
-    ax.set_ylim(min(half_lives)/10, max(half_lives)*10)
+    ax.set_ylim(min(half_lives) / 10, max(half_lives) * 10)
 
     # 라벨 및 제목 설정
-    ax.set_xlabel('Isotope Index')
-    ax.set_ylabel(y_label)
-    ax.set_title('Scatter plot of Isotope Half-lives')
+    ax.set_xlabel('Isotope Index')  # 영어로 설정
+    ax.set_ylabel(y_label)  # 영어로 설정
+    ax.set_title('Scatter plot of Isotope Half-lives')  # 영어로 설정
     ax.set_yscale('log')
     ax.legend()
 
@@ -147,9 +143,9 @@ if selected_tab == labels['section1_header']:
             ax2.scatter(selected_filtered_idx, filtered_isotopes[selected_filtered_idx][1], color='orange', label=f"Selected Isotope: {selected_isotope}", s=100)
 
         # 라벨 및 제목 설정
-        ax2.set_xlabel('Isotope Index')
-        ax2.set_ylabel(y_label)
-        ax2.set_title(f'Scatter plot of {selected_isotope_name} Isotopes')
+        ax2.set_xlabel('Isotope Index')  # 영어로 설정
+        ax2.set_ylabel(y_label)  # 영어로 설정
+        ax2.set_title(f'Scatter plot of {selected_isotope_name} Isotopes')  # 영어로 설정
         ax2.set_yscale('log')
         ax2.legend()
 
