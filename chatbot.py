@@ -49,8 +49,6 @@ def chatbot_ui(language):
                     border: 1px solid #ccc;
                     border-radius: 10px;
                     padding: 10px;
-                    display: flex;
-                    flex-direction: column-reverse;  /* 최근 메시지를 위로 표시 */
                 }}
                 .user-message {{
                     background-color: {user_bg_color};
@@ -75,7 +73,7 @@ def chatbot_ui(language):
         st.markdown(chat_history_style, unsafe_allow_html=True)
 
         chat_messages = ""
-        for message in reversed(st.session_state.messages):  # 메시지를 역순으로 출력
+        for message in st.session_state.messages:
             if message["role"] == "user":
                 chat_messages += f"<div class='user-message'><b>User:</b> {message['content']}</div>"
             elif message["role"] == "assistant":
