@@ -156,7 +156,14 @@ def main():
     labels = get_labels(language)  # 언어에 따라 라벨 불러오기
     
     # 사이드바 탭 선택
-    selected_tab = st.sidebar.radio(labels.get('select_tab', '탭 선택'), [labels.get('section1_header', '산포도 그래프'), labels.get('section2_header', '모자원소 그래프'), "Mother-Daughter Graph"])
+    selected_tab = st.sidebar.radio(
+        labels.get('select_tab', '탭 선택'), 
+        [
+            labels.get('section1_header', '산포도 그래프'),  # 그래프 탭
+            labels.get('section2_header', '챗봇'),        # 챗봇 탭
+            "Mother-Daughter Graph"                     # 모자원소 그래프 탭
+        ]
+    )
     
     # 방사성 동위원소 데이터 불러오기
     isotope_data = load_isotope_data('Formatted_Radioactive_Isotope_Half_Lives.json')
@@ -172,11 +179,19 @@ def main():
     unique_isotope_names = sorted(list(set(isotope_names)))
     
     # 동위원소 이름 선택
-    selected_isotope_name = st.sidebar.selectbox(labels.get("select_isotope_name", "동위원소 이름 선택"), unique_isotope_names, key="isotope_name_select")
+    selected_isotope_name = st.sidebar.selectbox(
+        labels.get("select_isotope_name", "동위원소 이름 선택"), 
+        unique_isotope_names, 
+        key="isotope_name_select"
+    )
     
     # 동위원소 번호 선택
     filtered_isotope_numbers = get_filtered_isotope_numbers(isotope_names, isotope_numbers, selected_isotope_name)
-    selected_isotope_number = st.sidebar.selectbox(f'{selected_isotope_name} 번호 선택', filtered_isotope_numbers, key="isotope_number_select")
+    selected_isotope_number = st.sidebar.selectbox(
+        f'{selected_isotope_name} 번호 선택', 
+        filtered_isotope_numbers, 
+        key="isotope_number_select"
+    )
     
     # 선택된 동위원소 찾기
     selected_isotope = f'{selected_isotope_name}-{selected_isotope_number}'
@@ -187,15 +202,20 @@ def main():
         st.error(labels.get("isotope_not_found", "선택한 동위원소를 찾을 수 없습니다."))
         selected_idx = None
     
-    # --- 산포도 그래프 탭 ---
+    # --- 탭별 기능 분기 ---
     if selected_tab == labels.get('section1_header', '산포도 그래프'):
+        # 산포도 그래프 탭
         st.header(labels.get("scatter_plot_title", "동위원소 반감기 산포도"))
         
         if selected_idx is None:
             st.error(labels.get("select_valid_isotope", "유효한 동위원소를 선택해 주세요."))
         else:
             # 단위 선택
-            time_unit = st.radio(labels.get("select_time_unit", "단위를 선택하세요:"), ("seconds", "years"), key="time_unit_select")
+            time_unit = st.radio(
+                labels.get("select_time_unit", "단위를 선택하세요:"), 
+                ("seconds", "years"), 
+                key="time_unit_select"
+            )
             
             # 입력 연대
             input_age = st.number_input(
@@ -218,8 +238,12 @@ def main():
                 # 산포도 그래프 그리기
                 plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit, labels)
     
-    # --- Mother-Daughter Graph 탭 ---
+    elif selected_tab == labels.get('section2_header', '챗봇'):
+        # 챗봇 탭
+        chatbot_ui(language)  # 챗봇 UI 호출
+    
     elif selected_tab == "Mother-Daughter Graph":
+        # 모자원소 그래프 탭
         st.header(labels.get("mother_daughter_graph_title", "모자원소 그래프"))
         
         if selected_idx is None:
@@ -228,8 +252,7 @@ def main():
             # 모자원소 그래프 그리기
             plot_mother_daughter_graph(selected_half_life, selected_isotope, labels)
     
-    # --- 챗봇 UI 추가 ---
-    chatbot_ui(language)  # 챗봇 UI 호출
+    # Optional: 기타 탭 추가 시 여기에 작성
 
 if __name__ == "__main__":
     main()
