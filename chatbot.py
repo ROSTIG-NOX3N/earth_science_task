@@ -50,19 +50,29 @@ def chatbot_ui(language):
     st.header(labels['chatbot_header'])
 
     # 두 개의 열로 나누기 (비율 조정)
-    col1, col3, col2 = st.columns([3.5, 0.1, 1.5])  # col1과 col2 사이에 col3 (세로선) 추가
+    col1, col3, col2 = st.columns([3, 0.1, 1])  # col1과 col2 사이에 col3 (세로선) 추가
 
     with col1:
-        # 채팅 기록을 출력
+        # 채팅 기록을 스크롤할 수 있는 영역으로 만들기
+        chat_history_container = """
+            <div style='height: 300px; overflow-y: scroll; padding: 10px; border: 1px solid #ccc; border-radius: 10px;'>
+                {}
+            </div>
+        """
+        
+        chat_messages = ""
         for message in st.session_state.messages:
             if message["role"] == "user":
-                st.markdown(user_message_style.format(message['content']), unsafe_allow_html=True)
+                chat_messages += user_message_style.format(message['content'])
             elif message["role"] == "assistant":
-                st.markdown(assistant_message_style.format(message['content']), unsafe_allow_html=True)
+                chat_messages += assistant_message_style.format(message['content'])
+
+        # 채팅 기록 출력 (스크롤 가능 영역)
+        st.markdown(chat_history_container.format(chat_messages), unsafe_allow_html=True)
 
     with col3:
         # 세로선 표시
-        st.markdown("<div style='width: 1px; background-color: #ccc; height: 650px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='width: 1px; background-color: #ccc; height: 300px;'></div>", unsafe_allow_html=True)
 
     with col2:
         # 챗봇 시작하기 버튼
