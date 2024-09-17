@@ -12,8 +12,8 @@ def chatbot_ui(language):
         st.session_state.prev_language = language
 
     if st.session_state.prev_language != language:
-        st.session_state.messages = []
-        st.session_state.prev_language = language
+        st.session_state.messages = []  # 대화 내용 초기화
+        st.session_state.prev_language = language  # 이전 언어 업데이트
 
     # 메시지가 없을 경우 초기화
     if "messages" not in st.session_state:
@@ -83,18 +83,18 @@ def chatbot_ui(language):
     col1, col2 = st.columns([2, 1])  # 두 개의 열로 나누기
 
     with col1:
-    # 챗봇 시작하기 버튼
-        if st.button(labels['start_chatbot']):  # 라벨로 변경
+        # 챗봇 시작하기 버튼
+        if st.button(labels['start_chatbot']):
             initial_question = "방사성 동위원소에 대해 궁금한 점이 있습니다."
             st.session_state.messages.append({"role": "user", "content": initial_question})
-    
+
             assistant_reply = generate_response()
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
         # 질문 버튼 세로 배치
         if st.button(labels['question1']):
-            user_input = random.choice(labels['paraphrases']['question1']) if language == '한국어' else random.choice(labels['paraphrases']['question1_en'])
+            user_input = random.choice(labels['paraphrases']['question1']) if language == '한국어' else random.choice(labels['paraphrases']['question1'])
             st.session_state.messages.append({"role": "user", "content": user_input})
 
             assistant_reply = generate_response()
@@ -102,7 +102,7 @@ def chatbot_ui(language):
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
         if st.button(labels['question2']):
-            user_input = random.choice(labels['paraphrases']['question2']) if language == '한국어' else random.choice(labels['paraphrases']['question2_en'])
+            user_input = random.choice(labels['paraphrases']['question2']) if language == '한국어' else random.choice(labels['paraphrases']['question2'])
             st.session_state.messages.append({"role": "user", "content": user_input})
 
             assistant_reply = generate_response()
@@ -110,7 +110,7 @@ def chatbot_ui(language):
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
         if st.button(labels['question3']):
-            user_input = random.choice(labels['paraphrases']['question3']) if language == '한국어' else random.choice(labels['paraphrases']['question3_en'])
+            user_input = random.choice(labels['paraphrases']['question3']) if language == '한국어' else random.choice(labels['paraphrases']['question3'])
             st.session_state.messages.append({"role": "user", "content": user_input})
 
             assistant_reply = generate_response()
