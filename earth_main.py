@@ -73,15 +73,13 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     # 가장 가까운 동위원소 강조
     if time_unit == "years":
         nearest_half_life_display = nearest_half_life / threshold  # 변환된 반감기
-        nearest_half_life_for_graph = nearest_half_life_display  # 그래프에서 사용할 값
     else:
         nearest_half_life_display = nearest_half_life  # 원래 반감기
-        nearest_half_life_for_graph = nearest_half_life  # 그래프에서 사용할 값
 
     ax.annotate(
-        f"Closest Isotope: {nearest_isotope} (Half-life: {nearest_half_life_display:.2f} {y_label})",
-        xy=(nearest_ratio_idx, nearest_half_life_for_graph if time_unit == "years" else nearest_half_life),
-        xytext=(nearest_ratio_idx, nearest_half_life_for_graph * 1.5),
+        f"Closest Isotope: {nearest_isotope}\n(Half-life: {nearest_half_life_display:.2f} {y_label})",
+        xy=(nearest_ratio_idx, nearest_half_life_display if time_unit == "years" else nearest_half_life),
+        xytext=(nearest_ratio_idx, (nearest_half_life_display if time_unit == "years" else nearest_half_life) * 1.5),
         arrowprops=dict(facecolor='green', shrink=0.05, linewidth=2, edgecolor='black'),  # 강조 표시
         fontsize=12, color='green', weight='bold'  # 강조된 텍스트
     )
