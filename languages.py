@@ -32,9 +32,9 @@ def get_labels(language):
             'error_message': '죄송합니다, 답변을 생성하는 데 실패했습니다.',
             'user': '사용자',
             'assistant': '어시스턴트',
-            'question1': '질문 1',
-            'question2': '질문 2',
-            'question3': '질문 3',
+            'question1': '방사성 동위원소를 활용하여 연대측정을 하는 방법이 궁금해요',
+            'question2': '방사성 동위원소를 활용하여 연대측정을 할 때 왜 동위원소를 고정해서 사용하지 않을까요',
+            'question3': '특정 지질의 연대를 모를때는 어떻게 연대측정을 하는건가요',
             'error_load_data': '데이터를 불러오는 데 실패했습니다.',
             'paraphrases': {
                 'question1': [
