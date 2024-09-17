@@ -51,7 +51,7 @@ def chatbot_ui(language):
 
     # 채팅 기록을 스크롤할 수 있는 영역으로 만들기
     chat_history_container = """
-        <div style='height: 300px; overflow-y: auto; padding: 10px; border: 1px solid #ccc; border-radius: 10px;'>
+        <div style='height: 500px; overflow-y: auto; padding: 10px; border: 1px solid #ccc; border-radius: 10px;'>
             {}
         </div>
     """
@@ -66,7 +66,7 @@ def chatbot_ui(language):
     # 채팅 기록 출력 (스크롤 가능 영역)
     st.markdown(chat_history_container.format(chat_messages), unsafe_allow_html=True)
 
-    # 질문 버튼 세로 배치
+    # 질문 버튼 세로 배치 (스크롤 영역 외부에서 질문 버튼 표시)
     if st.button(labels['question1']):
         user_input = random.choice(labels['paraphrases']['question1'])
         st.session_state.messages.append({"role": "user", "content": user_input})
