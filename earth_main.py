@@ -1,3 +1,5 @@
+# main.py
+
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
@@ -54,36 +56,64 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     """
     threshold = 31_536_000  # 1년을 초로 변환
     if time_unit == "seconds":
-        half_lives = [item[2] for item in isotope_data if item[2] < threshold]
+        # 초 단위인 반감기만 필터링
+        filtered_data = [item for item in isotope_data if item[2] < threshold]
+        half_lives = [item[2] for item in filtered_data]
         y_label = "Half-life (seconds)"
+        age_label_value = input_age_seconds
+        age_label_unit = "seconds"
     else:
-        half_lives = [item[2] / threshold for item in isotope_data if item[2] >= threshold]
+        # 연 단위인 반감기만 필터링
+        filtered_data = [item for item in isotope_data if item[2] >= threshold]
+        half_lives = [item[2] / threshold for item in filtered_data]
         y_label = "Half-life (years)"
+        age_label_value = input_age_seconds / threshold
+        age_label_unit = "years"
     
     # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 찾기
-    ratios = [abs(input_age_seconds / half_life - 1) for half_life in [item[2] for item in isotope_data]]
+    ratios = [abs(age_label_value / half_life - 1) for half_life in [item[2] / threshold if time_unit == "years" else item[2] for item in filtered_data]]
     nearest_ratio_idx = np.argmin(ratios)
-    nearest_isotope = isotope_data[nearest_ratio_idx][0]
-    nearest_half_life = isotope_data[nearest_ratio_idx][2]
+    nearest_isotope = filtered_data[nearest_ratio_idx][0]
+    nearest_half_life = half_lives[nearest_ratio_idx]
     
     # 산포도 그리기
     fig, ax = plt.subplots(figsize=(15, 6))
+    
+    # 모든 동위원소 산포도
     ax.scatter(range(len(half_lives)), half_lives, color='blue', label=y_label, s=10)
     
-    # 가장 가까운 동위원소 강조
-    ax.annotate(f"Closest Isotope: {nearest_isotope}", 
-                xy=(nearest_ratio_idx, nearest_half_life),
-                xytext=(nearest_ratio_idx, nearest_half_life * 1.5),
-                arrowprops=dict(facecolor='green', shrink=0.05))
+    # 가장 가까운 동위원소 강조 (빨간색, 큰 크기)
+    ax.scatter(nearest_ratio_idx, nearest_half_life, color='red', label=f"Closest Isotope: {nearest_isotope}", s=100, edgecolors='black')
     
-    # 선택된 동위원소 강조
-    ax.scatter(selected_idx, isotope_data[selected_idx][2], color='orange', label=f"Selected Isotope: {isotope_data[selected_idx][0]}", s=50)
+    # 선택된 동위원소 강조 (주황색, 큰 크기)
+    # 선택된 동위원소가 필터링된 데이터에 있는지 확인
+    if time_unit == "seconds":
+        selected_half_life = isotope_data[selected_idx][2]
+        if selected_half_life < threshold:
+            selected_filtered_idx = filtered_data.index(isotope_data[selected_idx])
+            ax.scatter(selected_filtered_idx, selected_half_life, color='orange', label=f"Selected Isotope: {isotope_data[selected_idx][0]}", s=100, edgecolors='black')
+    else:
+        selected_half_life = isotope_data[selected_idx][2] / threshold
+        if isotope_data[selected_idx][2] >= threshold:
+            selected_filtered_idx = filtered_data.index(isotope_data[selected_idx])
+            ax.scatter(selected_filtered_idx, selected_half_life, color='orange', label=f"Selected Isotope: {isotope_data[selected_idx][0]}", s=100, edgecolors='black')
     
     # 입력 연대 기준 수평선 추가
-    ax.axhline(y=input_age_seconds, color='gray', linestyle='--', label=f"Input Age: {input_age_seconds} seconds")
+    ax.axhline(y=age_label_value, color='gray', linestyle='--', label=f"Input Age: {age_label_value} {age_label_unit}")
+    
+    # 가장 가까운 동위원소 강조 주석 추가
+    ax.annotate(
+        f"Closest Isotope: {nearest_isotope}",
+        xy=(nearest_ratio_idx, nearest_half_life),
+        xytext=(nearest_ratio_idx, nearest_half_life * 1.5),
+        fontsize=14,
+        fontweight='bold',
+        color='red',
+        arrowprops=dict(facecolor='red', shrink=0.05, width=2, headwidth=10)
+    )
     
     # 축 설정
-    ax.set_xlim(0, len(half_lives) - 1)
+    ax.set_xlim(-1, len(half_lives))
     ax.set_ylim(min(half_lives) / 10, max(half_lives) * 10)
     ax.set_xlabel("Isotope Index", fontsize=12)
     ax.set_ylabel(y_label, fontsize=12)
