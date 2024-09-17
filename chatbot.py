@@ -49,37 +49,52 @@ def chatbot_ui(language):
     # 챗봇 탭
     st.header(labels['chatbot_header'])
 
-    # 채팅 기록을 출력
-    for message in st.session_state.messages:
-        if message["role"] == "user":
-            st.markdown(user_message_style.format(message['content']), unsafe_allow_html=True)
-        elif message["role"] == "assistant":
-            st.markdown(assistant_message_style.format(message['content']), unsafe_allow_html=True)
+    # 두 개의 열로 나누기
+    col1, col2 = st.columns([2, 1])  # 2:1 비율로 열 나누기
 
-    # 질문 버튼 세로 배치
-    if st.button(labels['question1']):
-        user_input = random.choice(labels['paraphrases']['question1'])
-        st.session_state.messages.append({"role": "user", "content": user_input})
+    with col1:
+        # 채팅 기록을 출력
+        for message in st.session_state.messages:
+            if message["role"] == "user":
+                st.markdown(user_message_style.format(message['content']), unsafe_allow_html=True)
+            elif message["role"] == "assistant":
+                st.markdown(assistant_message_style.format(message['content']), unsafe_allow_html=True)
 
-        assistant_reply = generate_response()
-        if assistant_reply:
-            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+    with col2:
+        # 챗봇 시작하기 버튼
+        if st.button("챗봇 시작하기"):
+            # 기본 질문 추가
+            initial_question = "방사성 동위원소에 대해 궁금한 점이 있습니다."
+            st.session_state.messages.append({"role": "user", "content": initial_question})
 
-    if st.button(labels['question2']):
-        user_input = random.choice(labels['paraphrases']['question2'])
-        st.session_state.messages.append({"role": "user", "content": user_input})
+            assistant_reply = generate_response()
+            if assistant_reply:
+                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-        assistant_reply = generate_response()
-        if assistant_reply:
-            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+        # 질문 버튼 세로 배치
+        if st.button(labels['question1']):
+            user_input = random.choice(labels['paraphrases']['question1'])
+            st.session_state.messages.append({"role": "user", "content": user_input})
 
-    if st.button(labels['question3']):
-        user_input = random.choice(labels['paraphrases']['question3'])
-        st.session_state.messages.append({"role": "user", "content": user_input})
+            assistant_reply = generate_response()
+            if assistant_reply:
+                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-        assistant_reply = generate_response()
-        if assistant_reply:
-            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+        if st.button(labels['question2']):
+            user_input = random.choice(labels['paraphrases']['question2'])
+            st.session_state.messages.append({"role": "user", "content": user_input})
+
+            assistant_reply = generate_response()
+            if assistant_reply:
+                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+
+        if st.button(labels['question3']):
+            user_input = random.choice(labels['paraphrases']['question3'])
+            st.session_state.messages.append({"role": "user", "content": user_input})
+
+            assistant_reply = generate_response()
+            if assistant_reply:
+                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
 # OpenAI API 호출 함수 정의
 def generate_response():
