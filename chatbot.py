@@ -36,8 +36,8 @@ def chatbot_ui(language):
     # 챗봇 탭
     st.header(labels['chatbot_header'])
 
-    # 두 개의 열로 나누기 (비율 조정)
-    col1, col3, col2 = st.columns([3, 0.1, 1])  # col1과 col2 사이에 col3 (세로선) 추가
+    # 가로로 나누기 (비율 조정)
+    col1, col2, col3 = st.columns([3, 0.1, 1])  # 세 개의 열을 가로로 나누기
 
     with col1:
         # 스크롤 가능한 채팅 기록 영역
@@ -81,11 +81,11 @@ def chatbot_ui(language):
 
         st.markdown(f"<div class='chat-container'>{chat_messages}</div>", unsafe_allow_html=True)
 
-    with col3:
+    with col2:
         # 세로선 표시
         st.markdown("<div style='width: 1px; background-color: #ccc; height: 700px;'></div>", unsafe_allow_html=True)
 
-    with col2:
+    with col3:
         # 챗봇 시작하기 버튼
         if st.button(labels['start_chatbot']):
             initial_question = "방사성 동위원소에 대해 궁금한 점이 있습니다."
