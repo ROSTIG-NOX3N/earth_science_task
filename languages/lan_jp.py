@@ -7,7 +7,7 @@ def get_labels():
         'light_mode': 'ライトモード',
         'dark_mode': 'ダークモード',
         'input_age': '比較する年代を入力してください:',
-        'start_chatbot': 'チャットボットを開始',
+        'start_chatbot': 'チャットボットを開始します（回答が出なくても押してください）',
         'select_time_unit': '単位を選択してください:',
         'select_isotope_name': '同位体名を選択してください:',
         'select_isotope_number': '同位体番号を選択してください:',
