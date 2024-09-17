@@ -44,7 +44,7 @@ def chatbot_ui(language):
         chat_history_style = f"""
             <style>
                 .chat-container {{
-                    height: 300px;
+                    height: 800px;
                     overflow-y: auto;
                     border: 1px solid #ccc;
                     border-radius: 10px;
@@ -85,7 +85,7 @@ def chatbot_ui(language):
 
     with col3:
         # 세로선 표시
-        st.markdown("<div style='width: 1px; background-color: #ccc; height: 300px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='width: 1px; background-color: #ccc; height: 700px;'></div>", unsafe_allow_html=True)
 
     with col2:
         # 챗봇 시작하기 버튼
