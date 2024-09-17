@@ -49,13 +49,7 @@ def chatbot_ui(language):
     # --- 채팅 탭 ---
     st.markdown("<h2 style='text-align: center;'>💬 Chatbot</h2>", unsafe_allow_html=True)
 
-    # 채팅 기록을 스크롤할 수 있는 영역으로 만들기
-    chat_history_container = """
-        <div style='height: 400px; overflow-y: auto; padding: 10px; border: 1px solid #ccc; border-radius: 10px;'>
-            {}
-        </div>
-    """
-    
+    # 채팅 기록을 연속적으로 표시
     chat_messages = ""
     for message in st.session_state.messages:
         if message["role"] == "user":
@@ -63,17 +57,8 @@ def chatbot_ui(language):
         elif message["role"] == "assistant":
             chat_messages += assistant_message_style.format(message['content'])
 
-    # 채팅 기록 출력 (스크롤 가능 영역)
-    st.markdown(chat_history_container.format(chat_messages), unsafe_allow_html=True)
-
-    # 스크롤 영역 끝으로 자동 스크롤
-    scroll_to_bottom_script = """
-        <script>
-        var chatDiv = document.getElementsByClassName('stMarkdown')[0];
-        chatDiv.scrollTop = chatDiv.scrollHeight;
-        </script>
-    """
-    st.markdown(scroll_to_bottom_script, unsafe_allow_html=True)
+    # 채팅 기록 출력
+    st.markdown(chat_messages, unsafe_allow_html=True)
 
     # 질문 버튼 화면 하단 고정
     st.markdown(
