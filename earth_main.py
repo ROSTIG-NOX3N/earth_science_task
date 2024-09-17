@@ -57,7 +57,6 @@ except ValueError:
 # 사이드바에 선택한 동위원소의 반감기 표시
 st.sidebar.markdown(f"**{selected_isotope} 반감기**: {selected_half_life} seconds")
 
-# --- 모원소-자원소 그래프 탭 ---
 if selected_tab == "Mother-Daughter Graph":
     st.header("모원소와 자원소의 비율 그래프")
 
@@ -78,20 +77,24 @@ if selected_tab == "Mother-Daughter Graph":
     mother_ratio = mother_isotope_amount / initial_mother_isotope
     daughter_ratio = daughter_isotope_amount / initial_mother_isotope
 
-    # 1초일 때 모원소와 자원소 비율 계산
+    # 1초일 때 모원소와 자원소 비율 계산 (퍼센트로 변환하고 소수점 6자리에서 반올림)
     mother_at_1_second = initial_mother_isotope * np.exp(-decay_constant * 1)
     daughter_at_1_second = initial_mother_isotope - mother_at_1_second
-    mother_ratio_at_1_second = mother_at_1_second / initial_mother_isotope
-    daughter_ratio_at_1_second = daughter_at_1_second / initial_mother_isotope
+    mother_ratio_at_1_second = round((mother_at_1_second / initial_mother_isotope) * 100, 6)
+    daughter_ratio_at_1_second = round((daughter_at_1_second / initial_mother_isotope) * 100, 6)
+
+    # 1초일 때의 비율을 사이드바에 표시
+    st.sidebar.markdown(f"**1초일 때 모원소 비율**: {mother_ratio_at_1_second}%")
+    st.sidebar.markdown(f"**1초일 때 자원소 비율**: {daughter_ratio_at_1_second}%")
 
     # --- 그래프 그리기 ---
     fig, ax = plt.subplots(figsize=(10, 6))
 
     # 모원소의 비율 그래프
-    ax.plot(time, mother_ratio, label='Mother Isotope Ratio', color='blue')
+    ax.plot(time, mother_ratio * 100, label='Mother Isotope Ratio (%)', color='blue')
 
     # 자원소의 비율 그래프
-    ax.plot(time, daughter_ratio, label='Daughter Isotope Ratio', color='red')
+    ax.plot(time, daughter_ratio * 100, label='Daughter Isotope Ratio (%)', color='red')
 
     # 1초 시점에서의 모원소와 자원소 비율을 점으로 강조
     ax.scatter([1], [mother_ratio_at_1_second], color='blue', label='Mother Ratio at 1 second', s=100, zorder=5)
@@ -100,15 +103,14 @@ if selected_tab == "Mother-Daughter Graph":
     # 그래프 설정
     ax.set_title(f'Mother and Daughter Isotope Ratios over Time for {selected_isotope}')
     ax.set_xlabel('Time (seconds)')
-    ax.set_ylabel('Isotope Ratio')
+    ax.set_ylabel('Isotope Ratio (%)')
     ax.set_xlim(0, 1)
-    ax.set_ylim(0, 1)
+    ax.set_ylim(0, 100)
     ax.grid(True)
     ax.legend()
 
     # 그래프 출력
     st.pyplot(fig)
-
 # --- 챗봇 탭 ---
 elif selected_tab == labels['section2_header']:
     chatbot_ui(language)  # 분리된 챗봇 기능 호출 시 언어 전달
