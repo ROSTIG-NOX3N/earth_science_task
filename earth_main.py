@@ -8,8 +8,12 @@ from languages import get_labels
 
 # 스타일 파일 불러오기 함수
 def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    try:
+        # css 폴더 안에 있는 파일 경로로 수정
+        with open(f'css/{file_name}') as f:
+            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    except FileNotFoundError:
+        st.error(f"CSS 파일 'css/{file_name}'을 찾을 수 없습니다.")
 
 # 모드 선택
 mode = st.selectbox('모드를 선택하세요:', ['사용자 기본 설정', '라이트 모드', '다크 모드'])
