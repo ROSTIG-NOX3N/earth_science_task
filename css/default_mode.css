@@ -1,0 +1,10 @@
+
+/* 여기서 사용자 기본 설정에 맞게 설정 */
+body {
+    background-color: #f7f7f7;
+    color: #333;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+}
