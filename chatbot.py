@@ -1,3 +1,5 @@
+# chatbot.py
+
 import streamlit as st
 import random
 import openai
@@ -87,7 +89,7 @@ def chatbot_ui(language):
             initial_question = "방사성 동위원소에 대해 궁금한 점이 있습니다."
             st.session_state.messages.append({"role": "user", "content": initial_question})
 
-            assistant_reply = generate_response(labels)
+            assistant_reply = generate_response()
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
@@ -99,7 +101,7 @@ def chatbot_ui(language):
                 user_input = random.choice(labels['paraphrases'][question_key])
                 st.session_state.messages.append({"role": "user", "content": user_input})
 
-                assistant_reply = generate_response(labels)
+                assistant_reply = generate_response()
                 if assistant_reply:
                     st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
@@ -108,7 +110,7 @@ def chatbot_ui(language):
         if st.button(labels.get("ask_button", "질문하기")):
             if user_question.strip():
                 st.session_state.messages.append({"role": "user", "content": user_question.strip()})
-                assistant_reply = generate_response(labels)
+                assistant_reply = generate_response()
                 if assistant_reply:
                     st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
             else:
@@ -119,7 +121,7 @@ def chatbot_ui(language):
         st.write("")  # 이 부분을 다른 내용으로 대체할 수 있습니다.
 
 # OpenAI API 호출 함수 정의
-def generate_response(labels):
+def generate_response():
     try:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
@@ -128,7 +130,9 @@ def generate_response(labels):
         assistant_reply = response.choices[0].message.content
         return assistant_reply
     except openai.error.OpenAIError as e:
-        st.error(labels.get("error_message", "죄송합니다, 답변을 생성하는 데 실패했습니다."))
+        error_code = getattr(e, 'code', 'N/A')
+        error_message = str(e)
+        st.error("Sorry, failed to generate a response.")
         return None
 
 # OpenAI API 키 설정
