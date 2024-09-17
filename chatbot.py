@@ -36,56 +36,53 @@ def chatbot_ui(language):
     # 챗봇 탭
     st.header(labels['chatbot_header'])
 
-    # 가로로 나누기 (비율 조정)
-    col1, col2, col3 = st.columns([3, 0.1, 1])  # 세 개의 열을 가로로 나누기
+    # CSS 스타일을 사용하여 가로 배치
+    st.markdown("""
+        <style>
+            .chat-container {
+                height: 800px;
+                overflow-y: auto;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+            }
+            .user-message {
+                background-color: """ + user_bg_color + """;
+                color: """ + user_text_color + """;
+                padding: 10px;
+                border-radius: 10px;
+                margin: 5px 0;
+                max-width: 60%;
+                align-self: flex-end;
+            }
+            .assistant-message {
+                background-color: """ + assistant_bg_color + """;
+                color: """ + assistant_text_color + """;
+                padding: 10px;
+                border-radius: 10px;
+                margin: 5px 0;
+                max-width: 60%;
+                align-self: flex-start;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # 스크롤 가능한 채팅 기록 영역
+    chat_messages = ""
+    for message in st.session_state.messages:
+        if message["role"] == "user":
+            chat_messages += f"<div class='user-message'><b>User:</b> {message['content']}</div>"
+        elif message["role"] == "assistant":
+            chat_messages += f"<div class='assistant-message'><b>Assistant:</b> {message['content']}</div>"
+
+    st.markdown(f"<div class='chat-container'>{chat_messages}</div>", unsafe_allow_html=True)
+
+    # 챗봇 시작하기 버튼과 질문 버튼 배치
+    col1, col2, col3 = st.columns([2, 1, 1])  # 버튼을 배치할 열 설정
 
     with col1:
-        # 스크롤 가능한 채팅 기록 영역
-        chat_history_style = f"""
-            <style>
-                .chat-container {{
-                    height: 800px;
-                    overflow-y: auto;
-                    border: 1px solid #ccc;
-                    border-radius: 10px;
-                    padding: 10px;
-                }}
-                .user-message {{
-                    background-color: {user_bg_color};
-                    color: {user_text_color};
-                    padding: 10px;
-                    border-radius: 10px;
-                    margin: 5px 0;
-                    max-width: 60%;
-                    text-align: right;
-                }}
-                .assistant-message {{
-                    background-color: {assistant_bg_color};
-                    color: {assistant_text_color};
-                    padding: 10px;
-                    border-radius: 10px;
-                    margin: 5px 0;
-                    max-width: 60%;
-                    text-align: left;
-                }}
-            </style>
-        """
-        st.markdown(chat_history_style, unsafe_allow_html=True)
-
-        chat_messages = ""
-        for message in st.session_state.messages:
-            if message["role"] == "user":
-                chat_messages += f"<div class='user-message'><b>User:</b> {message['content']}</div>"
-            elif message["role"] == "assistant":
-                chat_messages += f"<div class='assistant-message'><b>Assistant:</b> {message['content']}</div>"
-
-        st.markdown(f"<div class='chat-container'>{chat_messages}</div>", unsafe_allow_html=True)
-
-    with col2:
-        # 세로선 표시
-        st.markdown("<div style='width: 1px; background-color: #ccc; height: 700px;'></div>", unsafe_allow_html=True)
-
-    with col3:
         # 챗봇 시작하기 버튼
         if st.button(labels['start_chatbot']):
             initial_question = "방사성 동위원소에 대해 궁금한 점이 있습니다."
@@ -95,7 +92,7 @@ def chatbot_ui(language):
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-        # 질문 버튼 세로 배치
+    with col2:
         if st.button(labels['question1']):
             user_input = random.choice(labels['paraphrases']['question1'])
             st.session_state.messages.append({"role": "user", "content": user_input})
@@ -104,6 +101,7 @@ def chatbot_ui(language):
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
+    with col3:
         if st.button(labels['question2']):
             user_input = random.choice(labels['paraphrases']['question2'])
             st.session_state.messages.append({"role": "user", "content": user_input})
