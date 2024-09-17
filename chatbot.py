@@ -64,19 +64,17 @@ def chatbot_ui(language):
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
-    # 채팅 기록 표시
-    for message in st.session_state.messages:
-        if message["role"] == "user":
-            st.markdown(user_message_style.format(message['content']), unsafe_allow_html=True)
-        elif message["role"] == "assistant":
-            st.markdown(assistant_message_style.format(message['content']), unsafe_allow_html=True)
-
     # 질문 버튼 3개 생성 및 랜덤 질문
     col1, col2, col3 = st.columns(3)
+
+    # 디버그: 질문 1의 paraphrases 출력
+    st.write("Question 1 Paraphrases:", labels['paraphrases']['question1'])
 
     # 각 버튼에서 랜덤 질문 생성
     with col1:
         if st.button(labels['question1']):
+            # 디버그: question1이 실제로 포함하는 값 출력
+            st.write(f"Selected paraphrase for Question 1: {random.choice(labels['paraphrases']['question1'])}")
             user_input = random.choice(labels['paraphrases']['question1'])
             st.session_state.messages.append({"role": "user", "content": user_input})
 
@@ -102,3 +100,9 @@ def chatbot_ui(language):
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
+    # 채팅 기록 표시
+    for message in st.session_state.messages:
+        if message["role"] == "user":
+            st.markdown(user_message_style.format(message['content']), unsafe_allow_html=True)
+        elif message["role"] == "assistant":
+            st.markdown(assistant_message_style.format(message['content']), unsafe_allow_html=True)
