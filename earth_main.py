@@ -11,7 +11,7 @@ language = st.sidebar.selectbox('언어를 선택해주세요 / Select language:
 labels = get_labels(language)  # 언어에 따라 라벨 불러오기
 
 # --- 사이드바 탭 선택 ---
-selected_tab = st.sidebar.radio(labels['select_tab'], [labels['section1_header'], labels['section2_header']])
+selected_tab = st.sidebar.radio(labels['select_tab'], [labels['section1_header'], labels['section2_header'], "Mother-Daughter Graph"])
 
 # 방사성 동위원소 데이터 불러오기 함수
 def load_isotope_data(file_path):
@@ -126,32 +126,45 @@ if selected_tab == labels['section1_header']:
     # 그래프 출력
     st.pyplot(fig)
 
-    # 같은 동위원소 산포도 보기 버튼
-    if st.button(labels['plot_same_name']):
-        if time_unit == 'years':
-            filtered_isotopes = [(name, half_life / threshold) for name, half_life in zip(isotope_names, [entry[2] for entry in isotope_data]) if name == selected_isotope_name]
-        else:
-            filtered_isotopes = [(name, half_life) for name, half_life in zip(isotope_names, [entry[2] for entry in isotope_data]) if name == selected_isotope_name]
+# --- 모원소-자원소 그래프 탭 ---
+elif selected_tab == "Mother-Daughter Graph":
+    st.header("모원소와 자원소의 변화 그래프")
 
-        # 필터링된 동위원소 산포도 그리기
-        fig2, ax2 = plt.subplots(figsize=(15, 6))
-        ax2.scatter(range(len(filtered_isotopes)), [item[1] for item in filtered_isotopes], color='purple', label=f'{selected_isotope_name} Isotopes', s=50)
+    # 모원소 자원소 그래프를 위한 반감기 및 초기 양 설정
+    selected_half_life = isotope_data[selected_idx][2]  # 선택된 동위원소의 반감기
 
-        # 선택된 동위원소 강조
-        selected_filtered_idx = next((idx for idx, (name, hl) in enumerate(filtered_isotopes) if f"{name}-{selected_isotope_number}" == selected_isotope), None)
-        if selected_filtered_idx is not None:
-            ax2.scatter(selected_filtered_idx, filtered_isotopes[selected_filtered_idx][1], color='orange', label=f"Selected Isotope: {selected_isotope}", s=100)
+    # 붕괴 상수 계산
+    decay_constant = np.log(2) / selected_half_life
 
-        # 라벨 및 제목 설정
-        ax2.set_xlabel('Isotope Index')  # 영어로 설정
-        ax2.set_ylabel(y_label)  # 영어로 설정
-        ax2.set_title(f'Scatter plot of {selected_isotope_name} Isotopes')  # 영어로 설정
-        ax2.set_yscale('log')
-        ax2.legend()
+    # 시간 범위 설정 (0부터 입력된 연대까지)
+    time = np.linspace(0, input_age_seconds, 500)
 
-        # 그래프 출력
-        st.pyplot(fig2)
+    # 모원소의 양 계산
+    mother_isotope = initial_mother_isotope = 100  # 초기 모원소 양 설정
+    mother_isotope_amount = initial_mother_isotope * np.exp(-decay_constant * time)
+
+    # 자원소의 양 계산
+    daughter_isotope_amount = initial_mother_isotope - mother_isotope_amount
+
+    # --- 그래프 그리기 ---
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    # 모원소의 양 그래프
+    ax.plot(time, mother_isotope_amount, label='Mother Isotope', color='blue')
+
+    # 자원소의 양 그래프
+    ax.plot(time, daughter_isotope_amount, label='Daughter Isotope', color='red')
+
+    # 그래프 설정
+    ax.set_title(f'Amount of Mother and Daughter Isotopes over Time for {selected_isotope}')
+    ax.set_xlabel('Time (seconds)')
+    ax.set_ylabel('Isotope Amount')
+    ax.grid(True)
+    ax.legend()
+
+    # 그래프 출력
+    st.pyplot(fig)
 
 # --- 챗봇 탭 ---
 elif selected_tab == labels['section2_header']:
-    chatbot_ui(language)  # 분리된 챗봇 기능 호출 시 언어 전달
+    chatbot_ui(language)  # 분리된 챗봇 기능 호출 시 언어
