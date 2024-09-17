@@ -40,7 +40,7 @@ def chatbot_ui(language):
     st.markdown("""
         <style>
             .chat-container {
-                height: 800px;
+                height: 500px;
                 overflow-y: auto;
                 border: 1px solid #ccc;
                 border-radius: 10px;
