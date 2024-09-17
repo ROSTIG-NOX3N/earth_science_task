@@ -55,7 +55,7 @@ def chatbot_ui(language):
     with col1:
         # 스크롤 가능한 채팅 기록 영역
         st.markdown(
-            "<div style='height: 600px; overflow-y: auto; border: 1px solid #ccc; border-radius: 10px; padding: 10px;'>"
+            "<div style='height: 700px; overflow-y: auto; border: 1px solid #ccc; border-radius: 10px; padding: 10px;'>"
             "{}"
             "</div>".format(
                 "".join(
@@ -69,7 +69,7 @@ def chatbot_ui(language):
 
     with col3:
         # 세로선 표시
-        st.markdown("<div style='width: 1px; background-color: #ccc; height: 550px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='width: 1px; background-color: #ccc; height: 650px;'></div>", unsafe_allow_html=True)
 
     with col2:
         # 챗봇 시작하기 버튼
