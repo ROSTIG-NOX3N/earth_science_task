@@ -40,7 +40,7 @@ def chatbot_ui(language):
     st.markdown("""
         <style>
             .chat-container {
-                height: 400px;
+                height: 450px;
                 overflow-y: auto;
                 border: 1px solid #ccc;
                 border-radius: 10px;
@@ -94,7 +94,7 @@ def chatbot_ui(language):
 
         # 질문 버튼 세로 배치
         if st.button(labels['question1']):
-            user_input = random.choice(labels['paraphrases']['question1'])
+            user_input = random.choice(labels['paraphrases']['question1']) if language == '한국어' else random.choice(labels['paraphrases']['question1_en'])
             st.session_state.messages.append({"role": "user", "content": user_input})
 
             assistant_reply = generate_response()
@@ -102,7 +102,7 @@ def chatbot_ui(language):
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
         if st.button(labels['question2']):
-            user_input = random.choice(labels['paraphrases']['question2'])
+            user_input = random.choice(labels['paraphrases']['question2']) if language == '한국어' else random.choice(labels['paraphrases']['question2_en'])
             st.session_state.messages.append({"role": "user", "content": user_input})
 
             assistant_reply = generate_response()
@@ -110,7 +110,7 @@ def chatbot_ui(language):
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
         if st.button(labels['question3']):
-            user_input = random.choice(labels['paraphrases']['question3'])
+            user_input = random.choice(labels['paraphrases']['question3']) if language == '한국어' else random.choice(labels['paraphrases']['question3_en'])
             st.session_state.messages.append({"role": "user", "content": user_input})
 
             assistant_reply = generate_response()
