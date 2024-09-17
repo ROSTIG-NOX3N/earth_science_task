@@ -24,15 +24,15 @@ def chatbot_ui(language):
 
     # 채팅 배경 및 텍스트 색상 설정
     if theme_mode == "dark":
-        user_bg_color = "#2e2e2e"  # 어두운 배경색
-        user_text_color = "#ffffff"  # 밝은 텍스트 색상
-        assistant_bg_color = "#3e3e3e"  # 어두운 배경색
-        assistant_text_color = "#ffffff"  # 밝은 텍스트 색상
+        user_bg_color = "#2e2e2e"
+        user_text_color = "#ffffff"
+        assistant_bg_color = "#3e3e3e"
+        assistant_text_color = "#ffffff"
     else:
-        user_bg_color = "#dcf8c6"  # 연한 초록색 배경 (라이트모드)
-        user_text_color = "#000000"  # 검은 텍스트 색상
-        assistant_bg_color = "#f1f0f0"  # 연한 회색 배경 (라이트모드)
-        assistant_text_color = "#000000"  # 검은 텍스트 색상
+        user_bg_color = "#dcf8c6"
+        user_text_color = "#000000"
+        assistant_bg_color = "#f1f0f0"
+        assistant_text_color = "#000000"
 
     # 화면을 채팅 공간과 버튼 공간으로 나누기
     col1, col2 = st.columns([3, 1])  # 왼쪽에 채팅 (3배 너비), 오른쪽에 버튼 (1배 너비)
