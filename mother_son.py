@@ -3,10 +3,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import json
 
-# --- 사이드바 구성 ---
-# 언어 선택
-language = st.sidebar.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
-
 # --- 방사성 동위원소 데이터 불러오기 ---
 def load_isotope_data(file_path):
     try:
@@ -25,7 +21,7 @@ isotope_data = load_isotope_data('Formatted_Radioactive_Isotope_Half_Lives.json'
 if not isotope_data:
     st.stop()
 
-# --- 모원소-자원소 그래프 탭 ---
+# --- 사이드바 구성 ---
 st.sidebar.title("모원소-자원소 그래프")
 
 # 동위원소 이름과 번호 분리
