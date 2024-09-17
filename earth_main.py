@@ -20,19 +20,19 @@ def local_css(file_name):
 language = st.sidebar.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
 labels = get_labels(language)
 
-# 2. 모드 선택
-mode = st.sidebar.selectbox('모드를 선택하세요:', ['사용자 기본 설정', '라이트 모드', '다크 모드'])
+# 2. 모드 선택 (사이드바에 선택된 언어로 라벨 적용)
+mode = st.sidebar.selectbox(labels['select_mode'], [labels['default_mode'], labels['light_mode'], labels['dark_mode']])
 
 # 선택된 모드에 따라 스타일 적용
-if mode == '라이트 모드':
+if mode == labels['light_mode']:
     local_css("light_mode.css")
-elif mode == '다크 모드':
+elif mode == labels['dark_mode']:
     local_css("dark_mode.css")
 else:
     local_css("default_mode.css")
 
-# --- 사이드바 탭 선택 ---
-selected_tab = st.sidebar.radio("탭을 선택하세요", [labels['section1_header'], labels['section2_header']])
+# --- 사이드바 탭 선택 (언어에 맞게 라벨 변경) ---
+selected_tab = st.sidebar.radio(labels['select_tab'], [labels['section1_header'], labels['section2_header']])
 
 # 방사성 동위원소 데이터 불러오기 함수 (JSON 파일을 읽도록 수정)
 def load_isotope_data(file_path):
@@ -43,7 +43,7 @@ def load_isotope_data(file_path):
         isotope_data = [(entry["Isotope"], float(entry["Half Life"]), float(entry["Computed Half Life"])) for entry in isotope_data]
         return isotope_data
     except Exception as e:
-        st.error(f"Failed to load isotope data: {e}")
+        st.error(f"{labels['error_load_data']}: {e}")
         return []
 
 # 방사성 동위원소 데이터 불러오기
@@ -57,7 +57,7 @@ if selected_tab == labels['section1_header']:
     st.header(labels['section1_header'])
     
     # 단위 선택 (초/년)
-    time_unit = st.radio("단위를 선택하세요 (Select time unit):", ('seconds', 'years'))
+    time_unit = st.radio(labels['select_time_unit'], ('seconds', 'years'))
 
     # 입력 연대 (범위 제한 없음)
     input_age = st.number_input(labels['input_age'], value=1, help=labels['input_age_help'])
@@ -95,12 +95,12 @@ if selected_tab == labels['section1_header']:
     threshold = 31_536_000  # 1년을 초로 변환
     if time_unit == 'seconds':
         half_lives = [item[2] for item in isotope_data if item[2] < threshold]  # 초 단위 데이터
-        y_label = 'Half-life (seconds)'
+        y_label = 'Half-life (seconds)'  # 그래프 내부는 영어로 고정
         selected_half_life_display = selected_half_life
         half_life_unit = labels['half_life_seconds']
     else:
         half_lives = [item[2] / threshold for item in isotope_data if item[2] >= threshold]  # 년 단위 데이터
-        y_label = 'Half-life (years)'
+        y_label = 'Half-life (years)'  # 그래프 내부는 영어로 고정
         selected_half_life_display = selected_half_life / threshold
         half_life_unit = labels['half_life_years']
 
