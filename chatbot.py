@@ -15,6 +15,33 @@ def chatbot_ui(language):
         st.session_state.messages = []
         st.session_state.prev_language = language
 
+    # --- 다크모드/라이트모드에 따라 색상 설정 ---
+    theme_mode = st.get_option("theme.base")  # 'dark' 또는 'light' 반환
+
+    if theme_mode == "dark":
+        user_bg_color = "#2e2e2e"  # 어두운 배경색
+        user_text_color = "#ffffff"  # 밝은 텍스트 색상
+        assistant_bg_color = "#3e3e3e"  # 어두운 배경색
+        assistant_text_color = "#ffffff"  # 밝은 텍스트 색상
+    else:
+        user_bg_color = "#dcf8c6"  # 연한 초록색 배경 (라이트모드)
+        user_text_color = "#000000"  # 검은 텍스트 색상
+        assistant_bg_color = "#f1f0f0"  # 연한 회색 배경 (라이트모드)
+        assistant_text_color = "#000000"  # 검은 텍스트 색상
+
+    # --- 채팅 말풍선 스타일 적용 ---
+    user_message_style = f"""
+        <div style='background-color: {user_bg_color}; color: {user_text_color}; padding: 10px; 
+        border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left;'>
+            <b>User:</b> {{}}</div>
+    """
+
+    assistant_message_style = f"""
+        <div style='background-color: {assistant_bg_color}; color: {assistant_text_color}; padding: 10px; 
+        border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left;'>
+            <b>Assistant:</b> {{}}</div>
+    """
+
     # --- 챗봇 탭 ---
     st.header(labels['chatbot_header'])
 
@@ -36,17 +63,6 @@ def chatbot_ui(language):
     # 'messages'가 존재하지 않으면 초기화
     if "messages" not in st.session_state:
         st.session_state.messages = []
-
-    # 채팅 말풍선 스타일 적용을 위한 HTML/CSS
-    user_message_style = """
-        <div style='background-color: #dcf8c6; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%;'>
-            <b>User:</b> {}</div>
-    """
-
-    assistant_message_style = """
-        <div style='background-color: #f1f0f0; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left;'>
-            <b>Assistant:</b> {}</div>
-    """
 
     # 채팅 기록 표시
     for message in st.session_state.messages:
