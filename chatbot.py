@@ -51,7 +51,7 @@ def chatbot_ui(language):
 
     # 채팅 기록을 스크롤할 수 있는 영역으로 만들기
     chat_history_container = """
-        <div style='height: 300px; overflow-y: scroll; padding: 10px; border: 1px solid #ccc; border-radius: 10px;'>
+        <div style='height: 300px; overflow-y: auto; padding: 10px; border: 1px solid #ccc; border-radius: 10px;'>
             {}
         </div>
     """
