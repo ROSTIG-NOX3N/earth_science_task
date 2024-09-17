@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import json
 from languages import get_labels
+from chatbot import chatbot_ui  # 챗봇 UI 추가
 
 # --- 사이드바 구성 ---
 # 언어 선택
@@ -10,7 +11,7 @@ language = st.sidebar.selectbox('언어를 선택해주세요 / Select language:
 labels = get_labels(language)
 
 # --- 사이드바 탭 선택 ---
-selected_tab = st.sidebar.radio(labels['select_tab'], [labels['section1_header']])
+selected_tab = st.sidebar.radio(labels['select_tab'], [labels['section1_header'], labels['section2_header']])
 
 # 방사성 동위원소 데이터 불러오기 함수
 def load_isotope_data(file_path):
@@ -129,7 +130,32 @@ if selected_tab == labels['section1_header']:
     # 그래프 출력
     st.pyplot(fig)
 
-    # 결과 표시
-    st.write(f"{labels['selected_isotope']}: **{selected_isotope}**")
-    st.write(f"**{labels['selected_half_life']}: {selected_half_life_display:.2f} {half_life_unit}**")
-    st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life_display} {half_life_unit})")
+    # 같은 동위원소 산포도 보기 버튼
+    if st.button(labels['plot_same_name']):
+        if time_unit == 'years':
+            filtered_isotopes = [(name, half_life / threshold) for name, half_life in zip(isotope_names, [entry[2] for entry in isotope_data]) if name == selected_isotope_name]
+        else:
+            filtered_isotopes = [(name, half_life) for name, half_life in zip(isotope_names, [entry[2] for entry in isotope_data]) if name == selected_isotope_name]
+
+        # 필터링된 동위원소 산포도 그리기
+        fig2, ax2 = plt.subplots(figsize=(15, 6))
+        ax2.scatter(range(len(filtered_isotopes)), [item[1] for item in filtered_isotopes], color='purple', label=f'{selected_isotope_name} Isotopes', s=50)
+
+        # 선택된 동위원소 강조
+        selected_filtered_idx = next((idx for idx, (name, hl) in enumerate(filtered_isotopes) if f"{name}-{selected_isotope_number}" == selected_isotope), None)
+        if selected_filtered_idx is not None:
+            ax2.scatter(selected_filtered_idx, filtered_isotopes[selected_filtered_idx][1], color='orange', label=f"Selected Isotope: {selected_isotope}", s=100)
+
+        # 라벨 및 제목 설정
+        ax2.set_xlabel('Isotope Index')
+        ax2.set_ylabel(y_label)
+        ax2.set_title(f'Scatter plot of {selected_isotope_name} Isotopes')
+        ax2.set_yscale('log')
+        ax2.legend()
+
+        # 그래프 출력
+        st.pyplot(fig2)
+
+# --- 챗봇 탭 ---
+elif selected_tab == labels['section2_header']:
+    chatbot_ui()  # 분리된 챗봇 기능 호출
