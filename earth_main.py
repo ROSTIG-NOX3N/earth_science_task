@@ -6,13 +6,22 @@ import random
 import openai
 from languages import get_labels
 
-# 스타일 파일 불러오기
+# 스타일 파일 불러오기 함수
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-# 스타일 파일 적용
-local_css("style.css")
+# 모드 선택
+mode = st.selectbox('모드를 선택하세요:', ['사용자 기본 설정', '라이트 모드', '다크 모드'])
+
+# 선택된 모드에 따라 스타일 적용
+if mode == '라이트 모드':
+    local_css("light_mode.css")
+elif mode == '다크 모드':
+    local_css("dark_mode.css")
+else:
+    # 사용자 기본 설정에 따라 적용 (기본적으로 라이트 모드로 설정)
+    local_css("default_mode.css")
 
 # OpenAI API 키 설정
 openai.api_key = st.secrets["OPENAI_API_KEY"]
@@ -30,14 +39,14 @@ def load_isotope_data(file_path):
         return []
 
 # 방사성 동위원소 데이터 불러오기
-isotope_data = load_isotope_data('Formatted_Radioactive_Isotope_Half_Lives.json')  # JSON 파일 사용
+isotope_data = load_isotope_data('Formatted_Radioactive_Isotope_Half_Lives.json')
 
 if not isotope_data:
     st.stop()
 
 # 언어 선택 (한국어, 영어, 일본어 지원)
 language = st.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
-labels = get_labels(language)  # 선택된 언어에 맞는 라벨 가져오기
+labels = get_labels(language)
 
 # 언어 변경 시 채팅 기록 초기화 및 시스템 메시지 추가
 if "prev_language" not in st.session_state or st.session_state.prev_language != language:
