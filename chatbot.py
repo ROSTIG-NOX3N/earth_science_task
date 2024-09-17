@@ -12,8 +12,8 @@ def chatbot_ui(language):
         st.session_state.prev_language = language
 
     if st.session_state.prev_language != language:
-        st.session_state.messages = []
-        st.session_state.prev_language = language
+        st.session_state.messages = []  # 대화 내용 초기화
+        st.session_state.prev_language = language  # 이전 언어 업데이트
 
     # 메시지가 없을 경우 초기화
     if "messages" not in st.session_state:
@@ -40,7 +40,7 @@ def chatbot_ui(language):
     st.markdown("""
         <style>
             .chat-container {
-                height: 450px;
+                height: 800px;
                 overflow-y: auto;
                 border: 1px solid #ccc;
                 border-radius: 10px;
