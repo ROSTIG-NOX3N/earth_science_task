@@ -72,7 +72,10 @@ if selected_tab == labels['section1_header']:
                 arrowprops=dict(facecolor='green', shrink=0.05))
 
     # 선택된 동위원소 강조 (주황색 원)
-    ax.scatter(selected_idx, selected_half_life, color='orange', label=f"{labels['selected_isotope']}: {selected_isotope}", s=50)
+    try:
+        ax.scatter(selected_idx, selected_half_life, color='orange', label=f"{labels['selected_isotope']}: {selected_isotope}", s=50)
+    except NameError:
+        st.error(f"{labels['isotope_not_found']}")  # 선택된 동위원소가 없을 경우 예외 처리
 
     # 입력된 연대를 기준으로 수평선 추가
     ax.axhline(y=input_age_seconds, color='gray', linestyle='--', label=f"{labels['input_age_label']}: {input_age} {time_unit}")
@@ -91,7 +94,7 @@ if selected_tab == labels['section1_header']:
 
     # 그래프 출력
     st.pyplot(fig)
-
+    
 # 동위원소 이름과 번호 분리
 isotope_names = [item.split('-')[0] for item in [entry[0] for entry in isotope_data]]
 isotope_numbers = [item.split('-')[1] if '-' in item else '' for item in [entry[0] for entry in isotope_data]]
@@ -113,11 +116,13 @@ try:
     selected_half_life = isotope_data[selected_idx][2]
 except ValueError:
     st.error(labels['isotope_not_found'])
-    st.stop()
+    selected_idx = None
 
 # 사이드바에 선택한 동위원소의 반감기 표시
-st.sidebar.markdown(f"**{selected_isotope} 반감기**: {selected_half_life} seconds")
+if selected_idx is not None:
+    st.sidebar.markdown(f"**{selected_isotope} 반감기**: {selected_half_life} seconds")
 
+# --- 모원소-자원소 그래프 탭 ---
 if selected_tab == "Mother-Daughter Graph":
     st.header("모원소와 자원소의 비율 그래프")
 
@@ -172,6 +177,3 @@ if selected_tab == "Mother-Daughter Graph":
 
     # 그래프 출력
     st.pyplot(fig)
-# --- 챗봇 탭 ---
-elif selected_tab == labels['section2_header']:
-    chatbot_ui(language)  # 분리된 챗봇 기능 호출 시 언어 전달
