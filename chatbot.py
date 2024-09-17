@@ -69,7 +69,7 @@ def chatbot_ui(language):
 
     with col3:
         # 세로선 표시
-        st.markdown("<div style='width: 1px; background-color: #ccc; height: 300px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='width: 1px; background-color: #ccc; height: 550px;'></div>", unsafe_allow_html=True)
 
     with col2:
         # 챗봇 시작하기 버튼
