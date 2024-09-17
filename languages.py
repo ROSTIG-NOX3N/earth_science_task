@@ -106,7 +106,8 @@ def get_labels(language):
                     'How do geologists choose isotopes and determine age from samples with unknown ages?'
                 ]
             }
-                elif language == '日本語':
+        }
+    elif language == '日本語':
         return {
             'section1_header': 'グラフ',
             'section2_header': 'チャットボット',
@@ -160,4 +161,3 @@ def get_labels(language):
                 ]
             }
         }
-
