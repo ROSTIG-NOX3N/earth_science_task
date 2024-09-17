@@ -33,19 +33,6 @@ def chatbot_ui(language):
         assistant_bg_color = "#f1f0f0"
         assistant_text_color = "#000000"
 
-    # 채팅 말풍선 스타일 적용
-    user_message_style = f"""
-        <div style='background-color: {user_bg_color}; color: {user_text_color}; padding: 10px; 
-        border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: right;'>
-            <b>User:</b> {{}}</div>
-    """
-
-    assistant_message_style = f"""
-        <div style='background-color: {assistant_bg_color}; color: {assistant_text_color}; padding: 10px; 
-        border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left;'>
-            <b>Assistant:</b> {{}}</div>
-    """
-
     # 챗봇 탭
     st.header(labels['chatbot_header'])
 
@@ -54,22 +41,49 @@ def chatbot_ui(language):
 
     with col1:
         # 스크롤 가능한 채팅 기록 영역
-        st.markdown(
-            "<div style='height: 700px; overflow-y: auto; border: 1px solid #ccc; border-radius: 10px; padding: 10px;'>"
-            "{}"
-            "</div>".format(
-                "".join(
-                    user_message_style.format(message['content']) if message["role"] == "user"
-                    else assistant_message_style.format(message['content'])
-                    for message in st.session_state.messages
-                )
-            ),
-            unsafe_allow_html=True
-        )
+        chat_history_style = f"""
+            <style>
+                .chat-container {{
+                    height: 800px;
+                    overflow-y: auto;
+                    border: 1px solid #ccc;
+                    border-radius: 10px;
+                    padding: 10px;
+                }}
+                .user-message {{
+                    background-color: {user_bg_color};
+                    color: {user_text_color};
+                    padding: 10px;
+                    border-radius: 10px;
+                    margin: 5px 0;
+                    max-width: 60%;
+                    text-align: right;
+                }}
+                .assistant-message {{
+                    background-color: {assistant_bg_color};
+                    color: {assistant_text_color};
+                    padding: 10px;
+                    border-radius: 10px;
+                    margin: 5px 0;
+                    max-width: 60%;
+                    text-align: left;
+                }}
+            </style>
+        """
+        st.markdown(chat_history_style, unsafe_allow_html=True)
+
+        chat_messages = ""
+        for message in st.session_state.messages:
+            if message["role"] == "user":
+                chat_messages += f"<div class='user-message'><b>User:</b> {message['content']}</div>"
+            elif message["role"] == "assistant":
+                chat_messages += f"<div class='assistant-message'><b>Assistant:</b> {message['content']}</div>"
+
+        st.markdown(f"<div class='chat-container'>{chat_messages}</div>", unsafe_allow_html=True)
 
     with col3:
         # 세로선 표시
-        st.markdown("<div style='width: 1px; background-color: #ccc; height: 650px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='width: 1px; background-color: #ccc; height: 700px;'></div>", unsafe_allow_html=True)
 
     with col2:
         # 챗봇 시작하기 버튼
