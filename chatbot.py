@@ -83,11 +83,11 @@ def chatbot_ui(language):
     col1, col2 = st.columns([2, 1])  # 두 개의 열로 나누기
 
     with col1:
-        # 챗봇 시작하기 버튼
-        if st.button(labels['start_chatbot']):
+    # 챗봇 시작하기 버튼
+        if st.button(labels['start_chatbot']):  # 라벨로 변경
             initial_question = "방사성 동위원소에 대해 궁금한 점이 있습니다."
             st.session_state.messages.append({"role": "user", "content": initial_question})
-
+    
             assistant_reply = generate_response()
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
