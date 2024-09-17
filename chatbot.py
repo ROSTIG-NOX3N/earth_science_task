@@ -3,21 +3,6 @@ import random
 import openai
 from languages import get_labels
 
-# OpenAI API 호출 함수 정의
-def generate_response():
-    try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=st.session_state.messages
-        )
-        assistant_reply = response.choices[0].message.content
-        return assistant_reply
-    except openai.error.OpenAIError as e:
-        error_code = getattr(e, 'code', 'N/A')
-        error_message = str(e)
-        st.error(f"Failed to generate response (Error Code: {error_code}): {error_message}")
-        return None
-        
 # 챗봇 UI 함수
 def chatbot_ui(language):
     labels = get_labels(language)
@@ -59,9 +44,9 @@ def chatbot_ui(language):
         # 채팅 기록을 출력
         for message in st.session_state.messages:
             if message["role"] == "user":
-                st.markdown(f"<div style='background-color: {user_bg_color}; color: {user_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: right;'>{message['content']}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='background-color: {user_bg_color}; color: {user_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: right; float: right;'>{message['content']}</div>", unsafe_allow_html=True)
             elif message["role"] == "assistant":
-                st.markdown(f"<div style='background-color: {assistant_bg_color}; color: {assistant_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left;'>{message['content']}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='background-color: {assistant_bg_color}; color: {assistant_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left; float: left;'>{message['content']}</div>", unsafe_allow_html=True)
 
         # 로딩 메시지 표시
         if "loading" in st.session_state and st.session_state.loading:
@@ -95,4 +80,17 @@ def process_user_input(user_input):
     # 로딩 상태 해제
     st.session_state.loading = False
 
-
+# OpenAI API 호출 함수 정의
+def generate_response():
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=st.session_state.messages
+        )
+        assistant_reply = response.choices[0].message.content
+        return assistant_reply
+    except openai.error.OpenAIError as e:
+        error_code = getattr(e, 'code', 'N/A')
+        error_message = str(e)
+        st.error(f"Failed to generate response (Error Code: {error_code}): {error_message}")
+        return None
