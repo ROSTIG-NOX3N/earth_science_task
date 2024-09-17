@@ -1,10 +1,12 @@
-
-
 def get_labels(language):
     if language == '한국어':
         return {
             'section1_header': '그래프',
             'section2_header': '챗봇',
+            'select_mode': '모드를 선택하세요:',
+            'default_mode': '사용자 기본 설정',
+            'light_mode': '라이트 모드',
+            'dark_mode': '다크 모드',
             'input_age': '지질의 연대를 입력해주세요:',
             'select_isotope_name': '동위원소 이름을 선택해주세요:',
             'select_isotope_number': '동위원소 번호를 선택해주세요:',
@@ -18,13 +20,13 @@ def get_labels(language):
             'selected_half_life': '선택된 동위원소의 반감기',
             'nearest_isotope': '입력된 연대와 가장 가까운 동위원소',
             'half_life_seconds': '초 (반감기)',
-            'half_life_years': '년 (반감기)',  # 새로운 항목 추가
+            'half_life_years': '년 (반감기)',  
             'nearest_to_one': '반감기가 1초에 가장 가까운 동위원소',
             'input_age_help': '동위원소를 비교할 연대를 입력하세요.',
             'seconds': '초',
             'years': '년',
             'isotope_not_found': '선택한 동위원소를 찾을 수 없습니다.',
-            # 챗봇 라벨
+            'select_tab': '탭을 선택하세요:',
             'chatbot_header': '챗봇',
             'error_message': '죄송합니다, 답변을 생성하는 데 실패했습니다.',
             'user': '사용자',
@@ -32,6 +34,7 @@ def get_labels(language):
             'question1': '질문 1',
             'question2': '질문 2',
             'question3': '질문 3',
+            'error_load_data': '데이터를 불러오는 데 실패했습니다.',
             'paraphrases': {
                 'question1': [
                     '동위원소를 활용한 지질의 연대측정은 어떻게 이루어져?',
@@ -54,6 +57,10 @@ def get_labels(language):
         return {
             'section1_header': 'Graph',
             'section2_header': 'Chatbot',
+            'select_mode': 'Select mode:',
+            'default_mode': 'Default mode',
+            'light_mode': 'Light mode',
+            'dark_mode': 'Dark mode',
             'input_age': 'Enter a comparison age:',
             'select_isotope_name': 'Select Isotope Name:',
             'select_isotope_number': 'Select Isotope Number:',
@@ -67,13 +74,13 @@ def get_labels(language):
             'selected_half_life': 'Half-life of selected isotope',
             'nearest_isotope': 'Closest Isotope to Input Age',
             'half_life_seconds': 'seconds (Half-life)',
-            'half_life_years': 'years (Half-life)',  # 새로운 항목 추가
+            'half_life_years': 'years (Half-life)',  
             'nearest_to_one': 'Isotope with Half-life closest to 1 second',
             'input_age_help': 'Please enter an age to compare isotopes.',
             'seconds': 'seconds',
             'years': 'years',
             'isotope_not_found': 'Selected isotope not found.',
-            # 챗봇 라벨
+            'select_tab': 'Select tab:',
             'chatbot_header': 'Chatbot',
             'error_message': 'Sorry, failed to generate a response.',
             'user': 'User',
@@ -81,6 +88,7 @@ def get_labels(language):
             'question1': 'Question 1',
             'question2': 'Question 2',
             'question3': 'Question 3',
+            'error_load_data': 'Failed to load data.',
             'paraphrases': {
                 'question1': [
                     'How is geological age dating done using isotopes?',
@@ -103,6 +111,10 @@ def get_labels(language):
         return {
             'section1_header': 'グラフ',
             'section2_header': 'チャットボット',
+            'select_mode': 'モードを選択してください:',
+            'default_mode': 'デフォルトモード',
+            'light_mode': 'ライトモード',
+            'dark_mode': 'ダークモード',
             'input_age': '比較する年代を入力してください:',
             'select_isotope_name': '同位体名を選択してください:',
             'select_isotope_number': '同位体番号を選択してください:',
@@ -116,13 +128,13 @@ def get_labels(language):
             'selected_half_life': '選択された同位体の半減期',
             'nearest_isotope': '入力された年代に最も近い同位体',
             'half_life_seconds': '秒 (半減期)',
-            'half_life_years': '年 (半減期)',  # 새로운 항목 추가
+            'half_life_years': '年 (半減期)',  
             'nearest_to_one': '半減期が1秒に最も近い同位体',
             'input_age_help': '同位体を比較するための年代を入力してください。',
             'seconds': '秒',
             'years': '年',
             'isotope_not_found': '選択した同位体が見つかりません。',
-            # チャットボットのラベル
+            'select_tab': 'タブを選択してください:',
             'chatbot_header': 'チャットボット',
             'error_message': '申し訳ありませんが、応答の生成に失敗しました。',
             'user': 'ユーザー',
@@ -130,6 +142,7 @@ def get_labels(language):
             'question1': '質問 1',
             'question2': '質問 2',
             'question3': '質問 3',
+            'error_load_data': 'データの読み込みに失敗しました。',
             'paraphrases': {
                 'question1': [
                     '同位体を利用した地質年代測定はどのように行われますか？',
