@@ -71,18 +71,16 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     ax.scatter(range(len(half_lives)), half_lives, color='blue', label=y_label, s=10)
     
     # 가장 가까운 동위원소 강조
-    ax.annotate(f"Nearest Isotope: {nearest_isotope}", 
+    ax.annotate(f"Closest Isotope: {nearest_isotope}", 
                 xy=(nearest_ratio_idx, nearest_half_life),
                 xytext=(nearest_ratio_idx, nearest_half_life * 1.5),
                 arrowprops=dict(facecolor='green', shrink=0.05))
     
     # 선택된 동위원소 강조
-    ax.scatter(selected_idx, isotope_data[selected_idx][2], color='orange', 
-               label=f"Selected Isotope: {isotope_data[selected_idx][0]}", s=50)
+    ax.scatter(selected_idx, isotope_data[selected_idx][2], color='orange', label=f"Selected Isotope: {isotope_data[selected_idx][0]}", s=50)
     
     # 입력 연대 기준 수평선 추가
-    ax.axhline(y=input_age_seconds, color='gray', linestyle='--', 
-               label=f"Input Age: {input_age_seconds} seconds")
+    ax.axhline(y=input_age_seconds, color='gray', linestyle='--', label=f"Input Age: {input_age_seconds} seconds")
     
     # 축 설정
     ax.set_xlim(0, len(half_lives) - 1)
@@ -96,14 +94,15 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     # 그래프 출력
     st.pyplot(fig)
 
-# 모원소-자원소 그래프 그리기 함수 (레이블 고정: 영어)
-def plot_mother_daughter_graph(selected_half_life, selected_isotope):
+# 모원소-자원소 그래프 그리기 함수
+def plot_mother_daughter_graph(selected_half_life, selected_isotope, labels):
     """
     모원소와 자원소의 비율 변화를 그래프로 시각화합니다.
     
     Parameters:
         selected_half_life (float): 선택된 동위원소의 반감기(초 단위).
         selected_isotope (str): 선택된 동위원소의 이름.
+        labels (dict): 다국어 라벨 딕셔너리.
     """
     decay_constant = np.log(2) / selected_half_life
     time = np.linspace(0, 1, 500)  # 시간 범위 설정 (0부터 1초)
@@ -122,19 +121,17 @@ def plot_mother_daughter_graph(selected_half_life, selected_isotope):
     daughter_ratio_at_1_second = round((daughter_at_1_second / initial_mother_isotope) * 100, 6)
     
     # 사이드바에 비율 표시
-    st.sidebar.markdown(f"**Mother Isotope Ratio at 1 second**: {mother_ratio_at_1_second}%")
-    st.sidebar.markdown(f"**Daughter Isotope Ratio at 1 second**: {daughter_ratio_at_1_second}%")
+    st.sidebar.markdown(f"**{labels.get('mother_ratio_1s', 'Mother Isotope Ratio at 1 second')}:** {mother_ratio_at_1_second}%")
+    st.sidebar.markdown(f"**{labels.get('daughter_ratio_1s', 'Daughter Isotope Ratio at 1 second')}:** {daughter_ratio_at_1_second}%")
     
     # 그래프 그리기
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(time, mother_ratio * 100, label='Mother Isotope Ratio (%)', color='blue')
-    ax.plot(time, daughter_ratio * 100, label='Daughter Isotope Ratio (%)', color='red')
+    ax.plot(time, mother_ratio * 100, label="Mother Isotope Ratio (%)", color='blue')
+    ax.plot(time, daughter_ratio * 100, label="Daughter Isotope Ratio (%)", color='red')
     
     # 1초 시점 비율 강조
-    ax.scatter([1], [mother_ratio_at_1_second], color='blue', 
-               label='Mother Isotope Ratio at 1 second', s=100, zorder=5)
-    ax.scatter([1], [daughter_ratio_at_1_second], color='red', 
-               label='Daughter Isotope Ratio at 1 second', s=100, zorder=5)
+    ax.scatter([1], [mother_ratio_at_1_second], color='blue', label="Mother Isotope Ratio at 1 second", s=100, zorder=5)
+    ax.scatter([1], [daughter_ratio_at_1_second], color='red', label="Daughter Isotope Ratio at 1 second", s=100, zorder=5)
     
     # 그래프 설정
     ax.set_title(f"Mother-Daughter Graph - {selected_isotope}", fontsize=14)
@@ -163,7 +160,7 @@ def main():
         [
             labels.get('section1_header', '산포도 그래프'),  # 산포도 그래프 탭
             labels.get('section2_header', '챗봇'),        # 챗봇 탭
-            "Mother-Daughter Graph"                     # 모자원소 그래프 탭 (고정된 레이블)
+            "Mother-Daughter Graph"                     # 모자원소 그래프 탭
         ]
     )
     
@@ -204,32 +201,36 @@ def main():
         st.error(labels.get("isotope_not_found", "선택한 동위원소를 찾을 수 없습니다."))
         selected_idx = None
     
+    # 선택한 동위원소의 반감기 값을 사이드바에 표시
+    if selected_idx is not None:
+        st.sidebar.markdown(f"**{labels.get('selected_half_life', 'Half-life of selected isotope')}:** {selected_half_life} seconds")
+    
     # --- 탭별 기능 분기 ---
     if selected_tab == labels.get('section1_header', '산포도 그래프'):
         # 산포도 그래프 탭
-        st.header("Scatter Plot of Isotope Half-lives")  # 고정된 영어 제목
+        st.header("Scatter Plot of Isotope Half-lives")
         
         if selected_idx is None:
-            st.error("Please select a valid isotope.")  # 고정된 영어 에러 메시지
+            st.error("Please select a valid isotope.")
         else:
             # 단위 선택
             time_unit = st.radio(
-                "Select Time Unit:", 
+                labels.get("select_time_unit", "Select time unit:"), 
                 ("seconds", "years"), 
                 key="time_unit_select"
             )
             
             # 입력 연대
             input_age = st.number_input(
-                "Enter a comparison age:",  # 고정된 영어 레이블
+                labels.get("input_age", "Enter a comparison age:"),
                 value=1.0,  # 정수를 실수로 변경
                 min_value=0.0,
-                help="Please enter an age to compare isotopes.",  # 고정된 영어 도움말
+                help=labels.get("input_age_help", "Please enter an age to compare isotopes."),
                 key="age_input"
             )
             
             if input_age <= 0:
-                st.warning("Please enter a positive value.")  # 고정된 영어 경고 메시지
+                st.warning(labels.get("positive_age_warning", "Please enter a positive value."))
             else:
                 # 입력 연대 변환
                 if time_unit == "years":
@@ -246,13 +247,13 @@ def main():
     
     elif selected_tab == "Mother-Daughter Graph":
         # 모자원소 그래프 탭
-        st.header("Mother-Daughter Graph")  # 고정된 영어 제목
+        st.header("Mother-Daughter Graph")
         
         if selected_idx is None:
-            st.error("Please select a valid isotope.")  # 고정된 영어 에러 메시지
+            st.error("Please select a valid isotope.")
         else:
             # 모자원소 그래프 그리기
-            plot_mother_daughter_graph(selected_half_life, selected_isotope)
+            plot_mother_daughter_graph(selected_half_life, selected_isotope, labels)
     
     # Optional: 기타 탭 추가 시 여기에 작성
 
