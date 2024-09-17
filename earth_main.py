@@ -86,7 +86,8 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
 
     # 선택된 동위원소 강조
     selected_half_life = isotope_data[selected_idx][2]
-    ax.scatter(selected_idx, selected_half_life, color='orange', label=f"Selected Isotope: {isotope_data[selected_idx][0]}", s=50)
+    ax.scatter(selected_idx, selected_half_life if time_unit == "seconds" else selected_half_life / threshold, 
+               color='orange', label=f"Selected Isotope: {isotope_data[selected_idx][0]}", s=50)
 
     # 입력 연대 기준 수평선 추가
     if time_unit == "years":
