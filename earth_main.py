@@ -135,7 +135,7 @@ def plot_mother_daughter_graph(selected_half_life, selected_isotope, labels):
     ax.scatter([1], [daughter_ratio_at_1_second], color='red', label=labels.get('daughter_ratio_1s_label', '자원소 비율 (1초)'), s=100, zorder=5)
     
     # 그래프 설정
-    ax.set_title(f"{labels.get('mother_daughter_graph_title', '모자원소 비율 변화')} - {selected_isotope}", fontsize=14)
+    ax.set_title(f"{labels.get('mother_daughter_graph_title', '모자원소 그래프')} - {selected_isotope}", fontsize=14)
     ax.set_xlabel(labels.get('time_seconds', '시간 (초)'), fontsize=12)
     ax.set_ylabel(labels.get('isotope_ratio_percent', '동위원소 비율 (%)'), fontsize=12)
     ax.set_xlim(0, 1)
@@ -198,7 +198,13 @@ def main():
             time_unit = st.radio(labels.get("select_time_unit", "단위를 선택하세요:"), ("seconds", "years"), key="time_unit_select")
             
             # 입력 연대
-            input_age = st.number_input(labels.get("input_age", "비교할 연대 입력:"), value=1, min_value=0.0, help=labels.get("input_age_help", "동위원소를 비교할 연대를 입력하세요."), key="age_input")
+            input_age = st.number_input(
+                labels.get("input_age", "비교할 연대 입력:"),
+                value=1.0,  # 정수를 실수로 변경
+                min_value=0.0,
+                help=labels.get("input_age_help", "동위원소를 비교할 연대를 입력하세요."),
+                key="age_input"
+            )
             
             if input_age <= 0:
                 st.warning(labels.get("positive_age_warning", "양의 값을 입력해 주세요."))
