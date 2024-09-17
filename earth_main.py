@@ -65,16 +65,21 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     nearest_ratio_idx = np.argmin(ratios)
     nearest_isotope = isotope_data[nearest_ratio_idx][0]
     nearest_half_life = isotope_data[nearest_ratio_idx][2]
-    
+
     # 산포도 그리기
     fig, ax = plt.subplots(figsize=(15, 6))
     ax.scatter(range(len(half_lives)), half_lives, color='blue', label=y_label, s=10)
 
     # 가장 가까운 동위원소 강조
+    if time_unit == "years":
+        nearest_half_life_display = nearest_half_life / threshold  # 변환된 반감기
+    else:
+        nearest_half_life_display = nearest_half_life  # 원래 반감기
+
     ax.annotate(
-        f"Closest Isotope: {nearest_isotope} (Half-life: {nearest_half_life:.2f} seconds)",
-        xy=(nearest_ratio_idx, nearest_half_life if time_unit == "seconds" else nearest_half_life / threshold),
-        xytext=(nearest_ratio_idx, (nearest_half_life * 1.5 if time_unit == "seconds" else (nearest_half_life / threshold) * 1.5)),
+        f"Closest Isotope: {nearest_isotope} (Half-life: {nearest_half_life_display:.2f} {y_label})",
+        xy=(nearest_ratio_idx, nearest_half_life_display),
+        xytext=(nearest_ratio_idx, nearest_half_life_display * 1.5),
         arrowprops=dict(facecolor='green', shrink=0.05, linewidth=2, edgecolor='black'),  # 강조 표시
         fontsize=12, color='green', weight='bold'  # 강조된 텍스트
     )
@@ -84,7 +89,12 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     ax.scatter(selected_idx, selected_half_life, color='orange', label=f"Selected Isotope: {isotope_data[selected_idx][0]}", s=50)
 
     # 입력 연대 기준 수평선 추가
-    ax.axhline(y=input_age_seconds, color='gray', linestyle='--', label=f"Input Age: {input_age_seconds:.2f} {time_unit}")
+    if time_unit == "years":
+        input_age_display = input_age_seconds / threshold  # 변환된 입력 연대
+    else:
+        input_age_display = input_age_seconds  # 초 단위 그대로 사용
+
+    ax.axhline(y=input_age_display, color='gray', linestyle='--', label=f"Input Age: {input_age_display:.2f} {y_label}")
 
     # 축 설정
     ax.set_xlim(0, len(half_lives) - 1)
@@ -100,7 +110,7 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
 
     # 가장 가까운 동위원소와 반감기 정보 표시
     st.markdown(f"### Closest Isotope: {nearest_isotope}")
-    st.markdown(f"**Half-life:** {nearest_half_life:.2f} seconds")
+    st.markdown(f"**Half-life:** {nearest_half_life_display:.2f} {y_label}")
 
 # 모원소-자원소 그래프 그리기 함수
 def plot_mother_daughter_graph(selected_half_life, selected_isotope, labels):
