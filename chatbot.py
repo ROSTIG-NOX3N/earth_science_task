@@ -34,36 +34,30 @@ def chatbot_ui(language):
         assistant_bg_color = "#f1f0f0"  # 연한 회색 배경 (라이트모드)
         assistant_text_color = "#000000"  # 검은 텍스트 색상
 
-    # 화면을 채팅 공간과 버튼 공간으로 나누기
-    col1, col2 = st.columns([3, 1])  # 왼쪽에 채팅 (3배 너비), 오른쪽에 버튼 (1배 너비)
+    # 채팅 UI 배치
+    st.subheader("💬 Chatbot")
 
-    # 왼쪽: 채팅 내역
-    with col1:
-        st.subheader("💬 Chatbot")
+    for message in st.session_state.messages:
+        if message["role"] == "user":
+            st.markdown(f"<div style='background-color: {user_bg_color}; color: {user_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: right; float: right;'>{message['content']}</div>", unsafe_allow_html=True)
+        elif message["role"] == "assistant":
+            st.markdown(f"<div style='background-color: {assistant_bg_color}; color: {assistant_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left; float: left;'>{message['content']}</div>", unsafe_allow_html=True)
 
-        # 채팅 기록을 출력
-        for message in st.session_state.messages:
-            if message["role"] == "user":
-                st.markdown(f"<div style='background-color: {user_bg_color}; color: {user_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: right;'>{message['content']}</div>", unsafe_allow_html=True)
-            elif message["role"] == "assistant":
-                st.markdown(f"<div style='background-color: {assistant_bg_color}; color: {assistant_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left;'>{message['content']}</div>", unsafe_allow_html=True)
+    # 로딩 메시지 표시
+    if "loading" in st.session_state and st.session_state.loading:
+        st.markdown("<div style='color: grey;'>Loading...</div>", unsafe_allow_html=True)
 
-        # 로딩 메시지 표시
-        if "loading" in st.session_state and st.session_state.loading:
-            st.markdown("<div style='color: grey;'>Loading...</div>", unsafe_allow_html=True)
+    # 버튼 공간
+    st.subheader("Questions")
 
-    # 오른쪽: 세로로 나열된 버튼 공간
-    with col2:
-        st.subheader("Questions")
+    if st.button(labels['question1']):
+        process_user_input(random.choice(labels['paraphrases']['question1']))
 
-        if st.button(labels['question1']):
-            process_user_input(random.choice(labels['paraphrases']['question1']))
+    if st.button(labels['question2']):
+        process_user_input(random.choice(labels['paraphrases']['question2']))
 
-        if st.button(labels['question2']):
-            process_user_input(random.choice(labels['paraphrases']['question2']))
-
-        if st.button(labels['question3']):
-            process_user_input(random.choice(labels['paraphrases']['question3']))
+    if st.button(labels['question3']):
+        process_user_input(random.choice(labels['paraphrases']['question3']))
 
 # 사용자 입력 처리 및 챗봇 응답
 def process_user_input(user_input):
