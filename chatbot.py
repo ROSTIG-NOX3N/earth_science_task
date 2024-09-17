@@ -44,9 +44,13 @@ def chatbot_ui(language):
         # 채팅 기록을 출력
         for message in st.session_state.messages:
             if message["role"] == "user":
-                st.markdown(f"<div style='background-color: {user_bg_color}; color: {user_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0;'>{message['content']}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='background-color: {user_bg_color}; color: {user_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: right;'>{message['content']}</div>", unsafe_allow_html=True)
             elif message["role"] == "assistant":
-                st.markdown(f"<div style='background-color: {assistant_bg_color}; color: {assistant_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0;'>{message['content']}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='background-color: {assistant_bg_color}; color: {assistant_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left;'>{message['content']}</div>", unsafe_allow_html=True)
+
+        # 로딩 메시지 표시
+        if "loading" in st.session_state and st.session_state.loading:
+            st.markdown("<div style='color: grey;'>Loading...</div>", unsafe_allow_html=True)
 
     # 오른쪽: 세로로 나열된 버튼 공간
     with col2:
@@ -65,11 +69,16 @@ def chatbot_ui(language):
 def process_user_input(user_input):
     st.session_state.messages.append({"role": "user", "content": user_input})
 
-    # Loading 메시지 표시
-    with st.spinner('Loading...'):
-        assistant_reply = generate_response()
-        if assistant_reply:
-            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+    # 로딩 상태 설정
+    st.session_state.loading = True
+
+    # GPT-3.5에게 질문을 보내고 답변 받기
+    assistant_reply = generate_response()
+    if assistant_reply:
+        st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+
+    # 로딩 상태 해제
+    st.session_state.loading = False
 
 # OpenAI API 호출 함수 정의
 def generate_response():
