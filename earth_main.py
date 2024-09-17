@@ -54,6 +54,9 @@ except ValueError:
     st.error(labels['isotope_not_found'])
     st.stop()
 
+# 사이드바에 선택한 동위원소의 반감기 표시
+st.sidebar.markdown(f"**{selected_isotope} 반감기**: {selected_half_life} seconds")
+
 # --- 산포도 그래프 탭 ---
 if selected_tab == labels['section1_header']:
     st.header(labels['section1_header'])
