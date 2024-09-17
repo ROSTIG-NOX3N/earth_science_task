@@ -53,22 +53,19 @@ def chatbot_ui(language):
     col1, col3, col2 = st.columns([3, 0.1, 1])  # col1과 col2 사이에 col3 (세로선) 추가
 
     with col1:
-        # 채팅 기록을 스크롤할 수 있는 영역으로 만들기
-        chat_history_container = """
-            <div style='height: 300px; overflow-y: scroll; padding: 10px; border: 1px solid #ccc; border-radius: 10px;'>
-                {}
-            </div>
-        """
-        
-        chat_messages = ""
-        for message in st.session_state.messages:
-            if message["role"] == "user":
-                chat_messages += user_message_style.format(message['content'])
-            elif message["role"] == "assistant":
-                chat_messages += assistant_message_style.format(message['content'])
-
-        # 채팅 기록 출력 (스크롤 가능 영역)
-        st.markdown(chat_history_container.format(chat_messages), unsafe_allow_html=True)
+        # 스크롤 가능한 채팅 기록 영역
+        st.markdown(
+            "<div style='height: 600px; overflow-y: auto; border: 1px solid #ccc; border-radius: 10px; padding: 10px;'>"
+            "{}"
+            "</div>".format(
+                "".join(
+                    user_message_style.format(message['content']) if message["role"] == "user"
+                    else assistant_message_style.format(message['content'])
+                    for message in st.session_state.messages
+                )
+            ),
+            unsafe_allow_html=True
+        )
 
     with col3:
         # 세로선 표시
