@@ -6,7 +6,7 @@ def get_labels():
         'default_mode': 'Default mode',
         'light_mode': 'Light mode',
         'dark_mode': 'Dark mode',
-        'start_chatbot': 'Start Chatbot',
+        'start_chatbot': 'Start Chatbot (Please press even if there is no answer)',
         'input_age': 'Enter a comparison age:',
         'select_time_unit': 'Select time unit:',
         'select_isotope_name': 'Select Isotope Name:',
