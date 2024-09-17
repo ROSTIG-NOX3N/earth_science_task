@@ -101,16 +101,16 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     # 입력 연대 기준 수평선 추가
     ax.axhline(y=age_label_value, color='gray', linestyle='--', label=f"Input Age: {age_label_value} {age_label_unit}")
     
-    # 가장 가까운 동위원소 강조 주석 추가
-    ax.annotate(
-        f"Closest Isotope: {nearest_isotope}",
-        xy=(nearest_ratio_idx, nearest_half_life),
-        xytext=(nearest_ratio_idx, nearest_half_life * 1.5),
-        fontsize=14,
-        fontweight='bold',
-        color='red',
-        arrowprops=dict(facecolor='red', shrink=0.05, width=2, headwidth=10)
-    )
+    # 가장 가까운 동위원소 강조 주석 추가 (선택 사항, 주석 제거 가능)
+    # ax.annotate(
+    #     f"Closest Isotope: {nearest_isotope}\nHalf-life: {nearest_half_life:.2f} {age_label_unit}",
+    #     xy=(nearest_ratio_idx, nearest_half_life),
+    #     xytext=(nearest_ratio_idx, nearest_half_life * 1.5),
+    #     fontsize=14,
+    #     fontweight='bold',
+    #     color='red',
+    #     arrowprops=dict(facecolor='red', shrink=0.05, width=2, headwidth=10)
+    # )
     
     # 축 설정
     ax.set_xlim(-1, len(half_lives))
@@ -123,6 +123,9 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     
     # 그래프 출력
     st.pyplot(fig)
+    
+    # 가장 가까운 동위원소 이름과 반감기값을 산포도 아래에 표시
+    st.write(f"**가장 가까운 동위원소:** {nearest_isotope}, **반감기:** {nearest_half_life:.2f} {age_label_unit}")
 
 # 모원소-자원소 그래프 그리기 함수
 def plot_mother_daughter_graph(selected_half_life, selected_isotope, labels):
