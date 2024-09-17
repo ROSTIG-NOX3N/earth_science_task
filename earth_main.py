@@ -4,7 +4,14 @@ import numpy as np
 import json
 import random
 import openai
-from languages import get_labels
+
+# 스타일 파일 불러오기
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+# 스타일 파일 적용
+local_css("style.css")
 
 # OpenAI API 키 설정
 openai.api_key = st.secrets["OPENAI_API_KEY"]
