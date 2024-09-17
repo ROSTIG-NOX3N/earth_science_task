@@ -20,7 +20,7 @@ def local_css(file_name):
 language = st.sidebar.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
 labels = get_labels(language)
 
-# 2. 모드 선택 (사이드바에 선택된 언어로 라벨 적용)
+# 2. 모드 선택
 mode = st.sidebar.selectbox(labels['select_mode'], [labels['default_mode'], labels['light_mode'], labels['dark_mode']])
 
 # 선택된 모드에 따라 스타일 적용
@@ -31,7 +31,7 @@ elif mode == labels['dark_mode']:
 else:
     local_css("default_mode.css")
 
-# --- 사이드바 탭 선택 (언어에 맞게 라벨 변경) ---
+# --- 사이드바 탭 선택 ---
 selected_tab = st.sidebar.radio(labels['select_tab'], [labels['section1_header'], labels['section2_header']])
 
 # 방사성 동위원소 데이터 불러오기 함수 (JSON 파일을 읽도록 수정)
@@ -125,13 +125,15 @@ if selected_tab == labels['section1_header']:
     fig, ax = plt.subplots(figsize=(15, 6))
     ax.scatter(range(len(half_lives)), half_lives, color='blue', label=y_label, s=10)
 
-    # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 강조
+    # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 강조 (초록색 화살표)
     ax.annotate(f"Closest to input age / half-life ratio = 1: {nearest_isotope}", xy=(nearest_ratio_idx, nearest_half_life),
                 xytext=(nearest_ratio_idx, nearest_half_life * 1.5),
                 arrowprops=dict(facecolor='green', shrink=0.05))
 
-    # 선택된 동위원소 강조
+    # 선택된 동위원소 강조 (주황색 원)
     ax.scatter(selected_idx, selected_half_life, color='orange', label=f"Selected Isotope: {selected_isotope}", s=50)
+
+    # 입력된 연대를 기준으로 수평선 추가
     ax.axhline(y=input_age_seconds, color='gray', linestyle='--', label=f"Input Age: {input_age} {time_unit}")
 
     # x축 범위를 전체 데이터로 설정
@@ -180,60 +182,3 @@ if selected_tab == labels['section1_header']:
     st.write(f"{labels['selected_isotope']}: **{selected_isotope}**")
     st.write(f"**{labels['selected_half_life']}: {selected_half_life_display:.2f} {half_life_unit}**")
     st.write(f"{labels['nearest_isotope']}: **{nearest_isotope}** ({nearest_half_life_display} {half_life_unit})")
-
-# --- 챗봇 탭 ---
-elif selected_tab == labels['section2_header']:
-    st.header(labels['chatbot_header'])
-
-    # OpenAI API 호출 함수 정의
-    def generate_response():
-        try:
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=st.session_state.messages
-            )
-            assistant_reply = response.choices[0].message.content
-            return assistant_reply
-        except openai.error.OpenAIError as e:
-            error_code = getattr(e, 'code', 'N/A')
-            error_message = str(e)
-            st.error(f"{labels['error_message']} (Error Code: {error_code}): {error_message}")
-            return None
-
-    # 질문 버튼 3개 생성 및 랜덤 질문
-    col1, col2, col3 = st.columns(3)
-
-    # 각 버튼에서 랜덤 질문 생성
-    with col1:
-        if st.button(labels['question1']):
-            user_input = random.choice(labels['paraphrases']['question1'])
-            st.session_state.messages.append({"role": "user", "content": user_input})
-
-            assistant_reply = generate_response()
-            if assistant_reply:
-                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
-
-    with col2:
-        if st.button(labels['question2']):
-            user_input = random.choice(labels['paraphrases']['question2'])
-            st.session_state.messages.append({"role": "user", "content": user_input})
-
-            assistant_reply = generate_response()
-            if assistant_reply:
-                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
-
-    with col3:
-        if st.button(labels['question3']):
-            user_input = random.choice(labels['paraphrases']['question3'])
-            st.session_state.messages.append({"role": "user", "content": user_input})
-
-            assistant_reply = generate_response()
-            if assistant_reply:
-                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
-
-    # 채팅 기록 표시
-    for message in st.session_state.messages:
-        if message["role"] == "user":
-            st.markdown(f"**{labels['user']}:** {message['content']}")
-        elif message["role"] == "assistant":
-            st.markdown(f"**{labels['assistant']}:** {message['content']}")
