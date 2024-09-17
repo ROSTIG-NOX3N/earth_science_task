@@ -49,8 +49,8 @@ def chatbot_ui(language):
     # 챗봇 탭
     st.header(labels['chatbot_header'])
 
-    # 두 개의 열로 나누기
-    col1, col2 = st.columns([2, 1])  # 2:1 비율로 열 나누기
+    # 두 개의 열로 나누기 (비율 조정)
+    col1, col2 = st.columns([3, 1])  # col1이 3, col2가 1 비율로 설정
 
     with col1:
         # 채팅 기록을 출력
@@ -60,10 +60,12 @@ def chatbot_ui(language):
             elif message["role"] == "assistant":
                 st.markdown(assistant_message_style.format(message['content']), unsafe_allow_html=True)
 
+    # 중간에 세로선 추가
+    st.markdown("<div style='width: 1px; background-color: #ccc; height: 300px; display: inline-block;'></div>", unsafe_allow_html=True)
+
     with col2:
         # 챗봇 시작하기 버튼
         if st.button(labels['start_chatbot']):
-            # 기본 질문 추가
             initial_question = "방사성 동위원소에 대해 궁금한 점이 있습니다."
             st.session_state.messages.append({"role": "user", "content": initial_question})
 
