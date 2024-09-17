@@ -40,7 +40,7 @@ def chatbot_ui(language):
     st.markdown("""
         <style>
             .chat-container {
-                height: 500px;
+                height: 400px;
                 overflow-y: auto;
                 border: 1px solid #ccc;
                 border-radius: 10px;
@@ -80,7 +80,7 @@ def chatbot_ui(language):
     st.markdown(f"<div class='chat-container'>{chat_messages}</div>", unsafe_allow_html=True)
 
     # 챗봇 시작하기 버튼과 질문 버튼 배치
-    col1, col2, col3 = st.columns([2, 1, 1])  # 버튼을 배치할 열 설정
+    col1, col2 = st.columns([2, 1])  # 두 개의 열로 나누기
 
     with col1:
         # 챗봇 시작하기 버튼
@@ -92,7 +92,7 @@ def chatbot_ui(language):
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-    with col2:
+        # 질문 버튼 세로 배치
         if st.button(labels['question1']):
             user_input = random.choice(labels['paraphrases']['question1'])
             st.session_state.messages.append({"role": "user", "content": user_input})
@@ -101,7 +101,6 @@ def chatbot_ui(language):
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-    with col3:
         if st.button(labels['question2']):
             user_input = random.choice(labels['paraphrases']['question2'])
             st.session_state.messages.append({"role": "user", "content": user_input})
@@ -117,6 +116,10 @@ def chatbot_ui(language):
             assistant_reply = generate_response()
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+
+    with col2:
+        # 두 번째 열은 빈 공간으로 두거나 다른 기능 추가 가능
+        st.write("")  # 이 부분을 다른 내용으로 대체할 수 있습니다.
 
 # OpenAI API 호출 함수 정의
 def generate_response():
