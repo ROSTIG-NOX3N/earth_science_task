@@ -50,7 +50,7 @@ def chatbot_ui(language):
     st.header(labels['chatbot_header'])
 
     # 두 개의 열로 나누기 (비율 조정)
-    col1, col3, col2 = st.columns([2.5, 0.1, 1])  # col1과 col2 사이에 col3 (세로선) 추가
+    col1, col3, col2 = st.columns([3.5, 0.1, 1.5])  # col1과 col2 사이에 col3 (세로선) 추가
 
     with col1:
         # 채팅 기록을 출력
