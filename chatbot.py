@@ -36,22 +36,22 @@ def chatbot_ui(language):
     # --- 채팅 말풍선 스타일 적용 ---
     user_message_style = f"""
         <div style='background-color: {user_bg_color}; color: {user_text_color}; padding: 10px; 
-        border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left;'>
+        border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: right; float: right; clear: both;'>
             <b>User:</b> {{}}</div>
     """
 
     assistant_message_style = f"""
         <div style='background-color: {assistant_bg_color}; color: {assistant_text_color}; padding: 10px; 
-        border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left;'>
+        border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left; float: left; clear: both;'>
             <b>Assistant:</b> {{}}</div>
     """
 
     # --- 채팅 탭 ---
-    st.header(labels['chatbot_header'])
+    st.markdown("<h2 style='text-align: center;'>💬 Chatbot</h2>", unsafe_allow_html=True)
 
     # 채팅 기록을 스크롤할 수 있는 영역으로 만들기
     chat_history_container = """
-        <div style='height: 400px; overflow-y: scroll; padding: 10px; border: 1px solid #ccc; border-radius: 10px;'>
+        <div style='height: 400px; overflow-y: auto; padding: 10px; border: 1px solid #ccc; border-radius: 10px;'>
             {}
         </div>
     """
@@ -66,9 +66,35 @@ def chatbot_ui(language):
     # 채팅 기록 출력 (스크롤 가능 영역)
     st.markdown(chat_history_container.format(chat_messages), unsafe_allow_html=True)
 
-    # 질문 버튼 세로 배치 및 채팅 스크롤 영역 안에 질문 버튼 배치
-    col1, col2, col3 = st.columns(3)
+    # 스크롤 영역 끝으로 자동 스크롤
+    scroll_to_bottom_script = """
+        <script>
+        var chatDiv = document.getElementsByClassName('stMarkdown')[0];
+        chatDiv.scrollTop = chatDiv.scrollHeight;
+        </script>
+    """
+    st.markdown(scroll_to_bottom_script, unsafe_allow_html=True)
 
+    # 질문 버튼 화면 하단 고정
+    st.markdown(
+        """
+        <style>
+        .fixed-buttons {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            background-color: white;
+            padding-top: 10px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # 질문 버튼 배치 (하단 고정)
+    st.markdown('<div class="fixed-buttons">', unsafe_allow_html=True)
+    col1, col2, col3 = st.columns(3)
     with col1:
         if st.button(labels['question1']):
             user_input = random.choice(labels['paraphrases']['question1'])
@@ -95,6 +121,7 @@ def chatbot_ui(language):
             assistant_reply = generate_response()
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # OpenAI API 호출 함수 정의
 def generate_response():
