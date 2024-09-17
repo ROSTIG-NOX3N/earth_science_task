@@ -87,9 +87,9 @@ def get_labels(language):
             'error_message': 'Sorry, failed to generate a response.',
             'user': 'User',
             'assistant': 'Assistant',
-            'question1': 'Question 1',
-            'question2': 'Question 2',
-            'question3': 'Question 3',
+            'question1': 'I am curious about how we use radioactive isotopes to date geological samples.',
+            'question2': 'Why don’t we fix isotopes when using them for dating purposes?',
+            'question3': 'How do we date geological samples when we don’t know their specific age?'
             'error_load_data': 'Failed to load data.',
             'paraphrases': {
                 'question1': [
@@ -142,9 +142,9 @@ def get_labels(language):
             'error_message': '申し訳ありませんが、応答の生成に失敗しました。',
             'user': 'ユーザー',
             'assistant': 'アシスタント',
-            'question1': '質問 1',
-            'question2': '質問 2',
-            'question3': '質問 3',
+            'question1': '放射性同位体を使って年代測定をする方法について知りたいです',
+            'question2': 'なぜ放射性同位体を使って年代測定する際に同位体を固定して使用しないのでしょうか？',
+            'question3': '特定の地質の年代が不明な場合、どのようにして年代測定を行うのですか？',
             'error_load_data': 'データの読み込みに失敗しました。',
             'paraphrases': {
                 'question1': [
