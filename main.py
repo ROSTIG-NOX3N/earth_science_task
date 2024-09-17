@@ -25,7 +25,7 @@ def load_isotope_data(file_path):
         isotope_data = [(entry["Isotope"], float(entry["Half Life"]), float(entry["Computed Half Life"])) for entry in isotope_data]
         return isotope_data
     except Exception as e:
-        st.error(f"Failed to load data: {e}")
+        st.error(f"{labels.get('error_load_data', 'Failed to load data.')}: {e}")
         return []
 
 # 동위원소 번호 필터링 함수
@@ -43,8 +43,8 @@ def get_filtered_isotope_numbers(isotope_names, isotope_numbers, selected_name):
     """
     return [num for name, num in zip(isotope_names, isotope_numbers) if name == selected_name]
 
-# 산포도 그래프 그리기 함수 (레이블 고정: 영어)
-def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
+# 산포도 그래프 그리기 함수 (레이블 다국어 지원)
+def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit, labels):
     """
     방사성 동위원소의 반감기를 산포도로 시각화합니다.
     
@@ -53,25 +53,30 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
         selected_idx (int): 선택된 동위원소의 인덱스.
         input_age_seconds (float): 입력된 연대(초 단위).
         time_unit (str): 시간 단위 ('seconds' 또는 'years').
+        labels (dict): 다국어 라벨 딕셔너리.
     """
     threshold = 31_536_000  # 1년을 초로 변환
     if time_unit == "seconds":
         # 초 단위인 반감기만 필터링
         filtered_data = [item for item in isotope_data if item[2] < threshold]
         half_lives = [item[2] for item in filtered_data]
-        y_label = "Half-life (seconds)"
+        y_label = labels.get('half_life_seconds', 'seconds (Half-life)')
         age_label_value = input_age_seconds
-        age_label_unit = "seconds"
+        age_label_unit = labels.get('seconds', 'seconds')
     else:
         # 연 단위인 반감기만 필터링
         filtered_data = [item for item in isotope_data if item[2] >= threshold]
         half_lives = [item[2] / threshold for item in filtered_data]
-        y_label = "Half-life (years)"
+        y_label = labels.get('half_life_years', 'years (Half-life)')
         age_label_value = input_age_seconds / threshold
-        age_label_unit = "years"
+        age_label_unit = labels.get('years', 'years')
+    
+    if not filtered_data:
+        st.warning(labels.get('isotope_not_found', 'Selected isotope not found.'))
+        return
     
     # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 찾기
-    ratios = [abs(age_label_value / half_life - 1) for half_life in [item[2] / threshold if time_unit == "years" else item[2] for item in filtered_data]]
+    ratios = [abs(age_label_value / half_life - 1) for half_life in half_lives]
     nearest_ratio_idx = np.argmin(ratios)
     nearest_isotope = filtered_data[nearest_ratio_idx][0]
     nearest_half_life = half_lives[nearest_ratio_idx]
@@ -83,41 +88,33 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     ax.scatter(range(len(half_lives)), half_lives, color='blue', label=y_label, s=10)
     
     # 가장 가까운 동위원소 강조 (빨간색, 큰 크기)
-    ax.scatter(nearest_ratio_idx, nearest_half_life, color='red', label=f"Closest Isotope: {nearest_isotope}", s=100, edgecolors='black')
+    ax.scatter(nearest_ratio_idx, nearest_half_life, color='red', label=f"{labels.get('nearest_isotope', 'Closest Isotope')}: {nearest_isotope}", s=100, edgecolors='black')
     
     # 선택된 동위원소 강조 (주황색, 큰 크기)
     # 선택된 동위원소가 필터링된 데이터에 있는지 확인
-    if time_unit == "seconds":
-        selected_half_life = isotope_data[selected_idx][2]
-        if selected_half_life < threshold:
-            selected_filtered_idx = filtered_data.index(isotope_data[selected_idx])
-            ax.scatter(selected_filtered_idx, selected_half_life, color='orange', label=f"Selected Isotope: {isotope_data[selected_idx][0]}", s=100, edgecolors='black')
+    selected_half_life = isotope_data[selected_idx][2]
+    if time_unit == "seconds" and selected_half_life < threshold:
+        selected_filtered_idx = filtered_data.index(isotope_data[selected_idx])
+        selected_display_half_life = selected_half_life
+    elif time_unit == "years" and selected_half_life >= threshold:
+        selected_filtered_idx = filtered_data.index(isotope_data[selected_idx])
+        selected_display_half_life = selected_half_life / threshold
     else:
-        selected_half_life = isotope_data[selected_idx][2] / threshold
-        if isotope_data[selected_idx][2] >= threshold:
-            selected_filtered_idx = filtered_data.index(isotope_data[selected_idx])
-            ax.scatter(selected_filtered_idx, selected_half_life, color='orange', label=f"Selected Isotope: {isotope_data[selected_idx][0]}", s=100, edgecolors='black')
+        selected_filtered_idx = None
+        selected_display_half_life = None
+    
+    if selected_filtered_idx is not None:
+        ax.scatter(selected_filtered_idx, selected_display_half_life, color='orange', label=f"{labels.get('selected_isotope', 'Selected Isotope')}: {isotope_data[selected_idx][0]}", s=100, edgecolors='black')
     
     # 입력 연대 기준 수평선 추가
-    ax.axhline(y=age_label_value, color='gray', linestyle='--', label=f"Input Age: {age_label_value} {age_label_unit}")
-    
-    # 가장 가까운 동위원소 강조 주석 추가 (선택 사항, 주석 제거 가능)
-    # ax.annotate(
-    #     f"Closest Isotope: {nearest_isotope}\nHalf-life: {nearest_half_life:.2f} {age_label_unit}",
-    #     xy=(nearest_ratio_idx, nearest_half_life),
-    #     xytext=(nearest_ratio_idx, nearest_half_life * 1.5),
-    #     fontsize=14,
-    #     fontweight='bold',
-    #     color='red',
-    #     arrowprops=dict(facecolor='red', shrink=0.05, width=2, headwidth=10)
-    # )
+    ax.axhline(y=age_label_value, color='gray', linestyle='--', label=f"{labels.get('input_age', 'Input Age')}: {age_label_value} {age_label_unit}")
     
     # 축 설정
     ax.set_xlim(-1, len(half_lives))
     ax.set_ylim(min(half_lives) / 10, max(half_lives) * 10)
-    ax.set_xlabel("Isotope Index", fontsize=12)
+    ax.set_xlabel(labels.get('isotope_index', 'Isotope Index'), fontsize=12)
     ax.set_ylabel(y_label, fontsize=12)
-    ax.set_title("Scatter Plot of Isotope Half-lives", fontsize=14)
+    ax.set_title(labels.get('scatter_plot_title', 'Scatter Plot of Isotope Half-lives'), fontsize=14)
     ax.set_yscale('log')
     ax.legend()
     
@@ -126,8 +123,8 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     
     # 가장 가까운 동위원소 이름과 반감기값을 산포도 아래에 줄을 바꿔서 표시
     st.markdown(f"""
-    **가장 가까운 동위원소:** {nearest_isotope}  
-    **반감기:** {nearest_half_life:.2f} {age_label_unit}
+    **{labels.get('nearest_isotope', 'Closest Isotope')}:** {nearest_isotope}  
+    **{labels.get('half_life', 'Half-life')}:** {nearest_half_life:.2f} {age_label_unit}
     """)
 
 # 모원소-자원소 그래프 그리기 함수
@@ -162,17 +159,17 @@ def plot_mother_daughter_graph(selected_half_life, selected_isotope, labels):
     
     # 그래프 그리기
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(time, mother_ratio * 100, label="Mother Isotope Ratio (%)", color='blue')
-    ax.plot(time, daughter_ratio * 100, label="Daughter Isotope Ratio (%)", color='red')
+    ax.plot(time, mother_ratio * 100, label=labels.get('mother_ratio', 'Mother Isotope Ratio (%)'), color='blue')
+    ax.plot(time, daughter_ratio * 100, label=labels.get('daughter_ratio', 'Daughter Isotope Ratio (%)'), color='red')
     
     # 1초 시점 비율 강조
-    ax.scatter([1], [mother_ratio_at_1_second], color='blue', label="Mother Isotope Ratio at 1 second", s=100, zorder=5)
-    ax.scatter([1], [daughter_ratio_at_1_second], color='red', label="Daughter Isotope Ratio at 1 second", s=100, zorder=5)
+    ax.scatter([1], [mother_ratio_at_1_second], color='blue', label=labels.get('mother_ratio_1s', 'Mother Isotope Ratio at 1 second'), s=100, zorder=5)
+    ax.scatter([1], [daughter_ratio_at_1_second], color='red', label=labels.get('daughter_ratio_1s', 'Daughter Isotope Ratio at 1 second'), s=100, zorder=5)
     
     # 그래프 설정
-    ax.set_title(f"Mother-Daughter Graph - {selected_isotope}", fontsize=14)
-    ax.set_xlabel("Time (seconds)", fontsize=12)
-    ax.set_ylabel("Isotope Ratio (%)", fontsize=12)
+    ax.set_title(f"{labels.get('mother_daughter_graph_title', 'Mother-Daughter Graph')} - {selected_isotope}", fontsize=14)
+    ax.set_xlabel(labels.get('time_seconds', 'Time (seconds)'), fontsize=12)
+    ax.set_ylabel(labels.get('isotope_ratio_percent', 'Isotope Ratio (%)'), fontsize=12)
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 100)
     ax.grid(True)
@@ -192,11 +189,11 @@ def main():
     
     # 사이드바 탭 선택
     selected_tab = st.sidebar.radio(
-        labels.get('select_tab', '탭 선택'), 
+        labels.get('select_tab', 'Select tab:'), 
         [
-            labels.get('section1_header', '산포도 그래프'),  # 산포도 그래프 탭
-            labels.get('section2_header', '챗봇'),        # 챗봇 탭
-            "Mother-Daughter Graph"                     # 모자원소 그래프 탭
+            labels.get('section1_header', 'Scatter Plot'),  # 산포도 그래프 탭
+            labels.get('section2_header', 'Chatbot'),        # 챗봇 탭
+            labels.get('mother_daughter_graph_title', 'Mother-Daughter Graph')  # 모자원소 그래프 탭
         ]
     )
     
@@ -215,7 +212,7 @@ def main():
     
     # 동위원소 이름 선택
     selected_isotope_name = st.sidebar.selectbox(
-        labels.get("select_isotope_name", "동위원소 이름 선택"), 
+        labels.get("select_isotope_name", "Select Isotope Name:"), 
         unique_isotope_names, 
         key="isotope_name_select"
     )
@@ -223,7 +220,7 @@ def main():
     # 동위원소 번호 선택
     filtered_isotope_numbers = get_filtered_isotope_numbers(isotope_names, isotope_numbers, selected_isotope_name)
     selected_isotope_number = st.sidebar.selectbox(
-        f'{selected_isotope_name} 번호 선택', 
+        labels.get("select_isotope_number", "Select Isotope Number:"),
         filtered_isotope_numbers, 
         key="isotope_number_select"
     )
@@ -234,25 +231,25 @@ def main():
         selected_idx = [entry[0] for entry in isotope_data].index(selected_isotope)
         selected_half_life = isotope_data[selected_idx][2]
     except ValueError:
-        st.error(labels.get("isotope_not_found", "선택한 동위원소를 찾을 수 없습니다."))
+        st.error(labels.get("isotope_not_found", "Selected isotope not found."))
         selected_idx = None
     
     # 선택한 동위원소의 반감기 값을 사이드바에 표시
     if selected_idx is not None:
-        st.sidebar.markdown(f"**{labels.get('selected_half_life', 'Half-life of selected isotope')}:** {selected_half_life} seconds")
+        st.sidebar.markdown(f"**{labels.get('selected_half_life', 'Half-life of selected isotope')}:** {selected_half_life} {labels.get('half_life_seconds', 'seconds')}")
     
     # --- 탭별 기능 분기 ---
-    if selected_tab == labels.get('section1_header', '산포도 그래프'):
+    if selected_tab == labels.get('section1_header', 'Scatter Plot'):
         # 산포도 그래프 탭
-        st.header("Scatter Plot of Isotope Half-lives")
+        st.header(labels.get('scatter_plot_title', 'Scatter Plot of Isotope Half-lives'))
         
         if selected_idx is None:
-            st.error("Please select a valid isotope.")
+            st.error(labels.get("isotope_not_found", "Selected isotope not found."))
         else:
             # 단위 선택
             time_unit = st.radio(
                 labels.get("select_time_unit", "Select time unit:"), 
-                ("seconds", "years"), 
+                (labels.get("seconds", "seconds"), labels.get("years", "years")), 
                 key="time_unit_select"
             )
             
@@ -269,24 +266,25 @@ def main():
                 st.warning(labels.get("positive_age_warning", "Please enter a positive value."))
             else:
                 # 입력 연대 변환
-                if time_unit == "years":
+                if time_unit == labels.get("years", "years"):
                     input_age_seconds = input_age * 31_536_000  # 1년 = 31,536,000초
                 else:
                     input_age_seconds = input_age  # 초 단위 그대로 사용
                 
                 # 산포도 그래프 그리기
-                plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit)
+                plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit, labels)
     
-    elif selected_tab == labels.get('section2_header', '챗봇'):
+    elif selected_tab == labels.get('section2_header', 'Chatbot'):
         # 챗봇 탭
+        st.header(labels.get('chatbot_header', 'Chatbot'))
         chatbot_ui(language)  # 챗봇 UI 호출
     
-    elif selected_tab == "Mother-Daughter Graph":
+    elif selected_tab == labels.get('mother_daughter_graph_title', 'Mother-Daughter Graph'):
         # 모자원소 그래프 탭
-        st.header("Mother-Daughter Graph")
+        st.header(labels.get('mother_daughter_graph_title', 'Mother-Daughter Graph'))
         
         if selected_idx is None:
-            st.error("Please select a valid isotope.")
+            st.error(labels.get("isotope_not_found", "Selected isotope not found."))
         else:
             # 모자원소 그래프 그리기
             plot_mother_daughter_graph(selected_half_life, selected_isotope, labels)
