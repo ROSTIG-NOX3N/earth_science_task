@@ -46,41 +46,28 @@ def chatbot_ui(language):
             <b>Assistant:</b> {{}}</div>
     """
 
-    # --- 채팅 탭 ---
-    st.markdown("<h2 style='text-align: center;'>💬 Chatbot</h2>", unsafe_allow_html=True)
+    # --- 화면을 채팅 공간과 버튼 공간으로 나누기 ---
+    col1, col2 = st.columns([3, 1])  # 왼쪽에 채팅 (3배 너비), 오른쪽에 버튼 (1배 너비)
 
-    # 채팅 기록을 연속적으로 표시
-    chat_messages = ""
-    for message in st.session_state.messages:
-        if message["role"] == "user":
-            chat_messages += user_message_style.format(message['content'])
-        elif message["role"] == "assistant":
-            chat_messages += assistant_message_style.format(message['content'])
-
-    # 채팅 기록 출력
-    st.markdown(chat_messages, unsafe_allow_html=True)
-
-    # 질문 버튼 화면 하단 고정
-    st.markdown(
-        """
-        <style>
-        .fixed-buttons {
-            position: fixed;
-            bottom: 10px;
-            width: 100%;
-            text-align: center;
-            background-color: white;
-            padding-top: 10px;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    # 질문 버튼 배치 (하단 고정)
-    st.markdown('<div class="fixed-buttons">', unsafe_allow_html=True)
-    col1, col2, col3 = st.columns(3)
+    # --- 왼쪽: 채팅 내역 ---
     with col1:
+        st.markdown("<h2 style='text-align: center;'>💬 Chatbot</h2>", unsafe_allow_html=True)
+
+        # 채팅 기록을 연속적으로 표시
+        chat_messages = ""
+        for message in st.session_state.messages:
+            if message["role"] == "user":
+                chat_messages += user_message_style.format(message['content'])
+            elif message["role"] == "assistant":
+                chat_messages += assistant_message_style.format(message['content'])
+
+        # 채팅 기록 출력
+        st.markdown(chat_messages, unsafe_allow_html=True)
+
+    # --- 오른쪽: 세로로 나열된 버튼 공간 ---
+    with col2:
+        st.markdown("<h3 style='text-align: center;'>Questions</h3>", unsafe_allow_html=True)
+
         if st.button(labels['question1']):
             user_input = random.choice(labels['paraphrases']['question1'])
             st.session_state.messages.append({"role": "user", "content": user_input})
@@ -89,7 +76,6 @@ def chatbot_ui(language):
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-    with col2:
         if st.button(labels['question2']):
             user_input = random.choice(labels['paraphrases']['question2'])
             st.session_state.messages.append({"role": "user", "content": user_input})
@@ -98,7 +84,6 @@ def chatbot_ui(language):
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-    with col3:
         if st.button(labels['question3']):
             user_input = random.choice(labels['paraphrases']['question3'])
             st.session_state.messages.append({"role": "user", "content": user_input})
@@ -106,7 +91,6 @@ def chatbot_ui(language):
             assistant_reply = generate_response()
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
-    st.markdown('</div>', unsafe_allow_html=True)
 
 # OpenAI API 호출 함수 정의
 def generate_response():
