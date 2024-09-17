@@ -89,7 +89,7 @@ def get_labels(language):
             'assistant': 'Assistant',
             'question1': 'I am curious about how we use radioactive isotopes to date geological samples.',
             'question2': 'Why don’t we fix isotopes when using them for dating purposes?',
-            'question3': 'How do we date geological samples when we don’t know their specific age?'
+            'question3': 'How do we date geological samples when we don’t know their specific age?',  # 콤마 추가
             'error_load_data': 'Failed to load data.',
             'paraphrases': {
                 'question1': [
@@ -105,7 +105,7 @@ def get_labels(language):
                 'question3': [
                     'If we don\'t know the geological age, how do we choose isotopes and measure the age?',
                     'How do we select isotopes and measure age when the geological age is unknown?',
-                    'How do geologists choose isotopes and determine age from samples with unknown ages?',
+                    'How do geologists choose isotopes and determine age from samples with unknown ages?'
                 ]
             }
         }
