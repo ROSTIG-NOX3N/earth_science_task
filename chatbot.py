@@ -42,62 +42,62 @@ def chatbot_ui(language):
             <b>Assistant:</b> {{}}</div>
     """
 
-    # --- 챗봇 탭 ---
+    # --- 채팅 탭 ---
     st.header(labels['chatbot_header'])
 
-    # OpenAI API 호출 함수 정의
-    def generate_response():
-        try:
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=st.session_state.messages
-            )
-            assistant_reply = response.choices[0].message.content
-            return assistant_reply
-        except openai.error.OpenAIError as e:
-            error_code = getattr(e, 'code', 'N/A')
-            error_message = str(e)
-            st.error(f"{labels['error_message']} (Error Code: {error_code}): {error_message}")
-            return None
-
-    # 'messages'가 존재하지 않으면 초기화
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-
-    # 질문 버튼 3개 생성 및 랜덤 질문
-    col1, col2, col3 = st.columns(3)
-
-    # 각 버튼에서 랜덤 질문 생성
-    with col1:
-        if st.button(labels['question1']):
-            user_input = random.choice(labels['paraphrases']['question1'])
-            st.session_state.messages.append({"role": "user", "content": user_input})
-
-            assistant_reply = generate_response()
-            if assistant_reply:
-                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
-
-    with col2:
-        if st.button(labels['question2']):
-            user_input = random.choice(labels['paraphrases']['question2'])
-            st.session_state.messages.append({"role": "user", "content": user_input})
-
-            assistant_reply = generate_response()
-            if assistant_reply:
-                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
-
-    with col3:
-        if st.button(labels['question3']):
-            user_input = random.choice(labels['paraphrases']['question3'])
-            st.session_state.messages.append({"role": "user", "content": user_input})
-
-            assistant_reply = generate_response()
-            if assistant_reply:
-                st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
-
-    # 채팅 기록 표시
+    # 채팅 기록을 스크롤할 수 있는 영역으로 만들기
+    chat_history_container = """
+        <div style='height: 300px; overflow-y: scroll; padding: 10px; border: 1px solid #ccc; border-radius: 10px;'>
+            {}
+        </div>
+    """
+    
+    chat_messages = ""
     for message in st.session_state.messages:
         if message["role"] == "user":
-            st.markdown(user_message_style.format(message['content']), unsafe_allow_html=True)
+            chat_messages += user_message_style.format(message['content'])
         elif message["role"] == "assistant":
-            st.markdown(assistant_message_style.format(message['content']), unsafe_allow_html=True)
+            chat_messages += assistant_message_style.format(message['content'])
+
+    # 채팅 기록 출력 (스크롤 가능 영역)
+    st.markdown(chat_history_container.format(chat_messages), unsafe_allow_html=True)
+
+    # 질문 버튼 세로 배치
+    if st.button(labels['question1']):
+        user_input = random.choice(labels['paraphrases']['question1'])
+        st.session_state.messages.append({"role": "user", "content": user_input})
+
+        assistant_reply = generate_response()
+        if assistant_reply:
+            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+
+    if st.button(labels['question2']):
+        user_input = random.choice(labels['paraphrases']['question2'])
+        st.session_state.messages.append({"role": "user", "content": user_input})
+
+        assistant_reply = generate_response()
+        if assistant_reply:
+            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+
+    if st.button(labels['question3']):
+        user_input = random.choice(labels['paraphrases']['question3'])
+        st.session_state.messages.append({"role": "user", "content": user_input})
+
+        assistant_reply = generate_response()
+        if assistant_reply:
+            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+
+# OpenAI API 호출 함수 정의
+def generate_response():
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=st.session_state.messages
+        )
+        assistant_reply = response.choices[0].message.content
+        return assistant_reply
+    except openai.error.OpenAIError as e:
+        error_code = getattr(e, 'code', 'N/A')
+        error_message = str(e)
+        st.error(f"Failed to generate response (Error Code: {error_code}): {error_message}")
+        return None
