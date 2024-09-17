@@ -158,4 +158,4 @@ if selected_tab == labels['section1_header']:
 
 # --- 챗봇 탭 ---
 elif selected_tab == labels['section2_header']:
-    chatbot_ui()  # 분리된 챗봇 기능 호출
+    chatbot_ui(language)  # 분리된 챗봇 기능 호출 시 언어 전달
