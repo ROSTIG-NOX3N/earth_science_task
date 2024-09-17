@@ -62,7 +62,7 @@ def chatbot_ui(language):
 
     with col2:
         # 챗봇 시작하기 버튼
-        if st.button("챗봇 시작하기"):
+        if st.button(labels['start_chatbot']):
             # 기본 질문 추가
             initial_question = "방사성 동위원소에 대해 궁금한 점이 있습니다."
             st.session_state.messages.append({"role": "user", "content": initial_question})
