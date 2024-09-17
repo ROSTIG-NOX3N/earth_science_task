@@ -31,6 +31,29 @@ isotope_data = load_isotope_data('Formatted_Radioactive_Isotope_Half_Lives.json'
 if not isotope_data:
     st.stop()
 
+# 동위원소 이름과 번호 분리
+isotope_names = [item.split('-')[0] for item in [entry[0] for entry in isotope_data]]
+isotope_numbers = [item.split('-')[1] if '-' in item else '' for item in [entry[0] for entry in isotope_data]]
+
+# 동위원소 이름 중복 제거
+unique_isotope_names = sorted(list(set(isotope_names)))
+
+# 1. 첫 번째 선택 칸: 동위원소 이름 선택
+selected_isotope_name = st.sidebar.selectbox(labels['select_isotope_name'], unique_isotope_names)
+
+# 2. 두 번째 선택 칸: 선택된 동위원소의 번호 선택
+filtered_isotope_numbers = [num for name, num in zip(isotope_names, isotope_numbers) if name == selected_isotope_name]
+selected_isotope_number = st.sidebar.selectbox(f'{selected_isotope_name} {labels["select_isotope_number"]}', filtered_isotope_numbers)
+
+# 선택된 동위원소 찾기
+selected_isotope = f'{selected_isotope_name}-{selected_isotope_number}'
+try:
+    selected_idx = [entry[0] for entry in isotope_data].index(selected_isotope)
+    selected_half_life = isotope_data[selected_idx][2]
+except ValueError:
+    st.error(labels['isotope_not_found'])
+    st.stop()
+
 # --- 그래프 탭 ---
 if selected_tab == labels['section1_header']:
     st.header(labels['section1_header'])
@@ -47,29 +70,6 @@ if selected_tab == labels['section1_header']:
     else:
         input_age_seconds = input_age  # 초 단위 그대로 사용
 
-    # 동위원소 이름과 번호 분리
-    isotope_names = [item.split('-')[0] for item in [entry[0] for entry in isotope_data]]
-    isotope_numbers = [item.split('-')[1] if '-' in item else '' for item in [entry[0] for entry in isotope_data]]
-
-    # 동위원소 이름 중복 제거
-    unique_isotope_names = sorted(list(set(isotope_names)))
-
-    # 1. 첫 번째 선택 칸: 동위원소 이름 선택
-    selected_isotope_name = st.selectbox(labels['select_isotope_name'], unique_isotope_names)
-
-    # 2. 두 번째 선택 칸: 선택된 동위원소의 번호 선택
-    filtered_isotope_numbers = [num for name, num in zip(isotope_names, isotope_numbers) if name == selected_isotope_name]
-    selected_isotope_number = st.selectbox(f'{selected_isotope_name} {labels["select_isotope_number"]}', filtered_isotope_numbers)
-
-    # 선택된 동위원소 찾기
-    selected_isotope = f'{selected_isotope_name}-{selected_isotope_number}'
-    try:
-        selected_idx = [entry[0] for entry in isotope_data].index(selected_isotope)
-    except ValueError:
-        st.error(labels['isotope_not_found'])
-        st.stop()
-    selected_half_life = isotope_data[selected_idx][2]
-
     # 초 단위 또는 년 단위로 반감기 데이터를 구분
     threshold = 31_536_000  # 1년을 초로 변환
     if time_unit == 'seconds':
@@ -84,17 +84,6 @@ if selected_tab == labels['section1_header']:
     nearest_ratio_idx = np.argmin(ratios)
     nearest_isotope = isotope_data[nearest_ratio_idx][0]
     nearest_half_life = isotope_data[nearest_ratio_idx][2]
-
-    # 선택된 단위에 따라 반감기를 표시할 때 소수점 자릿수 처리
-    if time_unit == 'years':
-        nearest_half_life_display = nearest_half_life / threshold  # 년 단위로 변환
-    else:
-        nearest_half_life_display = nearest_half_life  # 초 단위로 유지
-
-    if nearest_half_life_display < 0.01:  # 매우 작은 값일 경우
-        nearest_half_life_display = f"{nearest_half_life_display:.6f}"  # 소수점 6자리까지 표시
-    else:
-        nearest_half_life_display = f"{nearest_half_life_display:.2f}"  # 소수점 2자리까지 표시
 
     # 1. 산포도 그리기
     fig, ax = plt.subplots(figsize=(15, 6))
@@ -130,8 +119,8 @@ if selected_tab == labels['section1_header']:
 elif selected_tab == "Mother-Daughter Graph":
     st.header("모원소와 자원소의 변화 그래프")
 
-    # 모원소 자원소 그래프를 위한 반감기 및 초기 양 설정
-    selected_half_life = isotope_data[selected_idx][2]  # 선택된 동위원소의 반감기
+    # 입력 연대 설정
+    input_age_seconds = st.sidebar.number_input("Input Age (in seconds)", min_value=1, value=100)
 
     # 붕괴 상수 계산
     decay_constant = np.log(2) / selected_half_life
@@ -140,7 +129,7 @@ elif selected_tab == "Mother-Daughter Graph":
     time = np.linspace(0, input_age_seconds, 500)
 
     # 모원소의 양 계산
-    mother_isotope = initial_mother_isotope = 100  # 초기 모원소 양 설정
+    initial_mother_isotope = 100  # 초기 모원소 양 설정
     mother_isotope_amount = initial_mother_isotope * np.exp(-decay_constant * time)
 
     # 자원소의 양 계산
@@ -167,4 +156,4 @@ elif selected_tab == "Mother-Daughter Graph":
 
 # --- 챗봇 탭 ---
 elif selected_tab == labels['section2_header']:
-    chatbot_ui(language)  # 분리된 챗봇 기능 호출 시 언어
+    chatbot_ui(language)  # 분리된 챗봇 기능 호출 시 언어 전달
