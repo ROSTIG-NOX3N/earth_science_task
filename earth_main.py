@@ -1,5 +1,3 @@
-# main.py
-
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
@@ -59,7 +57,7 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
         half_lives = [item[2] for item in isotope_data if item[2] < threshold]
         y_label = "Half-life (seconds)"
     else:
-        half_lives = [item[2] / threshold for item in isotope_data if item[2] >= threshold]
+        half_lives = [item[2] / threshold for item in isotope_data if item[2] >= threshold]  # years로 변환
         y_label = "Half-life (years)"
     
     # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 찾기
@@ -71,7 +69,7 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     # 산포도 그리기
     fig, ax = plt.subplots(figsize=(15, 6))
     ax.scatter(range(len(half_lives)), half_lives, color='blue', label=y_label, s=10)
-    
+
     # 가장 가까운 동위원소 강조
     ax.annotate(
         f"Closest Isotope: {nearest_isotope} (Half-life: {nearest_half_life:.2f} seconds)",
@@ -80,14 +78,14 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
         arrowprops=dict(facecolor='green', shrink=0.05, linewidth=2, edgecolor='black'),  # 강조 표시
         fontsize=12, color='green', weight='bold'  # 강조된 텍스트
     )
-    
+
     # 선택된 동위원소 강조
     selected_half_life = isotope_data[selected_idx][2]
     ax.scatter(selected_idx, selected_half_life, color='orange', label=f"Selected Isotope: {isotope_data[selected_idx][0]}", s=50)
-    
+
     # 입력 연대 기준 수평선 추가
     ax.axhline(y=input_age_seconds, color='gray', linestyle='--', label=f"Input Age: {input_age_seconds:.2f} {time_unit}")
-    
+
     # 축 설정
     ax.set_xlim(0, len(half_lives) - 1)
     ax.set_ylim(min(half_lives) / 10, max(half_lives) * 10)
@@ -96,10 +94,10 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     ax.set_title("Scatter Plot of Isotope Half-lives", fontsize=14)
     ax.set_yscale('log')
     ax.legend()
-    
+
     # 그래프 출력
     st.pyplot(fig)
-    
+
     # 가장 가까운 동위원소와 반감기 정보 표시
     st.markdown(f"### Closest Isotope: {nearest_isotope}")
     st.markdown(f"**Half-life:** {nearest_half_life:.2f} seconds")
@@ -264,8 +262,6 @@ def main():
         else:
             # 모자원소 그래프 그리기
             plot_mother_daughter_graph(selected_half_life, selected_isotope, labels)
-    
-    # Optional: 기타 탭 추가 시 여기에 작성
 
 if __name__ == "__main__":
     main()
