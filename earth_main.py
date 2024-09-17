@@ -20,17 +20,6 @@ def local_css(file_name):
 language = st.sidebar.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
 labels = get_labels(language)
 
-# 2. 모드 선택
-mode = st.sidebar.selectbox(labels['select_mode'], [labels['default_mode'], labels['light_mode'], labels['dark_mode']])
-
-# 선택된 모드에 따라 스타일 적용
-if mode == labels['light_mode']:
-    local_css("light_mode.css")
-elif mode == labels['dark_mode']:
-    local_css("dark_mode.css")
-else:
-    local_css("default_mode.css")
-
 # --- 사이드바 탭 선택 ---
 selected_tab = st.sidebar.radio(labels['select_tab'], [labels['section1_header'], labels['section2_header']])
 
@@ -201,42 +190,42 @@ elif selected_tab == labels['section2_header']:
             error_message = str(e)
             st.error(f"{labels['error_message']} (Error Code: {error_code}): {error_message}")
             return None
-    
+
     # 'messages'가 존재하지 않으면 초기화
     if "messages" not in st.session_state:
         st.session_state.messages = []
-    
+
     # 질문 버튼 3개 생성 및 랜덤 질문
     col1, col2, col3 = st.columns(3)
-    
+
     # 각 버튼에서 랜덤 질문 생성
     with col1:
         if st.button(labels['question1']):
             user_input = random.choice(labels['paraphrases']['question1'])
             st.session_state.messages.append({"role": "user", "content": user_input})
-    
+
             assistant_reply = generate_response()
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
-    
+
     with col2:
         if st.button(labels['question2']):
             user_input = random.choice(labels['paraphrases']['question2'])
             st.session_state.messages.append({"role": "user", "content": user_input})
-    
+
             assistant_reply = generate_response()
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
-    
+
     with col3:
         if st.button(labels['question3']):
             user_input = random.choice(labels['paraphrases']['question3'])
             st.session_state.messages.append({"role": "user", "content": user_input})
-    
+
             assistant_reply = generate_response()
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
-    
+
     # 채팅 기록 표시
     for message in st.session_state.messages:
         if message["role"] == "user":
