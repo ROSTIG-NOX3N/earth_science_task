@@ -7,7 +7,7 @@ from languages import get_labels
 def chatbot_ui(language):
     labels = get_labels(language)
 
-    # --- 언어 변경 시 대화 내역 초기화 ---
+    # 언어 변경 시 대화 내역 초기화
     if "prev_language" not in st.session_state:
         st.session_state.prev_language = language
 
@@ -15,11 +15,11 @@ def chatbot_ui(language):
         st.session_state.messages = []  # 언어 변경 시 대화 내역 초기화
         st.session_state.prev_language = language
 
-    # --- 세션 상태에서 'messages'가 존재하지 않을 경우 초기화 ---
+    # 세션 상태에서 'messages'가 존재하지 않을 경우 초기화
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
-    # --- 다크모드/라이트모드에 따라 색상 설정 ---
+    # 다크모드/라이트모드에 따라 색상 설정
     theme_mode = st.get_option("theme.base")  # 'dark' 또는 'light' 반환
 
     # 채팅 배경 및 텍스트 색상 설정
@@ -34,10 +34,10 @@ def chatbot_ui(language):
         assistant_bg_color = "#f1f0f0"  # 연한 회색 배경 (라이트모드)
         assistant_text_color = "#000000"  # 검은 텍스트 색상
 
-    # --- 화면을 채팅 공간과 버튼 공간으로 나누기 ---
+    # 화면을 채팅 공간과 버튼 공간으로 나누기
     col1, col2 = st.columns([3, 1])  # 왼쪽에 채팅 (3배 너비), 오른쪽에 버튼 (1배 너비)
 
-    # --- 왼쪽: 채팅 내역 ---
+    # 왼쪽: 채팅 내역
     with col1:
         st.subheader("💬 Chatbot")
 
@@ -48,11 +48,10 @@ def chatbot_ui(language):
             elif message["role"] == "assistant":
                 st.markdown(f"<div style='background-color: {assistant_bg_color}; color: {assistant_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0;'>{message['content']}</div>", unsafe_allow_html=True)
 
-    # --- 오른쪽: 세로로 나열된 버튼 공간 ---
+    # 오른쪽: 세로로 나열된 버튼 공간
     with col2:
         st.subheader("Questions")
 
-        # 각 질문 버튼
         if st.button(labels['question1']):
             process_user_input(random.choice(labels['paraphrases']['question1']))
 
@@ -64,13 +63,13 @@ def chatbot_ui(language):
 
 # 사용자 입력 처리 및 챗봇 응답
 def process_user_input(user_input):
-    # 사용자 입력 추가
     st.session_state.messages.append({"role": "user", "content": user_input})
 
-    # GPT-3.5에게 질문을 보내고 답변 받기
-    assistant_reply = generate_response()
-    if assistant_reply:
-        st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+    # Loading 메시지 표시
+    with st.spinner('Loading...'):
+        assistant_reply = generate_response()
+        if assistant_reply:
+            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
 # OpenAI API 호출 함수 정의
 def generate_response():
@@ -82,6 +81,7 @@ def generate_response():
         assistant_reply = response.choices[0].message.content
         return assistant_reply
     except openai.error.OpenAIError as e:
+        error_code = getattr(e, 'code', 'N/A')
         error_message = str(e)
-        st.error(f"Failed to generate response: {error_message}")
+        st.error(f"Failed to generate response (Error Code: {error_code}): {error_message}")
         return None
