@@ -124,8 +124,11 @@ def plot_scatter(isotope_data, selected_idx, input_age_seconds, time_unit):
     # 그래프 출력
     st.pyplot(fig)
     
-    # 가장 가까운 동위원소 이름과 반감기값을 산포도 아래에 표시
-    st.write(f"**가장 가까운 동위원소:** {nearest_isotope}, **반감기:** {nearest_half_life:.2f} {age_label_unit}")
+    # 가장 가까운 동위원소 이름과 반감기값을 산포도 아래에 줄을 바꿔서 표시
+    st.markdown(f"""
+    **가장 가까운 동위원소:** {nearest_isotope}  
+    **반감기:** {nearest_half_life:.2f} {age_label_unit}
+    """)
 
 # 모원소-자원소 그래프 그리기 함수
 def plot_mother_daughter_graph(selected_half_life, selected_isotope, labels):
