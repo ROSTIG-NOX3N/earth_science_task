@@ -5,7 +5,7 @@ def get_labels():
         'select_mode': '모드를 선택하세요:',
         'default_mode': '사용자 기본 설정',
         'light_mode': '라이트 모드',
-        'start_chatbot': '챗봇 시작하기',
+        'start_chatbot': '챗봇 시작하기(답변이 안나와도 누르세요)',
         'dark_mode': '다크 모드',
         'input_age': '지질의 연대를 입력해주세요:',
         'select_time_unit': '단위를 선택하세요:',
