@@ -33,28 +33,28 @@ if not isotope_data:
 
 # --- 산포도 그래프 탭 ---
 if selected_tab == labels['section1_header']:
-    st.header(labels['section1_header'])
+    st.header("Scatter Plot of Isotope Half-lives")  # 그래프 제목 영어로 고정
     
     # 단위 선택 (초/년)
-    time_unit = st.radio(labels['select_time_unit'], (labels['seconds'], labels['years']))
+    time_unit = st.radio("Select time unit:", ("seconds", "years"))  # 라벨 영어로 고정
 
     # 입력 연대
-    input_age = st.number_input(labels['input_age'], value=1, help=labels['input_age_help'])
+    input_age = st.number_input("Enter a comparison age:", value=1, help="Please enter an age to compare isotopes.")
 
     # 입력된 연대를 선택한 단위에 맞게 변환
-    if time_unit == labels['years']:
+    if time_unit == "years":
         input_age_seconds = input_age * 31_536_000  # 1년 = 31,536,000초
     else:
         input_age_seconds = input_age  # 초 단위 그대로 사용
 
     # 초 단위 또는 년 단위로 반감기 데이터를 구분
     threshold = 31_536_000  # 1년을 초로 변환
-    if time_unit == labels['seconds']:
+    if time_unit == "seconds":
         half_lives = [item[2] for item in isotope_data if item[2] < threshold]  # 초 단위 데이터
-        y_label = labels['half_life_seconds']
+        y_label = "Half-life (seconds)"
     else:
         half_lives = [item[2] / threshold for item in isotope_data if item[2] >= threshold]  # 년 단위 데이터
-        y_label = labels['half_life_years']
+        y_label = "Half-life (years)"
 
     # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 찾기
     ratios = [abs(input_age_seconds / half_life - 1) for half_life in [item[2] for item in isotope_data]]
@@ -67,33 +67,34 @@ if selected_tab == labels['section1_header']:
     ax.scatter(range(len(half_lives)), half_lives, color='blue', label=y_label, s=10)
 
     # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 강조 (초록색 화살표)
-    ax.annotate(f"{labels['nearest_isotope']}: {nearest_isotope}", xy=(nearest_ratio_idx, nearest_half_life),
+    ax.annotate(f"Closest to input age: {nearest_isotope}", xy=(nearest_ratio_idx, nearest_half_life),
                 xytext=(nearest_ratio_idx, nearest_half_life * 1.5),
                 arrowprops=dict(facecolor='green', shrink=0.05))
 
     # 선택된 동위원소 강조 (주황색 원)
     try:
-        ax.scatter(selected_idx, selected_half_life, color='orange', label=f"{labels['selected_isotope']}: {selected_isotope}", s=50)
+        ax.scatter(selected_idx, selected_half_life, color='orange', label=f"Selected Isotope: {selected_isotope}", s=50)
     except NameError:
-        st.error(f"{labels['isotope_not_found']}")  # 선택된 동위원소가 없을 경우 예외 처리
+        st.error("Selected isotope not found.")  # 선택된 동위원소가 없을 경우 예외 처리
 
     # 입력된 연대를 기준으로 수평선 추가
-    ax.axhline(y=input_age_seconds, color='gray', linestyle='--', label=f"{labels['input_age_label']}: {input_age} {time_unit}")
+    ax.axhline(y=input_age_seconds, color='gray', linestyle='--', label=f"Input Age: {input_age} {time_unit}")
 
     # x축 범위를 전체 데이터로 설정
     ax.set_xlim(0, len(half_lives) - 1)
     # y축 범위를 설정하여 데이터가 잘 보이도록 설정
     ax.set_ylim(min(half_lives) / 10, max(half_lives) * 10)
 
-    # 라벨 및 제목 설정
-    ax.set_xlabel(labels['isotope_index'])
-    ax.set_ylabel(y_label)
-    ax.set_title(labels['scatter_plot_title'])
+    # 라벨 및 제목 설정 (영어로 고정)
+    ax.set_xlabel("Isotope Index", fontsize=12)
+    ax.set_ylabel(y_label, fontsize=12)
+    ax.set_title("Scatter Plot of Isotope Half-lives", fontsize=14)
     ax.set_yscale('log')
     ax.legend()
 
     # 그래프 출력
     st.pyplot(fig)
+
     
 # 동위원소 이름과 번호 분리
 isotope_names = [item.split('-')[0] for item in [entry[0] for entry in isotope_data]]
