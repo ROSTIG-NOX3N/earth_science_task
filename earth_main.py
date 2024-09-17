@@ -103,11 +103,11 @@ isotope_numbers = [item.split('-')[1] if '-' in item else '' for item in [entry[
 unique_isotope_names = sorted(list(set(isotope_names)))
 
 # 1. 첫 번째 선택 칸: 동위원소 이름 선택
-selected_isotope_name = st.sidebar.selectbox(labels['select_isotope_name'], unique_isotope_names)
+selected_isotope_name = st.sidebar.selectbox("Select Isotope Name", unique_isotope_names)
 
 # 2. 두 번째 선택 칸: 선택된 동위원소의 번호 선택
 filtered_isotope_numbers = [num for name, num in zip(isotope_names, isotope_numbers) if name == selected_isotope_name]
-selected_isotope_number = st.sidebar.selectbox(f'{selected_isotope_name} {labels["select_isotope_number"]}', filtered_isotope_numbers)
+selected_isotope_number = st.sidebar.selectbox(f'Select {selected_isotope_name} Number', filtered_isotope_numbers)
 
 # 선택된 동위원소 찾기
 selected_isotope = f'{selected_isotope_name}-{selected_isotope_number}'
@@ -115,16 +115,16 @@ try:
     selected_idx = [entry[0] for entry in isotope_data].index(selected_isotope)
     selected_half_life = isotope_data[selected_idx][2]
 except ValueError:
-    st.error(labels['isotope_not_found'])
+    st.error("Selected isotope not found.")
     selected_idx = None
 
 # 사이드바에 선택한 동위원소의 반감기 표시
 if selected_idx is not None:
-    st.sidebar.markdown(f"**{selected_isotope} 반감기**: {selected_half_life} seconds")
+    st.sidebar.markdown(f"**{selected_isotope} Half-life**: {selected_half_life} seconds")
 
 # --- 모원소-자원소 그래프 탭 ---
 if selected_tab == "Mother-Daughter Graph":
-    st.header("모원소와 자원소의 비율 그래프")
+    st.header("Mother-Daughter Graph")
 
     # 붕괴 상수 계산
     decay_constant = np.log(2) / selected_half_life
@@ -150,8 +150,8 @@ if selected_tab == "Mother-Daughter Graph":
     daughter_ratio_at_1_second = round((daughter_at_1_second / initial_mother_isotope) * 100, 6)
 
     # 1초일 때의 비율을 사이드바에 표시
-    st.sidebar.markdown(f"**1초일 때 모원소 비율**: {mother_ratio_at_1_second}%")
-    st.sidebar.markdown(f"**1초일 때 자원소 비율**: {daughter_ratio_at_1_second}%")
+    st.sidebar.markdown(f"**Mother Isotope Ratio at 1 second**: {mother_ratio_at_1_second}%")
+    st.sidebar.markdown(f"**Daughter Isotope Ratio at 1 second**: {daughter_ratio_at_1_second}%")
 
     # --- 그래프 그리기 ---
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -166,10 +166,10 @@ if selected_tab == "Mother-Daughter Graph":
     ax.scatter([1], [mother_ratio_at_1_second], color='blue', label='Mother Ratio at 1 second', s=100, zorder=5)
     ax.scatter([1], [daughter_ratio_at_1_second], color='red', label='Daughter Ratio at 1 second', s=100, zorder=5)
 
-    # 그래프 설정
-    ax.set_title(f'Mother and Daughter Isotope Ratios over Time for {selected_isotope}')
-    ax.set_xlabel('Time (seconds)')
-    ax.set_ylabel('Isotope Ratio (%)')
+    # 그래프 설정 (영어로 고정)
+    ax.set_title(f'Mother and Daughter Isotope Ratios over Time for {selected_isotope}', fontsize=14)
+    ax.set_xlabel('Time (seconds)', fontsize=12)
+    ax.set_ylabel('Isotope Ratio (%)', fontsize=12)
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 100)
     ax.grid(True)
