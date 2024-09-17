@@ -6,6 +6,7 @@ def get_labels(language):
             'select_mode': '모드를 선택하세요:',
             'default_mode': '사용자 기본 설정',
             'light_mode': '라이트 모드',
+            'start_chatbot': '챗봇 시작하기',
             'dark_mode': '다크 모드',
             'input_age': '지질의 연대를 입력해주세요:',
             'select_time_unit': '단위를 선택하세요:',  # 추가된 항목
@@ -62,6 +63,7 @@ def get_labels(language):
             'default_mode': 'Default mode',
             'light_mode': 'Light mode',
             'dark_mode': 'Dark mode',
+            'start_chatbot': 'Start Chatbot',
             'input_age': 'Enter a comparison age:',
             'select_time_unit': 'Select time unit:',  # 추가된 항목
             'select_isotope_name': 'Select Isotope Name:',
@@ -118,6 +120,7 @@ def get_labels(language):
             'light_mode': 'ライトモード',
             'dark_mode': 'ダークモード',
             'input_age': '比較する年代を入力してください:',
+            'start_chatbot': 'チャットボットを開始',
             'select_time_unit': '単位を選択してください:',  # 추가된 항목
             'select_isotope_name': '同位体名を選択してください:',
             'select_isotope_number': '同位体番号を選択してください:',
