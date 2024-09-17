@@ -5,7 +5,7 @@ import json
 from languages import get_labels
 from chatbot import chatbot_ui  # 챗봇 UI 추가
 
-# --- 사이드바 구성 --- 
+# --- 사이드바 구성 ---
 # 언어 선택
 language = st.sidebar.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
 labels = get_labels(language)  # 언어에 따라 라벨 불러오기
@@ -39,12 +39,12 @@ isotope_numbers = [item.split('-')[1] if '-' in item else '' for item in [entry[
 # 동위원소 이름 중복 제거
 unique_isotope_names = sorted(list(set(isotope_names)))
 
-# 1. 첫 번째 선택 칸: 동위원소 이름 선택
-selected_isotope_name = st.sidebar.selectbox("Select Isotope Name", unique_isotope_names)
+# 1. 첫 번째 선택 칸: 동위원소 이름 선택 (고유한 key 사용)
+selected_isotope_name = st.sidebar.selectbox("Select Isotope Name", unique_isotope_names, key="isotope_name_select")
 
-# 2. 두 번째 선택 칸: 선택된 동위원소의 번호 선택
+# 2. 두 번째 선택 칸: 선택된 동위원소의 번호 선택 (고유한 key 사용)
 filtered_isotope_numbers = [num for name, num in zip(isotope_names, isotope_numbers) if name == selected_isotope_name]
-selected_isotope_number = st.sidebar.selectbox(f'Select {selected_isotope_name} Number', filtered_isotope_numbers)
+selected_isotope_number = st.sidebar.selectbox(f'Select {selected_isotope_name} Number', filtered_isotope_numbers, key="isotope_number_select")
 
 # 선택된 동위원소 찾기
 selected_isotope = f'{selected_isotope_name}-{selected_isotope_number}'
@@ -63,10 +63,10 @@ if selected_tab == labels['section1_header']:
         st.error("Please select a valid isotope.")
     else:
         # 단위 선택 (초/년)
-        time_unit = st.radio("Select time unit:", ("seconds", "years"))  # 라벨 영어로 고정
+        time_unit = st.radio("Select time unit:", ("seconds", "years"), key="time_unit_select")  # 라벨 영어로 고정
 
         # 입력 연대
-        input_age = st.number_input("Enter a comparison age:", value=1, help="Please enter an age to compare isotopes.")
+        input_age = st.number_input("Enter a comparison age:", value=1, help="Please enter an age to compare isotopes.", key="age_input")
 
         # 입력된 연대를 선택한 단위에 맞게 변환
         if time_unit == "years":
@@ -118,35 +118,8 @@ if selected_tab == labels['section1_header']:
 
         # 그래프 출력
         st.pyplot(fig)
-    
-# 동위원소 이름과 번호 분리
-isotope_names = [item.split('-')[0] for item in [entry[0] for entry in isotope_data]]
-isotope_numbers = [item.split('-')[1] if '-' in item else '' for item in [entry[0] for entry in isotope_data]]
 
-# 동위원소 이름 중복 제거
-unique_isotope_names = sorted(list(set(isotope_names)))
-
-# 1. 첫 번째 선택 칸: 동위원소 이름 선택
-selected_isotope_name = st.sidebar.selectbox("Select Isotope Name", unique_isotope_names)
-
-# 2. 두 번째 선택 칸: 선택된 동위원소의 번호 선택
-filtered_isotope_numbers = [num for name, num in zip(isotope_names, isotope_numbers) if name == selected_isotope_name]
-selected_isotope_number = st.sidebar.selectbox(f'Select {selected_isotope_name} Number', filtered_isotope_numbers)
-
-# 선택된 동위원소 찾기
-selected_isotope = f'{selected_isotope_name}-{selected_isotope_number}'
-try:
-    selected_idx = [entry[0] for entry in isotope_data].index(selected_isotope)
-    selected_half_life = isotope_data[selected_idx][2]
-except ValueError:
-    st.error("Selected isotope not found.")
-    selected_idx = None
-
-# 사이드바에 선택한 동위원소의 반감기 표시
-if selected_idx is not None:
-    st.sidebar.markdown(f"**{selected_isotope} Half-life**: {selected_half_life} seconds")
-
-# --- 모원소-자원소 그래프 탭 ---
+# --- Mother-Daughter Graph 탭 ---
 if selected_tab == "Mother-Daughter Graph":
     st.header("Mother-Daughter Graph")
 
