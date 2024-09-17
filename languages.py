@@ -1,4 +1,4 @@
-from languages import get_labels  # get_labels 함수 임포트
+
 
 def get_labels(language):
     if language == '한국어':
