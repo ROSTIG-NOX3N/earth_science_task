@@ -4,10 +4,7 @@ import openai
 from languages import get_labels
 
 # 챗봇 UI 함수
-def chatbot_ui():
-    # --- 사이드바 구성 ---
-    # 언어 선택
-    language = st.sidebar.selectbox('언어를 선택해주세요 / Select language:', ['한국어', 'English', '日本語'])
+def chatbot_ui(language):
     labels = get_labels(language)
 
     # --- 언어 변경 시 대화 내역 초기화 ---
