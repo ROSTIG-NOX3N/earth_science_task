@@ -1,1 +1,68 @@
+/* 버튼 스타일 */
+button {
+    background-color: #4CAF50; /* 녹색 배경 */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px; /* 둥근 모서리 */
+    transition-duration: 0.4s; /* 효과 시간 */
+}
 
+button:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50; /* 호버 시 테두리 추가 */
+}
+
+/* 채팅 메시지 스타일 */
+.user-message {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.assistant-message {
+    background-color: #008CBA;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* 탭 스타일 */
+.stTabs > div {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* 입력 상자 스타일 */
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    border: 1px solid #4CAF50;
+}
+
+/* 그래프 영역 스타일 */
+.graph-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
