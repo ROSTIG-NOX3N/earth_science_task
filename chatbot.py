@@ -117,6 +117,17 @@ def chatbot_ui(language):
             if assistant_reply:
                 st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
+        # 자유 질문 입력 필드
+        user_question = st.text_input("자유 질문을 입력하세요:")
+        if st.button("질문하기"):
+            if user_question:
+                st.session_state.messages.append({"role": "user", "content": user_question})
+                assistant_reply = generate_response()
+                if assistant_reply:
+                    st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
+            else:
+                st.warning("질문을 입력해 주세요.")
+
     with col2:
         # 두 번째 열은 빈 공간으로 두거나 다른 기능 추가 가능
         st.write("")  # 이 부분을 다른 내용으로 대체할 수 있습니다.
