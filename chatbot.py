@@ -12,17 +12,16 @@ def chatbot_ui(language):
         st.session_state.prev_language = language
 
     if st.session_state.prev_language != language:
-        st.session_state.messages = []  # 언어 변경 시 대화 내역 초기화
+        st.session_state.messages = []
         st.session_state.prev_language = language
 
-    # 세션 상태에서 'messages'가 존재하지 않을 경우 초기화
+    # 메시지가 없을 경우 초기화
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
     # 다크모드/라이트모드에 따라 색상 설정
     theme_mode = st.get_option("theme.base")  # 'dark' 또는 'light' 반환
 
-    # 채팅 배경 및 텍스트 색상 설정
     if theme_mode == "dark":
         user_bg_color = "#2e2e2e"
         user_text_color = "#ffffff"
@@ -34,51 +33,53 @@ def chatbot_ui(language):
         assistant_bg_color = "#f1f0f0"
         assistant_text_color = "#000000"
 
-    # 화면을 채팅 공간과 버튼 공간으로 나누기
-    col1, col2 = st.columns([3, 1])  # 왼쪽에 채팅 (3배 너비), 오른쪽에 버튼 (1배 너비)
+    # 채팅 말풍선 스타일 적용
+    user_message_style = f"""
+        <div style='background-color: {user_bg_color}; color: {user_text_color}; padding: 10px; 
+        border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: right;'>
+            <b>User:</b> {{}}</div>
+    """
 
-    # 왼쪽: 채팅 내역
-    with col1:
-        st.subheader("💬 Chatbot")
+    assistant_message_style = f"""
+        <div style='background-color: {assistant_bg_color}; color: {assistant_text_color}; padding: 10px; 
+        border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left;'>
+            <b>Assistant:</b> {{}}</div>
+    """
 
-        # 채팅 기록을 출력
-        for message in st.session_state.messages:
-            if message["role"] == "user":
-                st.markdown(f"<div style='background-color: {user_bg_color}; color: {user_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: right; float: right;'>{message['content']}</div>", unsafe_allow_html=True)
-            elif message["role"] == "assistant":
-                st.markdown(f"<div style='background-color: {assistant_bg_color}; color: {assistant_text_color}; padding: 10px; border-radius: 10px; margin: 5px 0; max-width: 60%; text-align: left; float: left;'>{message['content']}</div>", unsafe_allow_html=True)
+    # 챗봇 탭
+    st.header(labels['chatbot_header'])
 
-        # 로딩 메시지 표시
-        if "loading" in st.session_state and st.session_state.loading:
-            st.markdown("<div style='color: grey;'>Loading...</div>", unsafe_allow_html=True)
+    # 채팅 기록을 출력
+    for message in st.session_state.messages:
+        if message["role"] == "user":
+            st.markdown(user_message_style.format(message['content']), unsafe_allow_html=True)
+        elif message["role"] == "assistant":
+            st.markdown(assistant_message_style.format(message['content']), unsafe_allow_html=True)
 
-    # 오른쪽: 질문 공간
-    with col2:
-        st.subheader("Questions")
+    # 질문 버튼 세로 배치
+    if st.button(labels['question1']):
+        user_input = random.choice(labels['paraphrases']['question1'])
+        st.session_state.messages.append({"role": "user", "content": user_input})
 
-        if st.button(labels['question1']):
-            process_user_input(random.choice(labels['paraphrases']['question1']))
+        assistant_reply = generate_response()
+        if assistant_reply:
+            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-        if st.button(labels['question2']):
-            process_user_input(random.choice(labels['paraphrases']['question2']))
+    if st.button(labels['question2']):
+        user_input = random.choice(labels['paraphrases']['question2'])
+        st.session_state.messages.append({"role": "user", "content": user_input})
 
-        if st.button(labels['question3']):
-            process_user_input(random.choice(labels['paraphrases']['question3']))
+        assistant_reply = generate_response()
+        if assistant_reply:
+            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
-# 사용자 입력 처리 및 챗봇 응답
-def process_user_input(user_input):
-    st.session_state.messages.append({"role": "user", "content": user_input})
+    if st.button(labels['question3']):
+        user_input = random.choice(labels['paraphrases']['question3'])
+        st.session_state.messages.append({"role": "user", "content": user_input})
 
-    # 로딩 상태 설정
-    st.session_state.loading = True
-
-    # GPT-3.5에게 질문을 보내고 답변 받기
-    assistant_reply = generate_response()
-    if assistant_reply:
-        st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
-
-    # 로딩 상태 해제
-    st.session_state.loading = False
+        assistant_reply = generate_response()
+        if assistant_reply:
+            st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
 # OpenAI API 호출 함수 정의
 def generate_response():
@@ -94,3 +95,6 @@ def generate_response():
         error_message = str(e)
         st.error(f"Failed to generate response (Error Code: {error_code}): {error_message}")
         return None
+
+# OpenAI API 키 설정
+openai.api_key = st.secrets["OPENAI_API_KEY"]
