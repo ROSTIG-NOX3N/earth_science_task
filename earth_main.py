@@ -57,79 +57,15 @@ except ValueError:
 # 사이드바에 선택한 동위원소의 반감기 표시
 st.sidebar.markdown(f"**{selected_isotope} 반감기**: {selected_half_life} seconds")
 
-# --- 산포도 그래프 탭 ---
-if selected_tab == labels['section1_header']:
-    st.header(labels['section1_header'])
-    
-    # 단위 선택 (초/년)
-    time_unit = st.radio(labels['select_time_unit'], ('seconds', 'years'))
-
-    # 입력 연대
-    input_age = st.number_input(labels['input_age'], value=1, help=labels['input_age_help'])
-
-    # 입력된 연대를 선택한 단위에 맞게 변환
-    if time_unit == 'years':
-        input_age_seconds = input_age * 31_536_000  # 1년 = 31,536,000초
-    else:
-        input_age_seconds = input_age  # 초 단위 그대로 사용
-
-    # 초 단위 또는 년 단위로 반감기 데이터를 구분
-    threshold = 31_536_000  # 1년을 초로 변환
-    if time_unit == 'seconds':
-        half_lives = [item[2] for item in isotope_data if item[2] < threshold]  # 초 단위 데이터
-        y_label = 'Half-life (seconds)'  # 그래프 내부는 영어로 고정
-    else:
-        half_lives = [item[2] / threshold for item in isotope_data if item[2] >= threshold]  # 년 단위 데이터
-        y_label = 'Half-life (years)'  # 그래프 내부는 영어로 고정
-
-    # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 찾기
-    ratios = [abs(input_age_seconds / half_life - 1) for half_life in [item[2] for item in isotope_data]]
-    nearest_ratio_idx = np.argmin(ratios)
-    nearest_isotope = isotope_data[nearest_ratio_idx][0]
-    nearest_half_life = isotope_data[nearest_ratio_idx][2]
-
-    # 1. 산포도 그리기
-    fig, ax = plt.subplots(figsize=(15, 6))
-    ax.scatter(range(len(half_lives)), half_lives, color='blue', label=y_label, s=10)
-
-    # 입력된 연대와 반감기 비율이 1에 가장 가까운 동위원소 강조 (초록색 화살표)
-    ax.annotate(f"Closest to input age / half-life ratio = 1: {nearest_isotope}", xy=(nearest_ratio_idx, nearest_half_life),
-                xytext=(nearest_ratio_idx, nearest_half_life * 1.5),
-                arrowprops=dict(facecolor='green', shrink=0.05))
-
-    # 선택된 동위원소 강조 (주황색 원)
-    ax.scatter(selected_idx, selected_half_life, color='orange', label=f"Selected Isotope: {selected_isotope}", s=50)
-
-    # 입력된 연대를 기준으로 수평선 추가
-    ax.axhline(y=input_age_seconds, color='gray', linestyle='--', label=f"Input Age: {input_age} {time_unit}")
-
-    # x축 범위를 전체 데이터로 설정
-    ax.set_xlim(0, len(half_lives) - 1)
-    # y축 범위를 설정하여 데이터가 잘 보이도록 설정
-    ax.set_ylim(min(half_lives) / 10, max(half_lives) * 10)
-
-    # 라벨 및 제목 설정
-    ax.set_xlabel('Isotope Index')  # 영어로 설정
-    ax.set_ylabel(y_label)  # 영어로 설정
-    ax.set_title('Scatter plot of Isotope Half-lives')  # 영어로 설정
-    ax.set_yscale('log')
-    ax.legend()
-
-    # 그래프 출력
-    st.pyplot(fig)
-
 # --- 모원소-자원소 그래프 탭 ---
-elif selected_tab == "Mother-Daughter Graph":
-    st.header("모원소와 자원소의 변화 그래프")
-
-    # 입력 연대 설정
-    input_age = st.number_input("Input Age (in seconds)", min_value=1, value=100)
+if selected_tab == "Mother-Daughter Graph":
+    st.header("모원소와 자원소의 비율 그래프")
 
     # 붕괴 상수 계산
     decay_constant = np.log(2) / selected_half_life
 
-    # 시간 범위 설정 (0부터 10 * 선택된 반감기까지)
-    time = np.linspace(0, 10 * selected_half_life, 500)
+    # 시간 범위 설정 (0부터 1초까지)
+    time = np.linspace(0, 1, 500)
 
     # 모원소의 양 계산
     initial_mother_isotope = 100  # 초기 모원소 양 설정
@@ -138,27 +74,35 @@ elif selected_tab == "Mother-Daughter Graph":
     # 자원소의 양 계산
     daughter_isotope_amount = initial_mother_isotope - mother_isotope_amount
 
-    # 입력된 연대에서의 모원소와 자원소 양 계산
-    mother_at_input_age = initial_mother_isotope * np.exp(-decay_constant * input_age)
-    daughter_at_input_age = initial_mother_isotope - mother_at_input_age
+    # 모원소와 자원소 비율 계산
+    mother_ratio = mother_isotope_amount / initial_mother_isotope
+    daughter_ratio = daughter_isotope_amount / initial_mother_isotope
+
+    # 1초일 때 모원소와 자원소 비율 계산
+    mother_at_1_second = initial_mother_isotope * np.exp(-decay_constant * 1)
+    daughter_at_1_second = initial_mother_isotope - mother_at_1_second
+    mother_ratio_at_1_second = mother_at_1_second / initial_mother_isotope
+    daughter_ratio_at_1_second = daughter_at_1_second / initial_mother_isotope
 
     # --- 그래프 그리기 ---
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    # 모원소의 양 그래프
-    ax.plot(time, mother_isotope_amount, label='Mother Isotope', color='blue')
+    # 모원소의 비율 그래프
+    ax.plot(time, mother_ratio, label='Mother Isotope Ratio', color='blue')
 
-    # 자원소의 양 그래프
-    ax.plot(time, daughter_isotope_amount, label='Daughter Isotope', color='red')
+    # 자원소의 비율 그래프
+    ax.plot(time, daughter_ratio, label='Daughter Isotope Ratio', color='red')
 
-    # 입력된 연대에서의 모원소와 자원소 양을 점으로 강조
-    ax.scatter([input_age], [mother_at_input_age], color='blue', label='Mother at Input Age', s=100, zorder=5)
-    ax.scatter([input_age], [daughter_at_input_age], color='red', label='Daughter at Input Age', s=100, zorder=5)
+    # 1초 시점에서의 모원소와 자원소 비율을 점으로 강조
+    ax.scatter([1], [mother_ratio_at_1_second], color='blue', label='Mother Ratio at 1 second', s=100, zorder=5)
+    ax.scatter([1], [daughter_ratio_at_1_second], color='red', label='Daughter Ratio at 1 second', s=100, zorder=5)
 
     # 그래프 설정
-    ax.set_title(f'Amount of Mother and Daughter Isotopes over Time for {selected_isotope}')
+    ax.set_title(f'Mother and Daughter Isotope Ratios over Time for {selected_isotope}')
     ax.set_xlabel('Time (seconds)')
-    ax.set_ylabel('Isotope Amount')
+    ax.set_ylabel('Isotope Ratio')
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
     ax.grid(True)
     ax.legend()
 
