@@ -9,7 +9,7 @@ def get_labels(language):
             'start_chatbot': '챗봇 시작하기(답변이 안나와도 누르세요)',
             'dark_mode': '다크 모드',
             'input_age': '지질의 연대를 입력해주세요:',
-            'select_time_unit': '단위를 선택하세요:',  # 추가된 항목
+            'select_time_unit': '단위를 선택하세요:',
             'select_isotope_name': '동위원소 이름을 선택해주세요:',
             'select_isotope_number': '동위원소 번호를 선택해주세요:',
             'scatter_plot_title': '동위원소 반감기 산포도',
@@ -22,7 +22,7 @@ def get_labels(language):
             'selected_half_life': '선택된 동위원소의 반감기',
             'nearest_isotope': '입력된 연대와 가장 가까운 동위원소',
             'half_life_seconds': '초 (반감기)',
-            'half_life_years': '년 (반감기)',  
+            'half_life_years': '년 (반감기)',
             'nearest_to_one': '반감기가 1초에 가장 가까운 동위원소',
             'input_age_help': '동위원소를 비교할 연대를 입력하세요.',
             'seconds': '초',
@@ -62,10 +62,10 @@ def get_labels(language):
             'select_mode': 'Select mode:',
             'default_mode': 'Default mode',
             'light_mode': 'Light mode',
-            'dark_mode': 'Dark mode',
             'start_chatbot': 'Start Chatbot (Please press even if there is no answer)',
+            'dark_mode': 'Dark mode',
             'input_age': 'Enter a comparison age:',
-            'select_time_unit': 'Select time unit:',  # 추가된 항목
+            'select_time_unit': 'Select time unit:',
             'select_isotope_name': 'Select Isotope Name:',
             'select_isotope_number': 'Select Isotope Number:',
             'scatter_plot_title': 'Scatter plot of Isotope Half-lives',
@@ -78,7 +78,7 @@ def get_labels(language):
             'selected_half_life': 'Half-life of selected isotope',
             'nearest_isotope': 'Closest Isotope to Input Age',
             'half_life_seconds': 'seconds (Half-life)',
-            'half_life_years': 'years (Half-life)',  
+            'half_life_years': 'years (Half-life)',
             'nearest_to_one': 'Isotope with Half-life closest to 1 second',
             'input_age_help': 'Please enter an age to compare isotopes.',
             'seconds': 'seconds',
@@ -91,7 +91,7 @@ def get_labels(language):
             'assistant': 'Assistant',
             'question1': 'I am curious about how we use radioactive isotopes to date geological samples.',
             'question2': 'Why don’t we fix isotopes when using them for dating purposes?',
-            'question3': 'How do we date geological samples when we don’t know their specific age?',  # 콤마 추가
+            'question3': 'How do we date geological samples when we don’t know their specific age?',
             'error_load_data': 'Failed to load data.',
             'paraphrases': {
                 'question1': [
@@ -121,7 +121,7 @@ def get_labels(language):
             'dark_mode': 'ダークモード',
             'input_age': '比較する年代を入力してください:',
             'start_chatbot': 'チャットボットを開始します（回答が出なくても押してください）',
-            'select_time_unit': '単位を選択してください:',  # 추가된 항목
+            'select_time_unit': '単位を選択してください:',
             'select_isotope_name': '同位体名を選択してください:',
             'select_isotope_number': '同位体番号を選択してください:',
             'scatter_plot_title': '同位体の半減期の散布図',
@@ -134,7 +134,7 @@ def get_labels(language):
             'selected_half_life': '選択された同位体の半減期',
             'nearest_isotope': '入力された年代に最も近い同位体',
             'half_life_seconds': '秒 (半減期)',
-            'half_life_years': '年 (半減期)',  
+            'half_life_years': '年 (半減期)',
             'nearest_to_one': '半減期が1秒に最も近い同位体',
             'input_age_help': '同位体を比較するための年代を入力してください。',
             'seconds': '秒',
